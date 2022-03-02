@@ -52,20 +52,24 @@
                                 <option value="sales">Sales</option>
                                 <option value="marketing">Marketing</option>
                                 <option value="it">IT</option>
+                                <option value="new">Create new category</option>
                             </select>
                         </div>
 
                         <div class="col mb-3">
                             <label for="description" class="form-label">DESCRIPTION</label>
                             <textarea class="form-control"
-                                placeholder="Which need or wish is adressed? &#13; What should be done?&#13; How can success be measured?"
+                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
                                 id="description">
                         </textarea>
                         </div>
 
                         <div class="col mb-3">
                             <label for="due-date" class="form-label">DUE DATE</label>
-                            <input type="text" class="form-control" id="due-date">
+
+                            <input type="date" class="form-control mb-3" aria-describedby="due-date-button"
+                                id="due-date">
+
                             <label for="importance" class="form-label">IMPORTANCE</label>
                             <select class="form-select" id="importance">
                                 <option selected>Choose...</option>
@@ -75,13 +79,30 @@
                             </select>
                         </div>
 
-                        <div class="col mb-3">
+                        <div class="col ">
+                            <label for="assigned-to" class="form-label">ASSIGNED TO</label>
+                            <select class="form-select" id="assigned-to">
+                                <option selected>Choose...</option>
+                                <option value="CA">Chris</option>
+                                <option value="TD">Tuncay</option>
+                                <option value="SD">Sabine</option>
+                            </select>
                         </div>
 
 
-                        <div class="col mb-3">
-                            <button type="submit" class="btn btn-light">CANCEL</button>
-                            <button type="submit" class="btn btn-primary">CREATE TASK</button>
+                        <div class="col d-flex align-items-end justify-content-end">
+                            <button type="reset" class="btn ci-button-transparent">CANCEL</button>
+
+                            <div class="btn-group ci-button-dark" role="group">
+                                <button type="submit" class="btn ci-button-dark">CREATE TASK</button>
+                                <button type="button" class="btn ci-button-dark dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Create task in backlog</a></li>
+                                    <li><a class="dropdown-item" href="#">Create task in to-do-list</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </form>

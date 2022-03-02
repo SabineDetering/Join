@@ -12,10 +12,6 @@ h1 {
     font-weight: bold;
 }
 
-button {
-    border-radius: 10px !important;
-    font-weight: bold !important;
-}
 
 .bg-ci-light {
     background-color: var(--ci-light);
