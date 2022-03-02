@@ -1,4 +1,22 @@
+:root {
+    --ci-light: #F4F3FB;
+    --ci-dark: #1E3190;
+}
+
 body {
     font-family: 'PT Sans', sans-serif;
     ;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+button {
+    border-radius: 10px !important;
+    font-weight: bold !important;
+}
+
+.bg-ci-light {
+    background-color: var(--ci-light);
 }

@@ -1,0 +1,10 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+}
+form label{
+    font-weight: bold;
+}
+#description{
+    height:100px;
+}
