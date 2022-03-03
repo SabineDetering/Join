@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(216, 216, 216);
+}
+
 :root {
     --ci-light: #F4F3FB;
     --ci-dark: #1E3190;

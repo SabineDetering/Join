@@ -1,6 +1,5 @@
 body {
     background-color: rgb(216, 216, 216);
-    ;
 }
 
 .menu-tabs {
@@ -51,4 +50,10 @@ body {
 .menu-logged-in a {
     margin: 18px;
     text-decoration: none;
+}
+
+.profile-pic{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
