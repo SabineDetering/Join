@@ -16,3 +16,7 @@ h1 {
 .bg-ci-light {
     background-color: var(--ci-light);
 }
+
+.bg-ci-dark {
+    background-color: var(--ci-dark);
+}
