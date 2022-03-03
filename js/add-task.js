@@ -1,4 +1,4 @@
-function addTask(status) {
+function addTask() {
     let currentTask = getTaskData();
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
