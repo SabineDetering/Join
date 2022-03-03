@@ -1,3 +1,7 @@
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
 .main-content {
 display: flex;
 justify-content: center;
@@ -13,4 +17,5 @@ gap: 32px;
 
 .card-body {
     height: 600px;
+    width: 300px;
 }
