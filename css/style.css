@@ -20,3 +20,7 @@ h1 {
 .bg-ci-light {
     background-color: var(--ci-light);
 }
+
+.test{
+    background-color: #1E3190;
+}
