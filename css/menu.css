@@ -1,8 +1,52 @@
+body {
+    background-color: rgb(216, 216, 216);
+    ;
+}
 
+.menu-tabs {
+    cursor: pointer;
+    font-size: 24px;
+    color: rgb(216, 216, 216);
+    font-weight: 500;
 
+}
 
-.menu{
+.menu-logged-out {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 200px;
     height: 100vh;
     background-color: rgb(37, 110, 110);
+}
+
+.menu-logged-out img {
+    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 60px;
+}
+
+.menu-logged-out span {
+    margin: 16px;
+}
+
+.menu-logged-in {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 100vh;
+    background-color: rgb(37, 110, 110);
+}
+
+.menu-logged-in img {
+    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 60px;
+}
+
+.menu-logged-in span {
+    margin: 16px;
 }
