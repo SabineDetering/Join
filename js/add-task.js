@@ -1,8 +1,9 @@
-function addTaskToBacklog() {
+function addTask(status) {
     let currentTask = getTaskData();
-    currentTask.status = "backlog";
+    currentTask.status = status;
+    allTasks.push(currentTask);
+    save(allTasks);
 }
-function addTaskToToDo() {
-    let currentTask = getTaskData();
-    currentTask.status = "todo";
+function getTaskData() {
+    
 }

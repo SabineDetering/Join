@@ -20,6 +20,7 @@
 
     <script src="./js/include_html.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/add-task.js"></script>
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
@@ -94,7 +95,7 @@
                             <button type="reset" class="btn ci-button-transparent">CANCEL</button>
 
                             <div class="btn-group ci-button-dark" role="group">
-                                <button type="submit" class="btn ci-button-dark" onclick="addTaskToBacklog()">
+                                <button type="submit" class="btn ci-button-dark" onclick="addTask('backlog')">
                                     CREATE TASK
                                 </button>
                                 
@@ -103,13 +104,13 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <span role="button" class="dropdown-item" onclick="addTaskToBacklog()">
+                                        <span role="button" class="dropdown-item" onclick="addTask('backlog')">
                                             Create task in backlog
                                         </span>
                                     </li>
                                     
                                     <li>
-                                        <span role="button" class="dropdown-item" onclick="addTaskToToDo()">
+                                        <span role="button" class="dropdown-item" onclick="addTask('todo')">
                                             Create task in to-do-list
                                         </span>
                                     </li>
