@@ -38,7 +38,8 @@
         <div class="container">
             <h1 class="mt-5 mb-0">Add task</h1>
             <h6 class="mb-4">Learning Management System Project</h5>
-                <form class="container bg-ci-light p-4" action="">
+
+                <form class="container bg-ci-light p-4">
 
                     <div class="row row-cols-2">
                         <div class="col mb-3">
@@ -60,7 +61,7 @@
                         <div class="col mb-3">
                             <label for="description" class="form-label">DESCRIPTION</label>
                             <textarea class="form-control"
-                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?" 
+                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
                                 id="description">
                         </textarea>
                         </div>
@@ -90,31 +91,53 @@
                             </select>
                         </div>
 
+                        <div class="col mb-3">
+                            <label for="status" class="form-label d-block">
+                                SEND TASK TO
+                            </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status"
+                                    id="statusBacklog" checked>
+                                <label class="form-check-label" for="statusBacklog">
+                                    Backlog
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="statusToDo">
+                                <label class="form-check-label" for="statusToDo">
+                                    To-Do
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col "></div>
+
+
                         <!-- buttons -->
                         <div class="col d-flex align-items-end justify-content-end">
                             <button type="reset" class="btn ci-button-transparent">CANCEL</button>
 
-                            <div class="btn-group ci-button-dark" role="group">
-                                <button type="submit" class="btn ci-button-dark" onclick="addTask('backlog')">
+                            <!-- <div class="btn-group ci-button-dark" role="group"> -->
+                                <button type="button" class="btn ci-button-dark" onclick="addTask('backlog')">
                                     CREATE TASK
                                 </button>
-
-                                <button type="button" class="btn ci-button-dark dropdown-toggle dropdown-toggle-split"
+<!-- 
+                                <button type="submit" class="btn ci-button-dark dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <span role="button" class="dropdown-item" onclick="addTask('backlog')">
+                                        <span role="button" class="dropdown-item" formaction="addTask('backlog')">
                                             Create task in backlog
                                         </span>
                                     </li>
 
                                     <li>
-                                        <span role="button" class="dropdown-item" onclick="addTask('todo')">
+                                        <span role="button" class="dropdown-item" formaction="addTask('todo')">
                                             Create task in to-do-list
                                         </span>
                                     </li>
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                     </div>
