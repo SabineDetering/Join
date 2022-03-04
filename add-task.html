@@ -18,22 +18,11 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <script src="./js/backend.js"></script>
     <script src="./js/include_html.js"></script>
-    <script src="./js/board.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/add-task.js"></script>
-    <script src="./js/mini_backend.js"></script>
-
-    <script>
-        setURL('http://gruppe-194.developerakademie.net/smallest_backend_ever');
-
-            async function init() {
-                await downloadFromServer();
-                allTasks = JSON.parse(backend.getItem('tasks')) || [];
-            }
-    </script>
-
+    <script src="./js/mini_backend.js"> </script>
+    <script src="./js/backend.js"></script>
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
@@ -53,7 +42,7 @@
             <h1 class="mt-5 mb-0">Add task</h1>
             <h6 class="mb-4">Learning Management System Project</h5>
 
-                <form id="task-form" onsubmit="addTask(event);renderCompleteTask()" class="container bg-ci-light p-4" >
+                <form id="task-form" onsubmit="addTask(event);renderCompleteTask()" class="container bg-ci-light p-4">
                     <!-- title -->
                     <div class="row row-cols-2">
                         <div class="col mb-3">
@@ -65,7 +54,7 @@
                         <div class="col mb-3">
                             <label for="category" class="form-label">CATEGORY</label>
                             <select class="form-select" id="category">
-                                <option value ="" selected>Choose...</option>
+                                <option value="" selected>Choose...</option>
                                 <option value="webdesign">Webdesign</option>
                                 <option value="backend">Backend</option>
                                 <option value="user">UI/UX</option>
@@ -77,8 +66,10 @@
                         <div class="col mb-3">
                             <label for="description" class="form-label">DESCRIPTION</label>
                             <!-- important: textarea must be defined on a single line of code! -->
-                            <textarea class="form-control"                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"                                 id="description"></textarea>
-                        
+                            <textarea class="form-control"
+                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
+                                id="description"></textarea>
+
                         </div>
 
                         <div class="col mb-3">
@@ -91,7 +82,7 @@
                             <!-- importance -->
                             <label for="importance" class="form-label">IMPORTANCE</label>
                             <select class="form-select" id="importance">
-                                <option value ="" selected>Choose...</option>
+                                <option value="" selected>Choose...</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -102,7 +93,8 @@
                         <div class="col ">
                             <label for="assigned-to" class="form-label">ASSIGNED TO</label>
                             <select class="form-select" multiple id="assigned-to">
-                                <option value="" selected disabled>Press strg-key to select several collaborators ...</option>
+                                <option value="" selected disabled>Press strg-key to select several collaborators ...
+                                </option>
                                 <option value=""> </option>
                                 <option value="CA">Chris</option>
                                 <option value="TD">Tuncay</option>
@@ -136,7 +128,7 @@
                         <div class="col d-flex align-items-end justify-content-end">
                             <button type="reset" class="btn ci-button-transparent">CANCEL</button>
 
-                            <button type="submit" class="btn ci-button-dark" >
+                            <button type="submit" class="btn ci-button-dark">
                                 CREATE TASK
                             </button>
                         </div>
