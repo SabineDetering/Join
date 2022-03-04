@@ -1,22 +1,20 @@
+/**
+ * loads all tasks from server
+ */
 
-// async function getBoardTasks(){
-//     let response = await fetch(allTasks)
-//     let jsonTask = await response.json();
-//     renderCompleteTask()
-
-
-// }
-
-async function renderCompleteTasks() {
+async function renderBoardTasks() {
     await init();
+
     let todo = getId('todo');
     let progress = getId('progress');
     let testing = getId('testing');
     let done = getId('done');
-    todo.innerHTML = ``;
-    progress.innerHTML = ``;
-    testing.innerHTML = ``;
-    done.innerHTML = ``;
+
+    todo.innerHTML = '';
+    progress.innerHTML = '';
+    testing.innerHTML = '';
+    done.innerHTML = '';
+
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
         if (task.status == 'todo') {
@@ -44,13 +42,12 @@ async function renderCompleteTasks() {
 
 function taskCard(i) {
     let html = `    
-    <div id="task${i}" class="card p-2">
-    <h6>${allTasks[i].title}</h6>
-    <i class="bi bi-pencil"></i>
+    <div id="task${i}" draggable="true" class="card task p-2 mb-1" onclick="showTask(${i})">
+        <h6>${allTasks[i].title}</h6>
 
-    <div id='stuff-icons'>
-       ${stuffIcons(i)}
-    </div>
+        <div id='stuff-icons' class="text-end">
+             ${stuffIcons(i)}
+        </div>
     </div>`;
     return html;
 }

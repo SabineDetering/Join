@@ -18,7 +18,7 @@
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
     <script src="./js/board.js"></script>
-    
+
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
 
@@ -26,7 +26,7 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();renderCompleteTasks();">
+<body onload="includeHTML();renderBoardTasks();">
 
     <div class="main-content">
 
@@ -37,13 +37,6 @@
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>TO DO</b></div>
                     <div id="todo" class="card-body">
-                        <div id="task" class="card">
-                            <h5>title</h5>
-
-
-
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -51,18 +44,6 @@
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>IN PROGRESS</b></div>
                     <div id="progress" class="card-body">
-                        <div id="task" class="task">
-
-                            <span id="title">Tilte</span>
-                            <span id="description">Description</span>
-                            <span id="category">Category</span>
-                            <span id="date">Due Date</span>
-                            <span id="importance">Importance</span>
-                            <span id="assigned">Assigned to</span>
-                            <span id="status">Status</span>
-        
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -70,18 +51,6 @@
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>TESTING</b></div>
                     <div id="testing" class="card-body">
-                        <div id="task" class="task">
-
-                            <span id="title">Tilte</span>
-                            <span id="description">Description</span>
-                            <span id="category">Category</span>
-                            <span id="date">Due Date</span>
-                            <span id="importance">Importance</span>
-                            <span id="assigned">Assigned to</span>
-                            <span id="status">Status</span>
-        
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -89,21 +58,9 @@
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>DONE</b></div>
                     <div id="done" class="card-body">
-                        <div id="task" class="task">
-
-                            <span class="pointer" id="title">Tilte</span>
-                            <span class="pointer" id="description">Description</span>
-                            <span class="pointer" id="category">Category</span>
-                            <span class="pointer" id="date">Due Date</span>
-                            <span class="pointer" id="importance">Importance</span>
-                            <span class="pointer" id="assigned">Assigned to</span>
-                            <span class="pointer" id="status">Status</span>
-        
-                        </div>
                     </div>
                 </div>
             </div>
-    
         </div>
     </div>
 </body>
