@@ -5,7 +5,7 @@
 
 body {
     font-family: 'PT Sans', sans-serif;
-    ;
+    background-color: rgb(216, 216, 216);
 }
 
 h1 {
@@ -15,4 +15,11 @@ h1 {
 
 .bg-ci-light {
     background-color: var(--ci-light);
+}
+
+.bg-ci-dark {
+    background-color: var(--ci-dark);
+}
+.text-dark{
+    color:var(--ci-dark);
 }

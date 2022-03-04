@@ -35,69 +35,75 @@
     <div class="wrapper">
 
         <div w3-include-html="./html_templates/menu.html"></div>
+
         <div class="container">
             <h1 class="mt-5 mb-0">Add task</h1>
             <h6 class="mb-4">Learning Management System Project</h5>
 
-                <form class="container bg-ci-light p-4">
-
+                <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4" >
+                    <!-- title -->
                     <div class="row row-cols-2">
                         <div class="col mb-3">
                             <label for="title" class="form-label">TITLE*</label>
                             <input type="text" class="form-control" id="title" required>
                         </div>
 
+                        <!-- category -->
                         <div class="col mb-3">
                             <label for="category" class="form-label">CATEGORY</label>
                             <select class="form-select" id="category">
-                                <option selected>Choose...</option>
-                                <option value="sales">Sales</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="it">IT</option>
+                                <option value ="" selected>Choose...</option>
+                                <option value="webdesign">Webdesign</option>
+                                <option value="backend">Backend</option>
+                                <option value="user">UI/UX</option>
                                 <option value="new">Create new category</option>
                             </select>
                         </div>
 
+                        <!-- description -->
                         <div class="col mb-3">
                             <label for="description" class="form-label">DESCRIPTION</label>
-                            <textarea class="form-control"
-                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
-                                id="description">
-                        </textarea>
+                            <!-- important: textarea must be defined on a single line of code! -->
+                            <textarea class="form-control"                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"                                 id="description"></textarea>
+                        
                         </div>
 
                         <div class="col mb-3">
+                            <!-- due date -->
                             <label for="due-date" class="form-label">DUE DATE</label>
 
                             <input type="date" class="form-control mb-3" aria-describedby="due-date-button"
                                 id="due-date">
 
+                            <!-- importance -->
                             <label for="importance" class="form-label">IMPORTANCE</label>
                             <select class="form-select" id="importance">
-                                <option selected>Choose...</option>
+                                <option value ="" selected>Choose...</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
                             </select>
                         </div>
 
+                        <!-- assignment -->
                         <div class="col ">
                             <label for="assigned-to" class="form-label">ASSIGNED TO</label>
-                            <select class="form-select" id="assigned-to">
-                                <option selected>Choose...</option>
+                            <select class="form-select" multiple id="assigned-to">
+                                <option value="" selected disabled>Press strg-key to select several collaborators ...</option>
+                                <option value=""> </option>
                                 <option value="CA">Chris</option>
                                 <option value="TD">Tuncay</option>
                                 <option value="SD">Sabine</option>
                             </select>
                         </div>
 
+                        <!-- choice to send task to backlog or todo-list -->
                         <div class="col mb-3">
                             <label for="status" class="form-label d-block">
                                 SEND TASK TO
                             </label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status"
-                                    id="statusBacklog" checked>
+                                <input class="form-check-input" type="radio" name="status" id="statusBacklog" checked>
                                 <label class="form-check-label" for="statusBacklog">
                                     Backlog
                                 </label>
@@ -110,35 +116,16 @@
                             </div>
                         </div>
 
+                        <!--  empty for design reasons-->
                         <div class="col "></div>
-
 
                         <!-- buttons -->
                         <div class="col d-flex align-items-end justify-content-end">
                             <button type="reset" class="btn ci-button-transparent">CANCEL</button>
 
-                            <!-- <div class="btn-group ci-button-dark" role="group"> -->
-                                <button type="button" class="btn ci-button-dark" onclick="addTask('backlog')">
-                                    CREATE TASK
-                                </button>
-<!-- 
-                                <button type="submit" class="btn ci-button-dark dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <span role="button" class="dropdown-item" formaction="addTask('backlog')">
-                                            Create task in backlog
-                                        </span>
-                                    </li>
-
-                                    <li>
-                                        <span role="button" class="dropdown-item" formaction="addTask('todo')">
-                                            Create task in to-do-list
-                                        </span>
-                                    </li>
-                                </ul> -->
-                            </div>
+                            <button type="submit" class="btn ci-button-dark" >
+                                CREATE TASK
+                            </button>
                         </div>
                     </div>
                 </form>
