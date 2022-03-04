@@ -1,13 +1,13 @@
-body {
-    font-family: 'PT Sans', sans-serif;
+.body{
+    display: flex;
+    justify-content: space-between;
 }
-
 .main-content {
 display: flex;
-justify-content: center;
+justify-content: space-around;
 align-items: center;
 height: 100vh;
-gap: 32px;
+width: 100vw;
 }
 
 .card-header {
