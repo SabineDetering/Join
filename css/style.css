@@ -12,6 +12,10 @@ h1 {
     font-weight: bold;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 
 .bg-ci-light {
     background-color: var(--ci-light);
