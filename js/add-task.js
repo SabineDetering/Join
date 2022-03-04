@@ -1,9 +1,10 @@
 /**
  * gets actual data from form as json and pushes it into allTasks
- * unique id for every task
+ * unique id for each task
  * initiates saving allTasks
  */
-function addTask() {
+function addTask(event) {
+    event.preventDefault();
     let currentTask = getTaskData();
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
@@ -16,20 +17,27 @@ function addTask() {
 function getTaskData() {
     let title = getId('title').value;
     let description = getId('description').value;
+    // get value of selected option
     let catSelector = getId('category');
     let category = catSelector[catSelector.selectedIndex].value;
-    let dueDate = getId('due-date').value;//format "yyyy-mm-dd"
+    let dueDate = getId('due-date').value;//format "yyyy-mm-dd"    
+    // get value of selected option
     let impSelector = getId('importance');
     let importance = impSelector[impSelector.selectedIndex].value;
-    let assignSelector = getId('assigned-to');
     //get array with all selected options
+    let assignSelector = getId('assigned-to');
     let selectedAssignOptions = Array.from(assignSelector.selectedOptions);
-    // get values of selected options 
+    // get values of (multiple) selected options 
     let assignedTo = selectedAssignOptions.map(option => option.value);
         let status = 'backlog';
     let statusToDo = getId('statusToDo');
     if (statusToDo.checked) {
         status = 'todo';
-    } 
+    }
+    
+    //empty the form
+    let form = getId('task-form'); 
+    form.reset(); 
+
     return { title, description, category, dueDate, importance, assignedTo,status}
 }

@@ -40,7 +40,7 @@
             <h1 class="mt-5 mb-0">Add task</h1>
             <h6 class="mb-4">Learning Management System Project</h5>
 
-                <form class="container bg-ci-light p-4">
+                <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4" >
                     <!-- title -->
                     <div class="row row-cols-2">
                         <div class="col mb-3">
@@ -63,10 +63,9 @@
                         <!-- description -->
                         <div class="col mb-3">
                             <label for="description" class="form-label">DESCRIPTION</label>
-                            <textarea class="form-control"
-                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
-                                id="description">
-                        </textarea>
+                            <!-- important: textarea must be defined on a single line of code! -->
+                            <textarea class="form-control"                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"                                 id="description"></textarea>
+                        
                         </div>
 
                         <div class="col mb-3">
@@ -124,7 +123,7 @@
                         <div class="col d-flex align-items-end justify-content-end">
                             <button type="reset" class="btn ci-button-transparent">CANCEL</button>
 
-                            <button type="button" class="btn ci-button-dark" onclick="addTask('backlog')">
+                            <button type="submit" class="btn ci-button-dark" >
                                 CREATE TASK
                             </button>
                         </div>
