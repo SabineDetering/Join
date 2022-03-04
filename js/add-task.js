@@ -11,9 +11,6 @@ function addTask(event) {
     save(allTasks, 'tasks');
 }
 
-function save(array, arrayName) {
-    backend.setItem(arrayName, JSON.stringify(array));
-}
 
 /**
  * reads all inputs in add-task form

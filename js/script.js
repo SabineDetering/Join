@@ -15,3 +15,7 @@ function getId(id) {
     return document.getElementById(id);
 }
 
+function save(array, arrayName) {
+    backend.setItem(arrayName, JSON.stringify(array));
+}
+
