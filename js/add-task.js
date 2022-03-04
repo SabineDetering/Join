@@ -9,7 +9,14 @@ function addTask(event) {
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
     save(allTasks);
+
+    saveToServer();
 }
+
+function saveToServer() {
+    backend.setItem('tasks', JSON.stringify(allTasks));
+}
+
 /**
  * reads all inputs in add-task form
  * @returns json with all data of the task
