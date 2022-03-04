@@ -1,5 +1,27 @@
+// categories = [{key:'backend',text:'Backend'}, {key:'frontend',text:'Frontend'}, {key:'productOwner',text:'Product Owner'}, {key:'UI_UX',text:'UI/UX'}, {key:'webdesign',text:'Webdesign'}];
+
+async function renderAddTaskForm() {
+    await init();
+    fillCategorySelector();
+}
+
+function fillCategorySelector() {
+    let selector = getId('category');
+    selector.innerHTML = '';
+    selector.innerHTML += optionMaker('', 'Choose...', 'selected');
+    for (let i = 0; i < categories.length; i++) {
+        const cat = categories[i];
+        selector.innerHTML += optionMaker(cat['key'], cat['text']);
+    }
+    selector.innerHTML += optionMaker('new', 'New category');
+   
+}
+function optionMaker(value, text, attributes) {
+    return `<option value="${value}" ${attributes}>${text}</option>`
+}
+
 /**
- * gets actual data from form as json and pushes it into allTasks
+ * gets actual data from form as json and pushes it into array allTasks
  * unique id for each task
  * initiates saving allTasks
  */
@@ -9,6 +31,7 @@ function addTask(event) {
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
+    save(categories, 'categories');
     showSuccessMessage();
     setTimeout(hideSuccessMessage, 2500);
 }

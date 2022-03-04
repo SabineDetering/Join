@@ -9,6 +9,8 @@
 // }
 
 let allTasks = [];
+let users = [];
+let categories = [];
 
 function getId(id) {
     return document.getElementById(id);

@@ -1,7 +1,7 @@
 /**
  * loads all tasks from server
+ * renders all tasks that belong to the board according to their status
  */
-
 async function renderBoardTasks() {
     await init();
 
@@ -39,7 +39,11 @@ async function renderBoardTasks() {
     }
 }
 
-
+/**
+ * 
+ * @param {integer} i id of the task
+ * @returns html code for rendering the task card
+ */
 function taskCard(i) {
     let html = `    
     <div id="task${i}" draggable="true" class="card task p-2 mb-1" onclick="showTask(${i})">
@@ -51,7 +55,11 @@ function taskCard(i) {
     </div>`;
     return html;
 }
-
+/**
+ * 
+ * @param {integer} i id of the task
+ * @returns html code for rendering the assigned team members
+ */
 function stuffIcons(i) {
     let stuff = allTasks[i].assignedTo;
     let html = '';

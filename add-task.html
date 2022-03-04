@@ -33,7 +33,7 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();init();">
+<body onload="includeHTML();renderAddTaskForm();">
 
     <div class="wrapper">
 
@@ -41,25 +41,21 @@
 
         <div class="container">
             <h1 class="mt-5 mb-0">Add task</h1>
-            <h6 class="mb-4">Learning Management System Project</h5>
+            <h6 class="mb-4">Learning Management System Project</h6>
 
                 <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4">
                     <!-- title -->
                     <div class="row row-cols-2">
                         <div class="col mb-3">
                             <label for="title" class="form-label">TITLE*</label>
-                            <input type="text" class="form-control" id="title" required>
+                            <input type="text" class="form-control" id="title" required minlength="3" maxlength="100">
                         </div>
 
                         <!-- category -->
                         <div class="col mb-3">
                             <label for="category" class="form-label">CATEGORY</label>
                             <select class="form-select" id="category">
-                                <option value="" selected>Choose...</option>
-                                <option value="webdesign">Webdesign</option>
-                                <option value="backend">Backend</option>
-                                <option value="user">UI/UX</option>
-                                <option value="new">Create new category</option>
+
                             </select>
                         </div>
 
