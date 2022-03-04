@@ -16,6 +16,7 @@
     <script src="./js/script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
+    <script src="./js/board.js"></script>
     
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
@@ -24,7 +25,7 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();init();">
+<body onload="includeHTML();init();renderCompleteTask();">
 
     <div class="main-content">
 
@@ -37,14 +38,7 @@
                     <div class="card-body">
                         <div id="task" class="task">
 
-                            <span id="title">Tilte</span>
-                            <span id="description">Description</span>
-                            <span id="category">Category</span>
-                            <span id="date">Due Date</span>
-                            <span id="importance">Importance</span>
-                            <span id="assigned">Assigned to</span>
-                            <span id="status">Status</span>
-        
+
                         </div>
 
                     </div>
