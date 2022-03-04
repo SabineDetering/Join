@@ -12,7 +12,11 @@ h1 {
     font-weight: bold;
 }
 
-.pointer{
+h6 {
+    font-weight: bold;
+}
+
+.pointer {
     cursor: pointer;
 }
 
@@ -23,6 +27,7 @@ h1 {
 .bg-ci-dark {
     background-color: var(--ci-dark);
 }
-.text-dark{
-    color:var(--ci-dark);
+
+.text-dark {
+    color: var(--ci-dark);
 }

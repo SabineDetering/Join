@@ -7,7 +7,8 @@
 
 // }
 
-function renderCompleteTasks() {
+async function renderCompleteTasks() {
+    await init();
     let todo = getId('todo');
     let progress = getId('progress');
     let testing = getId('testing');
@@ -18,10 +19,15 @@ function renderCompleteTasks() {
     done.innerHTML = ``;
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
-        if(task.status == 'todo'){
+        if (task.status == 'todo') {
             todo.innerHTML += taskCard(i);
+        } else if (task.status == 'progress') {
+            progress.innerHTML += taskCard(i);
+        } else if (task.status == 'testing') {
+            testing.innerHTML += taskCard(i);
+        } else if (task.status == 'done') {
+            done.innerHTML += taskCard(i);
         }
-
 
         // getId('task').innerHTML =`
         // <span id="title${i}">${task['title']}</span>
@@ -36,11 +42,11 @@ function renderCompleteTasks() {
 }
 
 
-function taskCard(i){
+function taskCard(i) {
     let html = `    
-    <div id="task${i}" class="card">
-    <h5>${allTasks[i].title}</h5>
-    </div>`; 
+    <div id="task${i}" class="card p-2">
+    <h6>${allTasks[i].title}</h6>
+    </div>`;
     return html;
 
 }
