@@ -1,4 +1,4 @@
-setURL('http://developerakademie.com/smallest_backend_ever');
+setURL('http://gruppe-194.developerakademie.net/smallest_backend_ever');
 
 async function init() {
     await downloadFromServer();
