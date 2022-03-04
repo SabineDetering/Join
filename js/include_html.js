@@ -24,5 +24,5 @@ function includeHTML() {
             return;
         }
     }
- init();
+//  init();
 }

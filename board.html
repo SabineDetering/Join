@@ -15,12 +15,20 @@
     <script src="./js/script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
+    <script>
+        setURL('http://gruppe-194.developerakademie.net/smallest_backend_ever');
+
+        async function init() {
+            await downloadFromServer();
+            allTasks = JSON.parse(backend.getItem('tasks')) || [];
+        }
+    </script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
     <title>Join</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML();init();">
 
     <div class="main-content">
 
