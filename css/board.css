@@ -1,8 +1,9 @@
-body {
-    font-family: 'PT Sans', sans-serif;
+.body{
+    display: flex;
+    justify-content: space-between;
 }
-
 .main-content {
+<<<<<<< HEAD
     display: flex;
     height: 100vh;
     gap: 32px;
@@ -13,6 +14,13 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+=======
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 100vh;
+width: 100vw;
+>>>>>>> 4cd91e3bf0ed21e3e0bc04d37adee2a5d00f6be1
 }
 
 .card-header {
