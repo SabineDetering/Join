@@ -1,5 +1,11 @@
-async function renderCompleteTask() {
+
+async function getBoardTasks(){
     
+
+}
+
+function renderCompleteTask() {
+
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
 
