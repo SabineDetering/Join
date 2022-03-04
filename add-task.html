@@ -19,6 +19,7 @@
         crossorigin="anonymous"></script>
 
     <script src="./js/include_html.js"></script>
+    <script src="./js/board.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/add-task.js"></script>
 
@@ -40,7 +41,7 @@
             <h1 class="mt-5 mb-0">Add task</h1>
             <h6 class="mb-4">Learning Management System Project</h5>
 
-                <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4" >
+                <form id="task-form" onsubmit="addTask(event);renderCompleteTask()" class="container bg-ci-light p-4" >
                     <!-- title -->
                     <div class="row row-cols-2">
                         <div class="col mb-3">
