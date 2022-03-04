@@ -1,4 +1,4 @@
-setURL('http://developerakademie.com/smallest_backend_ever-master')
+setURL('http://developerakademie.com/smallest_backend_ever')
 
 async function init() {
     await downloadFromServer();
