@@ -26,7 +26,7 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();init();renderCompleteTask();">
+<body onload="includeHTML();init();renderCompleteTasks();">
 
     <div class="main-content">
 
@@ -36,8 +36,10 @@
             <div class="categories">
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>TO DO</b></div>
-                    <div class="card-body">
-                        <div id="task" class="task">
+                    <div id="todo" class="card-body">
+                        <div id="task" class="card">
+                            <h5>title</h5>
+
 
 
                         </div>
@@ -48,7 +50,7 @@
             <div class="categories">
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>IN PROGRESS</b></div>
-                    <div class="card-body">
+                    <div id="progress" class="card-body">
                         <div id="task" class="task">
 
                             <span id="title">Tilte</span>
@@ -67,7 +69,7 @@
             <div class="categories">
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>TESTING</b></div>
-                    <div class="card-body">
+                    <div id="testing" class="card-body">
                         <div id="task" class="task">
 
                             <span id="title">Tilte</span>
@@ -86,7 +88,7 @@
             <div class="categories">
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header"><b>DONE</b></div>
-                    <div class="card-body">
+                    <div id="done" class="card-body">
                         <div id="task" class="task">
 
                             <span class="pointer" id="title">Tilte</span>
