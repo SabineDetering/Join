@@ -1,7 +1,8 @@
-.body{
+.body {
     display: flex;
     justify-content: space-between;
 }
+
 .main-content {
     display: flex;
     height: 100vh;
@@ -25,7 +26,6 @@
     width: 300px;
 }
 
-.task{
-    border: 1px solid black;
-    padding: 8px;
+.stuff-icon{
+    border-radius:100%;
 }

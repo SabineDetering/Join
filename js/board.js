@@ -46,7 +46,26 @@ function taskCard(i) {
     let html = `    
     <div id="task${i}" class="card p-2">
     <h6>${allTasks[i].title}</h6>
+    <i class="bi bi-pencil"></i>
+
+    <div id='stuff-icons'>
+       ${stuffIcons(i)}
+    </div>
     </div>`;
     return html;
+}
 
+function stuffIcons(i) {
+    let stuff = allTasks[i].assignedTo;
+    let html = '';
+
+    for (let index = 0; index < stuff.length; index++) {
+        const teamMember = stuff[index];
+        if (teamMember) {
+            html += `
+        <span class="stuff-icon bg-ci-dark p-1">${teamMember}</span>
+        `;
+        }
+    }
+    return html;
 }

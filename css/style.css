@@ -12,10 +12,6 @@ h1 {
     font-weight: bold;
 }
 
-h6 {
-    font-weight: bold;
-}
-
 .pointer {
     cursor: pointer;
 }
@@ -26,6 +22,7 @@ h6 {
 
 .bg-ci-dark {
     background-color: var(--ci-dark);
+    color:white;
 }
 
 .text-dark {
