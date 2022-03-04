@@ -8,13 +8,11 @@ function addTask(event) {
     let currentTask = getTaskData();
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
-    save(allTasks);
-
-    saveToServer();
+    save(allTasks, 'tasks');
 }
 
-function saveToServer() {
-    backend.setItem('tasks', JSON.stringify(allTasks));
+function save(array, arrayName) {
+    backend.setItem(arrayName, JSON.stringify(array));
 }
 
 /**

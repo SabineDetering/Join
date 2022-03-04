@@ -15,10 +15,3 @@ function getId(id) {
     return document.getElementById(id);
 }
 
-/**
- * saves data on server
- * @param {array} arr Array of data to be saved on server
- */
-function save(arr) {
-    
-}
