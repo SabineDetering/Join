@@ -9,15 +9,10 @@ form label {
 }
 
 #description {
-    height: 120px;
-    white-space: normal;
-}
-
-#description {
     word-wrap: break-word;
     white-space: pre-line;
+    height: 120px;
 }
-
 
 .ci-button-dark {
     border-radius: 10px !important;

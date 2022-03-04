@@ -9,8 +9,9 @@ function addTask(event) {
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
+    showSuccessMessage();
+    setTimeout(hideSuccessMessage, 2500);
 }
-
 
 /**
  * reads all inputs in add-task form
@@ -42,4 +43,11 @@ function getTaskData() {
     form.reset(); 
 
     return { title, description, category, dueDate, importance, assignedTo,status}
+}
+
+function showSuccessMessage() {
+    getId('success').classList.remove('invisible');
+}
+function hideSuccessMessage() {
+    getId('success').classList.add('invisible');
 }
