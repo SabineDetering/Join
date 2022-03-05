@@ -1,4 +1,5 @@
 // categories = [{key:'backend',text:'Backend'}, {key:'frontend',text:'Frontend'}, {key:'productOwner',text:'Product Owner'}, {key:'UI_UX',text:'UI/UX'}, {key:'webdesign',text:'Webdesign'}];
+// categories = ['Backend', 'Frontend', 'Product Owner','UI/UX', 'Webdesign'];
 
 async function renderAddTaskForm() {
     await init();
@@ -8,16 +9,24 @@ async function renderAddTaskForm() {
 function fillCategorySelector() {
     let selector = getId('category');
     selector.innerHTML = '';
-    selector.innerHTML += optionMaker('', 'Choose...', 'selected');
+    selector.innerHTML += optionMaker('Choose...','', 'selected');
     for (let i = 0; i < categories.length; i++) {
-        const cat = categories[i];
-        selector.innerHTML += optionMaker(cat['key'], cat['text']);
+        // const cat = categories[i];
+        // selector.innerHTML += optionMaker(cat['key'], cat['text']);
+        selector.innerHTML += optionMaker(categories[i]);
     }
-    selector.innerHTML += optionMaker('new', 'New category');
-   
+    selector.innerHTML += optionMaker('New category', 'new');
 }
-function optionMaker(value, text, attributes) {
-    return `<option value="${value}" ${attributes}>${text}</option>`
+
+function optionMaker(text, value, attributes) {
+    if (typeof (attributes) == 'undefined') {
+        attributes = '';
+    }
+    if (typeof (value) == 'undefined') {
+        return `<option ${attributes}>${text}</option>`;        
+    } else {
+        return `<option value="${value}" ${attributes}>${text}</option>`;
+    }
 }
 
 /**
