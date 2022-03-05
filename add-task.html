@@ -43,131 +43,132 @@
             <h1 class="mt-5 mb-0">Add task</h1>
             <h6 class="mb-4">Learning Management System Project</h6>
 
-                <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4">
-                    <!-- title -->
-                    <div class="row row-cols-2">
-                        <div class="col mb-3">
-                            <label for="title" class="form-label">TITLE*</label>
-                            <input type="text" class="form-control" id="title" required minlength="3" maxlength="100">
-                        </div>
+            <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4 position-relative">
+                <!-- title -->
+                <div class="row row-cols-2">
+                    <div class="col mb-3">
+                        <label for="title" class="form-label">TITLE*</label>
+                        <input type="text" class="form-control" id="title" required minlength="3" maxlength="100">
+                    </div>
 
-                        <!-- category -->
-                        <div class="col mb-3">
-                            <label for="category" class="form-label">CATEGORY</label>
-                            <select class="form-select" id="category"
-                            onchange="checkIfNewCategory()">
-                            </select>
-                        </div>
+                    <!-- category -->
+                    <div class="col mb-3">
+                        <label for="category" class="form-label">CATEGORY</label>
+                        <select class="form-select" id="category" onchange="checkIfNewCategorySelected()">
+                        </select>
+                    </div>
 
-                        <!-- description -->
-                        <div class="col mb-3">
-                            <label for="description" class="form-label">DESCRIPTION</label>
-                            <!-- important: textarea must be defined on a single line of code! -->
-                            <textarea class="form-control"
-                                placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
-                                id="description"></textarea>
+                    <!-- description -->
+                    <div class="col mb-3">
+                        <label for="description" class="form-label">DESCRIPTION</label>
+                        <!-- important: textarea must be defined on a single line of code! -->
+                        <textarea class="form-control"
+                            placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
+                            id="description"></textarea>
 
-                        </div>
+                    </div>
 
-                        <div class="col mb-3">
-                            <!-- due date -->
-                            <label for="due-date" class="form-label">DUE DATE</label>
+                    <div class="col mb-3">
+                        <!-- due date -->
+                        <label for="due-date" class="form-label">DUE DATE</label>
 
-                            <input type="date" class="form-control mb-3" aria-describedby="due-date-button"
-                                id="due-date">
+                        <input type="date" class="form-control mb-3" aria-describedby="due-date-button" id="due-date">
 
-                            <!-- importance -->
-                            <label for="importance" class="form-label">IMPORTANCE</label>
-                            <select class="form-select" id="importance">
-                                <option value="" selected>Choose...</option>
-                                <option value="high">High</option>
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                            </select>
-                        </div>
+                        <!-- importance -->
+                        <label for="importance" class="form-label">IMPORTANCE</label>
+                        <select class="form-select" id="importance">
+                            <option value="" selected>Choose...</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
 
-                        <!-- assignment -->
-                        <div class="col ">
-                            <label for="assigned-to" class="form-label">ASSIGNED TO</label>
-                            <select class="form-select" multiple id="assigned-to">
-                                <option value="" selected disabled>Press strg-key to select several collaborators ...
-                                </option>
-                                <option value=""> </option>
-                                <option value="CA">Chris</option>
-                                <option value="TD">Tuncay</option>
-                                <option value="SD">Sabine</option>
-                            </select>
-                        </div>
+                    <!-- assignment -->
+                    <div class="col ">
+                        <label for="assigned-to" class="form-label">ASSIGNED TO</label>
+                        <select class="form-select" multiple id="assigned-to">
+                            <option value="" selected disabled>Press strg-key to select several collaborators ...
+                            </option>
+                            <option value=""> </option>
+                            <option value="CA">Chris</option>
+                            <option value="TD">Tuncay</option>
+                            <option value="SD">Sabine</option>
+                        </select>
+                    </div>
 
-                        <!-- choice to send task to backlog or todo-list -->
-                        <div class="col mb-3">
-                            <label for="status" class="form-label d-block">
-                                SEND TASK TO
+                    <!-- choice to send task to backlog or todo-list -->
+                    <div class="col mb-3">
+                        <label for="status" class="form-label d-block">
+                            SEND TASK TO
+                        </label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="statusBacklog" checked>
+                            <label class="form-check-label" for="statusBacklog">
+                                Backlog
                             </label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="statusBacklog" checked>
-                                <label class="form-check-label" for="statusBacklog">
-                                    Backlog
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="statusToDo">
-                                <label class="form-check-label" for="statusToDo">
-                                    To-Do
-                                </label>
-                            </div>
                         </div>
-
-                        <!--  empty for design reasons-->
-                        <div class="col "></div>
-
-                        <!-- buttons -->
-                        <div class="col d-flex flex-column align-items-end">
-
-                            <div id="success" class="mb-2 invisible">Task was saved.</div>
-                            <div class="d-flex align-items-end justify-content-end">
-                                
-                                <button type="reset" class="btn ci-button-transparent">CANCEL</button>
-
-                                <button type="submit" class="btn ci-button-dark">
-                                    CREATE TASK
-                                </button>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="statusToDo">
+                            <label class="form-check-label" for="statusToDo">
+                                To-Do
+                            </label>
                         </div>
                     </div>
-                </form>
+
+                    <!--  empty for design reasons-->
+                    <div class="col "></div>
+
+                    <!-- buttons -->
+                    <div class="col d-flex align-items-end justify-content-end">
+
+                        <button type="reset" class="btn ci-button-transparent">CANCEL</button>
+
+                        <button type="submit" class="btn ci-button-dark">
+                            CREATE TASK
+                        </button>
+                    </div>
+                </div>
+                <!-- success message after saving -->
+                <div id="success" class="ci-border-dark position-absolute p-4 d-none">
+                    The task was saved.
+                </div>
+            </form>
         </div>
     </div>
 
-<div class="modal" id="addCategoryModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Modal for adding a new category -->
+    <div class="modal fade" id="addCategoryModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Add a new category</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="resetCategory()"></button>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a new category</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="resetCategory()"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input id="new-category" type="text" class="form-control" minlength=2 maxlength=15
+                        placeholder="Enter new category" aria-label="Enter new category"
+                        aria-describedby="btn-save-category">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                    <button type="button" class="btn ci-button-transparent" data-bs-dismiss="modal"
+                        onclick="resetCategory()">CANCEL</button>
+
+                    <button type="button" class="btn ci-button-dark" data-bs-dismiss="modal" onclick="addCategory()">
+                        SAVE NEW CATEGORY
+                    </button>
+                </div>
+
             </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <input id="new-category" type="text" class="form-control" minlength=2 maxlength=15 placeholder="Enter new category" aria-label="Enter new category"
-                    aria-describedby="btn-save-category">
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-
-                <button type="button" class="btn ci-button-transparent" data-bs-dismiss="modal" onclick="resetCategory()">CANCEL</button>
-                
-                <button type="button" class="btn ci-button-dark" data-bs-dismiss="modal" onclick="addCategory()">
-                    SAVE NEW CATEGORY
-                </button>
-            </div>
-
         </div>
     </div>
-</div>
 
 </body>
 

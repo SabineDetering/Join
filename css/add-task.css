@@ -26,3 +26,16 @@ form label {
     color: var(--ci-dark);
     background-color: transparent;
 }
+
+.ci-border-dark {
+    border: 2px solid var(--ci-dark);
+}
+
+#success {
+    z-index: 10;
+    border-radius: 10px !important;
+    right: 1.5em;
+    bottom: 1.5em;
+    background-color: white;
+    box-shadow: 2px 2px 3px 1px var(--ci-dark);
+}
