@@ -9,7 +9,7 @@ async function renderAddTaskForm() {
 function fillCategorySelector() {
     let selector = getId('category');
     selector.innerHTML = '';
-    selector.innerHTML += optionMaker('Choose...','', 'selected');
+    selector.innerHTML += optionMaker('Choose...', '', 'selected');
     for (let i = 0; i < categories.length; i++) {
         // const cat = categories[i];
         // selector.innerHTML += optionMaker(cat['key'], cat['text']);
@@ -23,10 +23,42 @@ function optionMaker(text, value, attributes) {
         attributes = '';
     }
     if (typeof (value) == 'undefined') {
-        return `<option ${attributes}>${text}</option>`;        
+        return `<option ${attributes}>${text}</option>`;
     } else {
         return `<option value="${value}" ${attributes}>${text}</option>`;
     }
+}
+/**
+ * triggers that a modal is shown when "new Category" is selected
+ * modal allows to enter a new category name
+ */
+function checkIfNewCategory() {
+    let catSelector = getId('category');
+    let category = catSelector[catSelector.selectedIndex].value;
+    if (category == 'new') {
+        let myModal = new bootstrap.Modal(getId('addCategoryModal'), {});
+        myModal.show();
+    }
+}
+
+function addCategory() {
+    let newCategory = getId('new-category').value;
+    if (newCategory) {
+        categories.push(newCategory);
+        categories.sort();
+        save(categories, 'categories');
+        fillCategorySelector();
+        let catSelector = getId('category');
+        let index = categories.indexOf(newCategory);
+        catSelector.selectedIndex = index + 1;
+    } else {
+        resetCategory();
+    }
+}
+
+function resetCategory() {
+    let catSelector = getId('category');
+    catSelector.selectedIndex = 0;
 }
 
 /**
@@ -64,17 +96,17 @@ function getTaskData() {
     let selectedAssignOptions = Array.from(assignSelector.selectedOptions);
     // get values of (multiple) selected options 
     let assignedTo = selectedAssignOptions.map(option => option.value);
-        let status = 'backlog';
+    let status = 'backlog';
     let statusToDo = getId('statusToDo');
     if (statusToDo.checked) {
         status = 'todo';
     }
-    
-    //empty the form
-    let form = getId('task-form'); 
-    form.reset(); 
 
-    return { title, description, category, dueDate, importance, assignedTo,status}
+    //empty the form
+    let form = getId('task-form');
+    form.reset();
+
+    return { title, description, category, dueDate, importance, assignedTo, status }
 }
 
 function showSuccessMessage() {
