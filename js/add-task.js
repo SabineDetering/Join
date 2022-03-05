@@ -116,6 +116,8 @@ function selectCategory(cat) {
     catSelector.selectedIndex = index + 1;//first option is "Choose.."
 }
 
+
+///////////////////////////////////////////////////////////////////////
 /**
  * gets data from addtask form as json and pushes it into array allTasks
  * unique id for each task
