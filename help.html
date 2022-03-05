@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Added via link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script src="./js/include_html.js"></script>
+    <script src="./js/script.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/menu.css">
+
+    <title>Help</title>
+    <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+</head>
+
+<body onload="includeHTML()">
+    <div class="d-flex">
+        <div w3-include-html="html_templates/menu.html"></div>
+        <div class=' container privacy p-4'>
+            <h1>Help</h1>
+            <p>Join is a Kanban Board. It visualises the project flow in agile project management. </p>
+            <p>This app was built as a training project at Developer Akademie. There is no security layer implemented.
+                It is not supposed to be used with real life data.</p>
+            <p><strong>Do not enter personal data.</strong> </p>
+
+        <div class="accordion accordion-flush " id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                        Add Task
+                    </button>
+                </h2>
+                <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Text about add task
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+                        Backlog
+                    </button>
+                </h2>
+                <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        The backlog is a collection of tasks and ideas that are not yet in the focus of implementation. Items can be moved either to the to-do-list or to the archive or be deleted.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
+                        Board
+                    </button>
+                </h2>
+                <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        The board holds all tasks in the current sprint. During the process of implementation and testing, tasks move from left to right through the stages of the board. 
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapse4" aria-expanded="false" aria-controls="flush-collapse4">
+                        Archive
+                    </button>
+                </h2>
+                <div id="flush-collapse4" class="accordion-collapse collapse" aria-labelledby="flush-heading4"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        The archive can be used as a history of tasks that were not implemented or that are already done but not longer shown on the board.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
