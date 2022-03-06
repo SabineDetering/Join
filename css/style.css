@@ -29,11 +29,10 @@ h1 {
     color: var(--ci-dark);
 }
 
-<<<<<<< HEAD
-.stuff-icon{
-    border-radius:100%;
-=======
 .staff-icon {
     border-radius: 100%;
->>>>>>> b35f046226783c09d938a2603465899e2e4219e8
+}
+
+.icon-margin {
+    margin-right: 5px;
 }

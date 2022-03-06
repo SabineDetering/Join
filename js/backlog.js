@@ -1,37 +1,30 @@
 
 async function renderTasksInBacklog() {
 
-    // const teamMember = stuff[index];
-
     await init();
-    let backlogContent = document.getElementById('card-body');
-    // // backlogContent.innerHTML = '';
+    renderCards();
+}
 
+function renderCards() {
+    let backlogContent = document.getElementById('card-body');
+    backlogContent.innerHTML = "";
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i].status == 'backlog') {
 
             let backlogTasks = allTasks[i];
 
-            backlogContent.innerHTML += `<div class="card">
-            <div class="card-body cardInBacklog">
-            ${getStaff(i)}
-            ${backlogTasks.title}</div>
+            backlogContent.innerHTML += 
+            `<div class="card">
+                <div class="card-body cardInBacklog">
+                    <div class="staff-icons-backlog">${getStaff(i)}</div>
+                    <p>${backlogTasks.category}<p>
+                    <p>${backlogTasks.title}<p>
+                    <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png">
+                </div>
             </div>`;
         }
     }
 }
-
-// function getStaff(i) {
-//     let stuff = allTasks[i].assignedTo;
-//     let html = '';
-
-//     for (let j=0; j < stuff.length; j++) {
-//     html += `<div id='stuff-icons' class="text-end">
-//     <span class="stuff-icon bg-ci-dark p-1">${stuff[j]}</span>
-//     </div>`;
-//     }
-//     return html;
-// }
 
 function getStaff(i) {
     let stuff = allTasks[i].assignedTo;
@@ -41,9 +34,17 @@ function getStaff(i) {
         const teamMember = stuff[index];
         if (teamMember) {
             html += `
-        <span class="stuff-icon bg-ci-dark p-1">${teamMember}</span>
+        <span class="staff-icon bg-ci-dark p-1 icon-margin">${teamMember}</span>
         `;
         }
     }
     return html;
 }
+
+function deleteTask(i) {
+    allTasks.splice(i, 1);
+    save(allTasks, 'tasks');
+
+    renderCards();
+}
+
