@@ -49,8 +49,8 @@ function taskCard(i) {
     <div id="task${i}" draggable="true" class="card task p-2 mb-1" onclick="showTask(${i})">
         <h6>${allTasks[i].title}</h6>
 
-        <div id='stuff-icons' class="text-end">
-             ${stuffIcons(i)}
+        <div id='staff-icons' class="text-end">
+             ${staffIcons(i)}
         </div>
     </div>`;
     return html;
@@ -60,15 +60,15 @@ function taskCard(i) {
  * @param {integer} i id of the task
  * @returns html code for rendering the assigned team members
  */
-function stuffIcons(i) {
-    let stuff = allTasks[i].assignedTo;
+function staffIcons(i) {
+    let staff = allTasks[i].assignedTo;
     let html = '';
 
-    for (let index = 0; index < stuff.length; index++) {
-        const teamMember = stuff[index];
+    for (let index = 0; index < staff.length; index++) {
+        const teamMember = staff[index];
         if (teamMember) {
             html += `
-        <span class="stuff-icon bg-ci-dark p-1">${teamMember}</span>
+        <span class="staff-icon bg-ci-dark p-1">${teamMember}</span>
         `;
         }
     }

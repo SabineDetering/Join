@@ -22,13 +22,18 @@ h1 {
 
 .bg-ci-dark {
     background-color: var(--ci-dark);
-    color:white;
+    color: white;
 }
 
 .text-dark {
     color: var(--ci-dark);
 }
 
+<<<<<<< HEAD
 .stuff-icon{
     border-radius:100%;
+=======
+.staff-icon {
+    border-radius: 100%;
+>>>>>>> b35f046226783c09d938a2603465899e2e4219e8
 }
