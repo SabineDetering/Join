@@ -9,8 +9,10 @@
 // }
 
 let allTasks = [];
-let users = [];
+let users = {};
 let categories = [];
+let maxTeamSizePerTask = 2;
+let maxActiveTasksPerUser = 2;
 
 function getId(id) {
     return document.getElementById(id);

@@ -1,4 +1,9 @@
 // categories = ['Backend', 'Frontend', 'Product Owner','UI/UX', 'Webdesign'];
+// users = {
+//     'Christian Aidelsburger': {name:'Christian Aidelsburger', initials: 'CA', img: '' },
+//     'Sabine Detering': {name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
+//     'Tuncay Dağdelen': {name:'Tuncay Dağdelen', initials: 'TD', img: '' },
+// }
 
 /**
  * loads data from server
@@ -7,6 +12,7 @@
 async function renderAddTaskForm() {
     await init();
     fillCategorySelector();
+    fillAssignedToSelector();
 }
 
 /**
@@ -20,6 +26,23 @@ function fillCategorySelector() {
         selector.innerHTML += optionMaker(categories[i]);
     }
     selector.innerHTML += optionMaker('New category', 'new');
+}
+
+/**
+ * fills the drop down menu for the staff with all names from json users
+ */
+function fillAssignedToSelector() {
+    let selector = getId('assigned-to');
+    selector.innerHTML = '';
+    selector.innerHTML += optionMaker('Press strg-key for several collaborators ..', '', 'selected disabled');
+    selector.innerHTML += optionMaker('');
+
+    // for (let i = 0; i < users.length; i++) {
+    //     selector.innerHTML += optionMaker(Object.keys(users[i]));
+    // }
+    for (const name in users) {
+        selector.innerHTML += optionMaker(users[name].name); 
+    }
 }
 
 /**

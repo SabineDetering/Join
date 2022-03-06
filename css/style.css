@@ -30,8 +30,14 @@ h1 {
 }
 
 .staff-icon {
-    border-radius: 100%;
+    border-radius: 50%;
 }
+.staff-icon img{
+    object-fit: contain;
+    height:30px;
+    width:30px;
+}
+
 
 .icon-margin {
     margin-right: 5px;
