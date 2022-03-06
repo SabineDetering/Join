@@ -15,6 +15,9 @@
     <script src="./js/script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/backlog.js"></script>
+
     
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
@@ -23,7 +26,7 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();init();">
+<body onload="includeHTML(); renderTasksInBacklog();">
 
     <div class="backlog-content">
 
@@ -35,7 +38,7 @@
                     <p><b>category</b></p>
                     <p><b>details</b></p>
                 </div>
-                <div class="card-body">
+                <div id="card-body" class="card-body">
     
                 </div>
             </div>

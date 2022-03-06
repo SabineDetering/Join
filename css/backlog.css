@@ -29,3 +29,8 @@ body {
     height: 60vh;
     width: 80vw;
 }
+
+.cardInBacklog {
+    height: 70px;
+    width: 100%;
+}

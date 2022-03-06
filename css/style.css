@@ -28,3 +28,7 @@ h1 {
 .text-dark {
     color: var(--ci-dark);
 }
+
+.stuff-icon{
+    border-radius:100%;
+}
