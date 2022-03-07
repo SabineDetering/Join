@@ -13,6 +13,7 @@ let users = {};
 let categories = [];
 let maxTeamSizePerTask = 2;
 let maxActiveTasksPerUser = 2;
+let highestTaskId = 0;
 let currentTask = {};
 
 function getId(id) {
