@@ -1,9 +1,9 @@
-// categories = ['Backend', 'Frontend', 'Product Owner','UI/UX', 'Webdesign'];
-// users = {
-//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' },
-//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
-//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '' },
-// };
+categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
+users = {
+    'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' },
+    'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
+    'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '' },
+};
 
 /**
  * loads data from server
@@ -11,6 +11,9 @@
  */
 async function renderAddTaskForm() {
     await init();
+    if (!allTasks == {}) {
+        highestTaskId = allTasks[allTasks.length - 1].id;
+    }
     currentTask = {};
     currentTask.assignedTo = [];
     fillCategorySelector();
@@ -218,11 +221,12 @@ function addUserHtml() {
 function addTask(event) {
     event.preventDefault();
     //merge currentTask (only assignedTo) with other task data
-    Object.assign(currentTask, getTaskData());
+    currentTask = Object.assign(currentTask, getTaskData());
     highestTaskId++;
     currentTask.id = highestTaskId;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
+    emptyForm();
     showSuccessMessage();
     setTimeout(hideSuccessMessage, 2500);
 }
@@ -247,8 +251,6 @@ function getTaskData() {
     if (statusToDo.checked) {
         status = 'todo';
     }
-    emptyForm();
-
     //return task data as json
     return { title, description, category, dueDate, importance,status }
 }
