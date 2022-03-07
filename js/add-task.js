@@ -14,9 +14,10 @@ async function renderAddTaskForm() {
     currentTask = {};
     currentTask.assignedTo = [];
     fillCategorySelector();
+    restrictDueDate();
     fillAssignedToList();
 }
-
+/////////////////////////////////////////////////////////////////
 /**
  * fills the drop down menu for categories with all category names from array categories
  */
@@ -128,6 +129,18 @@ function selectCategory(cat) {
     let index = categories.indexOf(cat);
     catSelector.selectedIndex = index + 1;//first option is "Choose.."
 }
+///////////////////////////////////////////////////////////////////
+
+/**
+ * only future dates are feasible as due date
+ */
+function restrictDueDate() {
+    let now = new Date();
+    let today = now.toISOString().slice(0, 10);
+    let dueDate = getId('due-date');
+    dueDate.min = today;
+}
+
 ///////////////////////////////////////////////////////////////////
 
 /**
