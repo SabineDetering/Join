@@ -77,7 +77,18 @@ function allowDrop(ev) {
 }
 
 
-function moveTo(category){
-    currentDraggedElement.status = category;
+function moveTo(status) {
+    let index = getIndexInAllTasks(currentDraggedElement);
+    allTasks[index].status = status;
+    save(allTasks, 'tasks');
     renderBoardTasks();
+}
+
+function getIndexInAllTasks(id) {
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        if (task.id == id) {
+            return i;
+        }
+    }
 }
