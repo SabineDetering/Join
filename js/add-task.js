@@ -1,9 +1,9 @@
-categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
-users = {
-    'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' },
-    'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
-    'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '' },
-};
+// categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
+// users = {
+//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' },
+//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
+//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '' },
+// };
 
 /**
  * loads data from server
@@ -11,7 +11,7 @@ users = {
  */
 async function renderAddTaskForm() {
     await init();
-    if (!allTasks == {}) {
+    if (!allTasks == []) {
         highestTaskId = allTasks[allTasks.length - 1].id;
     }
     currentTask = {};
