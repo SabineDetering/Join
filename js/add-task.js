@@ -9,8 +9,10 @@
  * loads data from server
  * fills dropdown menus in add taks form dynamically
  */
-async function renderAddTaskForm() {
-    await init();
+async function renderAddTaskForm(onload) {
+    if (onload) {
+        await init();
+    }
     if (!allTasks == []) {
         highestTaskId = allTasks[allTasks.length - 1].id;
     }
@@ -153,7 +155,7 @@ function fillAssignedToList() {
     let list = getId('assigned-to-list');
     list.innerHTML = '';
     for (const name in users) {
-        if (!currentTask.assignedTo.includes(users[name].name)){
+        if (!currentTask.assignedTo.includes(users[name].name)) {
             list.innerHTML += itemMaker(users[name].name);
         }
     }
@@ -169,7 +171,7 @@ function itemMaker(name) {
             ${staffIconHtml(name)} 
             ${users[name].name}
         </li >
-    `; 
+    `;
 }
 
 function assignUser(name) {
@@ -211,7 +213,7 @@ function addUserHtml() {
                 </ul>
             </div>`
 }
-   
+
 ///////////////////////////////////////////////////////////////////////
 /**
  * gets data from addtask form as json and pushes it into array allTasks
@@ -226,8 +228,8 @@ function addTask(event) {
     currentTask.id = highestTaskId;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
+    showSuccessMessage(currentTask.status);
     emptyForm();
-    showSuccessMessage();
     setTimeout(hideSuccessMessage, 2500);
 }
 
@@ -246,20 +248,25 @@ function getTaskData() {
     let impSelector = getId('importance');
     let importance = impSelector[impSelector.selectedIndex].value;
     // array assignedTo was already filled during assignment
-    let status = 'backlog';
+    let status = '';
     let statusToDo = getId('statusToDo');
     if (statusToDo.checked) {
         status = 'todo';
+    } else {
+        status = 'backlog';
     }
     //return task data as json
-    return { title, description, category, dueDate, importance,status }
+    return { title, description, category, dueDate, importance, status }
 }
 
-function showSuccessMessage() {
-    getId('success').classList.remove('d-none');
+function showSuccessMessage(status) {
+    let successMessage = getId('success');
+    successMessage.innerHTML = `The task was created in ${status}.`;
+    successMessage.classList.remove('d-none');
 }
 function hideSuccessMessage() {
-    getId('success').classList.add('d-none');
+    let successMessage = getId('success');
+    successMessage.classList.add('d-none');
 }
 
 function emptyForm() {
