@@ -1,3 +1,5 @@
+let currentDraggedElement;
+
 /**
  * loads all tasks from server
  * renders all tasks that belong to the board according to their status
@@ -26,16 +28,7 @@ async function renderBoardTasks() {
         } else if (task.status == 'done') {
             done.innerHTML += taskCard(i);
         }
-
-        // getId('task').innerHTML =`
-        // <span id="title${i}">${task['title']}</span>
-        // <span id="description${i}">${task['description']}</span>
-        // <span id="category${i}">${task['category']}</span>
-        // <span id="date${i}">${task['dueDate']}</span>
-        // <span id="importance${i}">${task['importance']}</span>
-        // <span id="assigned${i}">${task['assignedTo']}</span>
-        // <span id="status${i}">${task['status']}</span>
-        // `;
+        
     }
 }
 
@@ -46,7 +39,7 @@ async function renderBoardTasks() {
  */
 function taskCard(i) {
     let html = `    
-    <div id="task${i}" draggable="true" class="card task p-2 mb-1" onclick="showTask(${i})">
+    <div id="task${i}" draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="card task p-2 mb-1" onclick="showTask(${i})">
         <h6>${allTasks[i].title}</h6>
 
         <div id='staff-icons' class="text-end">
@@ -71,4 +64,20 @@ function staffIcons(i) {
         }
     }
     return html;
+}
+
+
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+function moveTo(category){
+    currentDraggedElement.status = category;
+    renderBoardTasks();
 }
