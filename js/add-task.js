@@ -1,8 +1,8 @@
 // categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
 // users = {
-//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' },
-//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
-//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '' },
+//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' ,email:'mail@test.de',password:''},
+//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png', email: 'testmail@web.de', password: '' },
+//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '', email: 'muster@email.de', password: '' },
 // };
 
 /**
@@ -168,7 +168,7 @@ function fillAssignedToList() {
 function itemMaker(name) {
     return `
         <li onclick = "assignUser('${users[name].name}')">
-            ${staffIconHtml(name)} 
+            ${staffIconHtml(name, false)} 
             ${users[name].name}
         </li >
     `;
@@ -178,6 +178,12 @@ function assignUser(name) {
     currentTask.assignedTo.push(name);
     showAssignedUsers();
 }
+
+function removeUser(name) {
+    currentTask.assignedTo = currentTask.assignedTo.filter(user => user != name);
+    showAssignedUsers();
+}
+
 /**
  * shows icon(s) for assigned user(s)
  * if it is feasible to add more staff to the task, plus icon is shown

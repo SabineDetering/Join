@@ -33,6 +33,21 @@ function staffIconContent(user) {
     }
 }
 
-function staffIconHtml(user) {
-    return `<span class="staff-icon bg-ci-dark p-2 me-1">${staffIconContent(user)}</span>`;
+function staffIconHtml(user, onclick = true) {
+    if (onclick) {
+        return `
+        <div class="btn-group dropend">
+            <span class="staff-icon bg-ci-dark p-2 me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">${staffIconContent(user)}</span>
+
+             <ul class="dropdown-menu">
+                 <li><span class="dropdown-item disabled">${user}</span</li>
+                 <li><a class="dropdown-item" href="mailto:${users[user].email}"</a>${users[user].email}</li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" onclick = "removeUser('${user}')">Remove from task</a></li>
+  </ul>
+        `;
+    }
+    else {
+        return `<span class="staff-icon bg-ci-dark p-2 me-1">${staffIconContent(user)}</span>`;
+    }
 }
