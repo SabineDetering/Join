@@ -4,8 +4,10 @@ let currentDraggedElement;
  * loads all tasks from server
  * renders all tasks that belong to the board according to their status
  */
-async function renderBoardTasks() {
-    await init();
+async function renderBoardTasks(onload) {
+    if (onload) {
+        await init();
+    }
 
     let todo = getId('todo');
     let progress = getId('progress');
@@ -28,7 +30,7 @@ async function renderBoardTasks() {
         } else if (task.status == 'done') {
             done.innerHTML += taskCard(i);
         }
-        
+
     }
 }
 
@@ -39,7 +41,7 @@ async function renderBoardTasks() {
  */
 function taskCard(i) {
     let html = `    
-    <div id="task${i}" draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="card task p-2 mb-1" onclick="showTask(${i})">
+    <div id="task${i}" draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="card task p-2 mb-1" onclick="showTask(${allTasks[i]['id']})">
         <h6>${allTasks[i].title}</h6>
 
         <div id='staff-icons' class="text-end">
@@ -77,11 +79,12 @@ function allowDrop(ev) {
 }
 
 
-function moveTo(status) {
+async function moveTo(status, event) {
+    event.preventDefault();
     let index = getIndexInAllTasks(currentDraggedElement);
     allTasks[index].status = status;
-    save(allTasks, 'tasks');
-    renderBoardTasks();
+    await save(allTasks, 'tasks');
+    renderBoardTasks(false);
 }
 
 function getIndexInAllTasks(id) {

@@ -6,3 +6,7 @@ async function init() {
     categories = JSON.parse(backend.getItem('categories')) || [];
     allTasks = JSON.parse(backend.getItem('tasks')) || [];
 }
+
+async function save(array, arrayName) {
+    backend.setItem(arrayName, JSON.stringify(array));
+}
