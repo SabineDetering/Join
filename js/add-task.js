@@ -1,9 +1,9 @@
 // categories = ['Backend', 'Frontend', 'Product Owner','UI/UX', 'Webdesign'];
 // users = {
-//     'Christian Aidelsburger': {name:'Christian Aidelsburger', initials: 'CA', img: '' },
-//     'Sabine Detering': {name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
-//     'Tuncay Dağdelen': {name:'Tuncay Dağdelen', initials: 'TD', img: '' },
-// }
+//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' },
+//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png' },
+//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '' },
+// };
 
 /**
  * loads data from server
@@ -11,8 +11,10 @@
  */
 async function renderAddTaskForm() {
     await init();
+    currentTask = {};
+    currentTask.assignedTo = [];
     fillCategorySelector();
-    fillAssignedToSelector();
+    fillAssignedToList();
 }
 
 /**
@@ -26,23 +28,6 @@ function fillCategorySelector() {
         selector.innerHTML += optionMaker(categories[i]);
     }
     selector.innerHTML += optionMaker('New category', 'new');
-}
-
-/**
- * fills the drop down menu for the staff with all names from json users
- */
-function fillAssignedToSelector() {
-    let selector = getId('assigned-to');
-    selector.innerHTML = '';
-    selector.innerHTML += optionMaker('Press strg-key for several collaborators ..', '', 'selected disabled');
-    selector.innerHTML += optionMaker('');
-
-    // for (let i = 0; i < users.length; i++) {
-    //     selector.innerHTML += optionMaker(Object.keys(users[i]));
-    // }
-    for (const name in users) {
-        selector.innerHTML += optionMaker(users[name].name); 
-    }
 }
 
 /**
@@ -76,9 +61,7 @@ function checkIfNewCategorySelected() {
 }
 /**
  * adds a new category name to the list of categories (first letter is changed to upper case)
- * sorts the list alphabetically
- * saves sorted list to the server
- * shows updated list in addTask with new category name selected
+ * new category name selected
  */
 function addCategory() {
     let categoryInput = getId('new-category');
@@ -113,6 +96,13 @@ function isNewCategory(cat) {
     return categories.indexOf(cat) == -1;
 }
 
+/**
+ * updates array categories 
+ * sorts the list alphabetically
+ * saves sorted list to the server
+ * shows updated list in addTask 
+ * @param {string} cat - the new category name
+ */
 function integrateNewCategory(cat) {
     categories.push(cat);
     categories.sort();
@@ -138,8 +128,74 @@ function selectCategory(cat) {
     let index = categories.indexOf(cat);
     catSelector.selectedIndex = index + 1;//first option is "Choose.."
 }
+///////////////////////////////////////////////////////////////////
 
+/**
+ * fills the drop down menu in the "assigned-to" section with all names from users (json)
+ */
+function fillAssignedToList() {
+    let list = getId('assigned-to-list');
+    list.innerHTML = '';
+    for (const name in users) {
+        if (!currentTask.assignedTo.includes(users[name].name)){
+            list.innerHTML += itemMaker(users[name].name);
+        }
+    }
+}
+/**
+ * returns the html code for a list item consisting of an icon with the image or the initials of the user and the name of the user
+ * @param {string} name - name of a user
+ * @returns html code
+ */
+function itemMaker(name) {
+    return `
+        <li onclick = "assignUser('${users[name].name}')">
+            ${staffIconHtml(name)} 
+            ${users[name].name}
+        </li >
+    `; 
+}
 
+function assignUser(name) {
+    currentTask.assignedTo.push(name);
+    showAssignedUsers();
+}
+/**
+ * shows icon(s) for assigned user(s)
+ * if it is feasible to add more staff to the task, plus icon is shown
+ */
+function showAssignedUsers() {
+    let assignedTo = getId('assigned-to');
+    assignedTo.innerHTML = '';
+    for (let i = 0; i < currentTask.assignedTo.length; i++) {
+        const name = currentTask.assignedTo[i];
+        assignedTo.innerHTML += staffIconHtml(name);
+    }
+    if (moreStaffAllowed()) {
+        assignedTo.innerHTML += addUserHtml();
+        fillAssignedToList();
+    }
+}
+/**
+ * returns true, if task may be assigned to more users
+ * @returns boolean
+ */
+function moreStaffAllowed() {
+    return currentTask.assignedTo.length < maxTeamSizePerTask;
+}
+
+/**
+ * @returns string - html code for plus icon and dropdown list
+ */
+function addUserHtml() {
+    return `<div class="btn-group dropend">
+                <img id="plus-icon" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="img/icon plus.png" alt="add team member" title="add team member">
+
+                <ul id="assigned-to-list" class="dropdown-menu p-2">
+                </ul>
+            </div>`
+}
+   
 ///////////////////////////////////////////////////////////////////////
 /**
  * gets data from addtask form as json and pushes it into array allTasks
@@ -148,11 +204,10 @@ function selectCategory(cat) {
  */
 function addTask(event) {
     event.preventDefault();
-    let currentTask = getTaskData();
+    Object.assign(currentTask,getTaskData());
     currentTask.id = allTasks.length + 1;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
-    save(categories, 'categories');
     showSuccessMessage();
     setTimeout(hideSuccessMessage, 2500);
 }
@@ -171,23 +226,16 @@ function getTaskData() {
     // get value of selected option
     let impSelector = getId('importance');
     let importance = impSelector[impSelector.selectedIndex].value;
-    //get array with all selected options
-    let assignSelector = getId('assigned-to');
-    let selectedAssignOptions = Array.from(assignSelector.selectedOptions);
-    // get values of (multiple) selected options 
-    let assignedTo = selectedAssignOptions.map(option => option.value);
+    // array assignedTo was already filled during assignment
     let status = 'backlog';
     let statusToDo = getId('statusToDo');
     if (statusToDo.checked) {
         status = 'todo';
     }
-
-    //empty the form
-    let form = getId('task-form');
-    form.reset();
+    emptyForm();
 
     //return task data as json
-    return { title, description, category, dueDate, importance, assignedTo, status }
+    return { title, description, category, dueDate, importance,status }
 }
 
 function showSuccessMessage() {
@@ -195,4 +243,15 @@ function showSuccessMessage() {
 }
 function hideSuccessMessage() {
     getId('success').classList.add('d-none');
+}
+
+function emptyForm() {
+    currentTask = {};
+    currentTask.assignedTo = [];
+    let form = getId('task-form');
+    form.reset();
+    //reset assigned-to section to plus icon
+    let assignedTo = getId('assigned-to');
+    assignedTo.innerHTML = addUserHtml();
+    fillAssignedToList();
 }

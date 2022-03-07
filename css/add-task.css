@@ -13,6 +13,22 @@ form label {
     white-space: pre-line;
     height: 120px;
 }
+#plus-icon{
+    width:30px;
+    height: 30px;
+    object-fit: contain;
+}
+#assigned-to-list {
+    min-width: max-content!important;
+    /* min-height: max-content!important; */
+    line-height:40px;
+}
+
+#assigned-to-list li:hover {
+    cursor: pointer;
+    background-color: var(--ci-light);
+
+}
 
 .ci-button-dark {
     border-radius: 10px !important;

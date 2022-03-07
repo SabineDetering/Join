@@ -87,8 +87,18 @@
                     <!-- assignment -->
                     <div class="col ">
                         <label for="assigned-to" class="form-label">ASSIGNED TO</label>
-                        <select class="form-select" multiple id="assigned-to"> 
-                        </select>
+                        <!-- <select class="form-select" multiple id="assigned-to"> 
+                        </select> -->
+                        <div id="assigned-to">
+                            <div class="btn-group dropend">
+                                <img id="plus-icon" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false" src="img/icon plus.png" alt="add team member"
+                                    title="add team member">
+
+                                <ul id="assigned-to-list" class="dropdown-menu p-2">
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- choice to send task to backlog or todo-list -->

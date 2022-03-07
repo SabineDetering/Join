@@ -67,18 +67,8 @@ function staffIcons(i) {
     for (let index = 0; index < staff.length; index++) {
         const teamMember = staff[index];
         if (teamMember) {
-            html += `
-        <span class="staff-icon bg-ci-dark p-2">${staffIconContent(teamMember)}</span>
-        `;
+            html += staffIconHtml(teamMember);
         }
     }
     return html;
-}
-
-function staffIconContent(user) {
-    if (users[user].img) {
-        return `<img src="${users[user].img}" >`;         
-    } else {
-        return `${users[user].initials}`;
-    }
 }
