@@ -204,8 +204,10 @@ function addUserHtml() {
  */
 function addTask(event) {
     event.preventDefault();
-    Object.assign(currentTask,getTaskData());
-    currentTask.id = allTasks.length + 1;
+    //merge currentTask (only assignedTo) with other task data
+    Object.assign(currentTask, getTaskData());
+    highestTaskId++;
+    currentTask.id = highestTaskId;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
     showSuccessMessage();
