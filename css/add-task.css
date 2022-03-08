@@ -13,21 +13,25 @@ form label {
     white-space: pre-line;
     height: 120px;
 }
-#plus-icon{
-    width:30px;
+
+#plus-icon {
+    width: 30px;
     height: 30px;
     object-fit: contain;
 }
+
 #assigned-to-list {
-    min-width: max-content!important;
-    /* min-height: max-content!important; */
-    line-height:40px;
+    min-width: max-content;
+    line-height: 44px;
 }
 
 #assigned-to-list li:hover {
     cursor: pointer;
     background-color: var(--ci-light);
+}
 
+.dropdown-item.disabled{
+    color:inherit;
 }
 
 .ci-button-dark {

@@ -168,8 +168,9 @@ function fillAssignedToList() {
 function itemMaker(name) {
     return `
         <li onclick = "assignUser('${users[name].name}')">
-            ${staffIconHtml(name, false)} 
-            ${users[name].name}
+           <div class="d-flex"> ${staffIconHtml(name, false)} 
+            <span>${users[name].name}<span>
+            </div>
         </li >
     `;
 }
