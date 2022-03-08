@@ -37,7 +37,7 @@
 <body class="text-center" onload="init();">
 
     <main class="form-signin">
-        <form>
+        <form onsubmit="signIn(); return false;">
             <img class="mb-4" src="./img/logo.png" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -52,11 +52,10 @@
 
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me<br>
-                    <input id="guest" type="checkbox" value="Sign-in as Guest"> Sign-in as Guest
+                    <input id="guest" type="checkbox" value="remember-me"> Sign-in as Guest<br>
                 </label>
             </div>
-            <button id="sign-in" onclick="signIn(); return false;" class="w-100 btn btn-lg btn-primary join-btn-color" type="submit">Sign in</button>
+            <button type="submit" id="sign-in" class="w-100 btn btn-lg btn-primary join-btn-color" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
         </form>
     </main>
