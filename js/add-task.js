@@ -9,7 +9,7 @@
  * loads data from server
  * fills dropdown menus in add taks form dynamically
  */
-async function renderAddTaskForm(onload) {
+async function renderAddTaskForm(onload=false) {
     if (onload) {
         await init();
     }
