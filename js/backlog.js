@@ -14,7 +14,7 @@ function renderCards() {
             let backlogTasks = allTasks[i];
 
             backlogContent.innerHTML +=
-                `<div class="card">
+                `<div class="card onclick="openCard(${i})">
                 <div class="card-body cardInBacklog">
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${backlogTasks.dueDate}</div>
@@ -55,3 +55,6 @@ function deleteTask(i) {
     renderCards();
 }
 
+// function openCard(i) {
+//     data-bs-toggle="modal"
+// }
