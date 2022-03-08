@@ -19,10 +19,12 @@
         crossorigin="anonymous"></script>
 
     <script src="./js/include_html.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
+    
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
@@ -50,10 +52,11 @@
 
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input type="checkbox" value="remember-me"> Remember me<br>
+                    <input type="checkbox" value="remember-me"> Sign-in as Guest
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <button id="sign-in" onclick="signIn()" class="w-100 btn btn-lg btn-primary join-btn-color" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
         </form>
     </main>
