@@ -36,19 +36,18 @@ async function renderBoardTasks(onload) {
 
 /**
  * 
- * @param {integer} i id of the task
+ * @param {integer} i - index of the task
  * @returns html code for rendering the task card
  */
 function taskCard(i) {
-    let html = `    
-    <div id="task${i}" draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="card task p-2 mb-1" onclick="showTask(${allTasks[i]['id']})">
+    return `    
+    <div id="task${i}" draggable="true" ondragstart="startDragging(${i})" class="card task p-2 mb-1" onclick="showTask(${i})">
         <h6>${allTasks[i].title}</h6>
 
         <div id='staff-icons' class="text-end">
              ${staffIcons(i)}
         </div>
     </div>`;
-    return html;
 }
 /**
  * 
@@ -69,8 +68,8 @@ function staffIcons(i) {
 }
 
 
-function startDragging(id) {
-    currentDraggedElement = id;
+function startDragging(index) {
+    currentDraggedElement = index;
 }
 
 
@@ -78,20 +77,19 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
 async function moveTo(status, event) {
     event.preventDefault();
-    let index = getIndexInAllTasks(currentDraggedElement);
-    allTasks[index].status = status;
+    // let index = getIndexInAllTasks(currentDraggedElement);
+    allTasks[currentDraggedElement].status = status;
     await save(allTasks, 'tasks');
     renderBoardTasks(false);
 }
 
-function getIndexInAllTasks(id) {
-    for (let i = 0; i < allTasks.length; i++) {
-        const task = allTasks[i];
-        if (task.id == id) {
-            return i;
-        }
-    }
-}
+// function getIndexInAllTasks(id) {
+//     for (let i = 0; i < allTasks.length; i++) {
+//         const task = allTasks[i];
+//         if (task.id == id) {
+//             return i;
+//         }
+//     }
+// }

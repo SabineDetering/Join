@@ -19,7 +19,7 @@ function renderCards() {
                     <div class="staff-icons-backlog">${getStaff(i)}</div>
                     <div>${backlogTasks.dueDate}</div>
                     <p>${backlogTasks.category}<p>
-                    <p>${backlogTasks.title}<p>
+                    <p>${backlogTasks.description}<p>
                     <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png">
                 </div>
             </div>`;
