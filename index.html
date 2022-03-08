@@ -53,10 +53,10 @@
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me<br>
-                    <input type="checkbox" value="remember-me"> Sign-in as Guest
+                    <input id="guest" type="checkbox" value="Sign-in as Guest"> Sign-in as Guest
                 </label>
             </div>
-            <button id="sign-in" onclick="signIn()" class="w-100 btn btn-lg btn-primary join-btn-color" type="submit">Sign in</button>
+            <button id="sign-in" onclick="signIn(); return false;" class="w-100 btn btn-lg btn-primary join-btn-color" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
         </form>
     </main>
