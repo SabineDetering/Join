@@ -33,7 +33,7 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();renderAddTaskForm();">
+<body onload="includeHTML();renderAddTaskForm(true);">
 
     <div class="wrapper">
 
@@ -53,16 +53,16 @@
 
                     <!-- category -->
                     <div class="col mb-3">
-                        <label for="category" class="form-label">CATEGORY</label>
-                        <select class="form-select" id="category" onchange="checkIfNewCategorySelected()">
+                        <label for="category" class="form-label">CATEGORY*</label>
+                        <select class="form-select" id="category" required onchange="checkIfNewCategorySelected()">
                         </select>
                     </div>
 
                     <!-- description -->
                     <div class="col mb-3">
-                        <label for="description" class="form-label">DESCRIPTION</label>
+                        <label for="description" class="form-label">DESCRIPTION*</label>
                         <!-- important: textarea must be defined on a single line of code! -->
-                        <textarea class="form-control"
+                        <textarea class="form-control" required
                             placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
                             id="description"></textarea>
 
@@ -70,13 +70,13 @@
 
                     <div class="col mb-3">
                         <!-- due date -->
-                        <label for="due-date" class="form-label">DUE DATE</label>
+                        <label for="due-date" class="form-label">DUE DATE*</label>
 
-                        <input type="date" class="form-control mb-3" aria-describedby="due-date-button" id="due-date">
+                        <input type="date" class="form-control mb-3" required aria-describedby="due-date-button" id="due-date">
 
                         <!-- importance -->
-                        <label for="importance" class="form-label">IMPORTANCE</label>
-                        <select class="form-select" id="importance">
+                        <label for="importance" class="form-label">IMPORTANCE*</label>
+                        <select class="form-select" id="importance" required>
                             <option value="" selected>Choose...</option>
                             <option value="high">High</option>
                             <option value="medium">Medium</option>
@@ -87,8 +87,7 @@
                     <!-- assignment -->
                     <div class="col ">
                         <label for="assigned-to" class="form-label">ASSIGNED TO</label>
-                        <!-- <select class="form-select" multiple id="assigned-to"> 
-                        </select> -->
+
                         <div id="assigned-to">
                             <div class="btn-group dropend">
                                 <img id="plus-icon" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
@@ -173,6 +172,14 @@
             </div>
         </div>
     </div>
+
+<script>
+    // activate popovers
+    let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+</script>
 
 </body>
 
