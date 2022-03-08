@@ -8,10 +8,17 @@ form label {
     color: var(--ci-dark);
 }
 
+.col-left, .col-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
 #description {
     word-wrap: break-word;
     white-space: pre-line;
-    height: 120px;
+    flex: 1;
 }
 
 #plus-icon {
@@ -30,8 +37,8 @@ form label {
     background-color: var(--ci-light);
 }
 
-.dropdown-item.disabled{
-    color:inherit;
+.dropdown-item.disabled {
+    color: inherit;
 }
 
 .ci-button-dark {
@@ -47,6 +54,10 @@ form label {
     background-color: transparent;
 }
 
+.ci-button-transparent:hover {  
+    background-color: white;
+}
+
 .ci-border-dark {
     border: 2px solid var(--ci-dark);
 }
@@ -58,4 +69,19 @@ form label {
     bottom: 1.5em;
     background-color: white;
     box-shadow: 2px 2px 3px 1px var(--ci-dark);
+}
+
+@media (max-width:500px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .col-left, .col-right {
+        width: 100%;
+    }
+
+    .button-row {
+        justify-content: center !important;
+    }
+
 }
