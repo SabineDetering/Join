@@ -14,7 +14,7 @@ function renderCards() {
             let backlogTasks = allTasks[i];
 
             backlogContent.innerHTML +=
-                `<div class="card onclick="openCard(${i})">
+                `<div data-bs-toggle="modal" onclick="showCard(${i})" href="#exampleModalToggle0" class="card">
                 <div class="card-body cardInBacklog">
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${backlogTasks.dueDate}</div>
@@ -55,6 +55,33 @@ function deleteTask(i) {
     renderCards();
 }
 
-// function openCard(i) {
-//     data-bs-toggle="modal"
-// }
+function showCard(i) {
+
+    // let indexOfNextCard = i + 1;
+    backlogTasks = allTasks[i];
+
+    let contentOfCard = getId('card-content');
+
+    contentOfCard.innerHTML = 
+    `<div class="modal fade" id="exampleModalToggle0" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div id="myModal" class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+        
+          <h5 class="modal-title" id="exampleModalToggleLabel0">Modal 1</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        ${backlogTasks.title}
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">next
+            Task</button>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+}
+

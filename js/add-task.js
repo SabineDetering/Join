@@ -1,8 +1,8 @@
 // categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
 // users = {
-//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: '' ,email:'mail@test.de',password:''},
+//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: './img/chris-icon.png' ,email:'c.aidelsburger@web.de',password:''},
 //     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png', email: 'testmail@web.de', password: '' },
-//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: '', email: 'muster@email.de', password: '' },
+//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: './img/tuncay-icon.png', email: 'muster@email.de', password: '' },
 // };
 
 /**

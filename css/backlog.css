@@ -24,6 +24,7 @@ p {
     display: flex;
     margin-bottom: 12px;
     width: 80vw;
+    cursor: pointer;
 }
 
 .headerOfCard {
