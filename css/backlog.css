@@ -21,7 +21,7 @@ p {
 
 .card {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start !important;
     margin-bottom: 12px;
 }
 
@@ -31,23 +31,54 @@ p {
 }
 
 .card-body {
-    overflow: auto;
     height: 60vh;
     width: 80vw;
 }
 
 .cardInBacklog {
     display: flex;
+    justify-content: flex-start !important;
     align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    width: 100%;
+    height: 110px;
+    gap: 48px;
+}
+
+.staff-container {
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+
+/* .date{
+    margin-right: 32px;
+} */
+
+.category {
+    width: 90px;
+
+}
+
+/* .title {
+    margin-right: 32px;
+} */
+
+.userAndMail {
+    display: flex;
+    flex-direction: column;
+    margin-right: 18px;
 }
 
 .staff-icons-backlog {
     display: flex;
     justify-content: flex-start;
-    width: 100px;
+}
+
+.staff-icon {
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .trashbin {

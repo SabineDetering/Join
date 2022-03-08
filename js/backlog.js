@@ -13,13 +13,13 @@ function renderCards() {
 
             let backlogTasks = allTasks[i];
 
-            backlogContent.innerHTML += 
-            `<div class="card">
+            backlogContent.innerHTML +=
+                `<div class="card">
                 <div class="card-body cardInBacklog">
-                    <div class="staff-icons-backlog">${getStaff(i)}</div>
-                    <div>${backlogTasks.dueDate}</div>
-                    <p>${backlogTasks.category}<p>
-                    <p>${backlogTasks.description}<p>
+                    <div class="staff-container">${getStaff(i)}</div>
+                    <div class="date">${backlogTasks.dueDate}</div>
+                    <p class="category">${backlogTasks.category}<p>
+                    <p class="title">${backlogTasks.title}<p>
                     <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png">
                 </div>
             </div>`;
@@ -28,15 +28,21 @@ function renderCards() {
 }
 
 function getStaff(i) {
-    let stuff = allTasks[i].assignedTo;
+    let staff = allTasks[i].assignedTo;
     let html = '';
 
-    for (let index = 0; index < stuff.length; index++) {
-        const teamMember = stuff[index];
+    for (let index = 0; index < staff.length; index++) {
+        const teamMember = staff[index];
         if (teamMember) {
-            html += `
-        <span class="staff-icon bg-ci-dark p-1 icon-margin">${teamMember}</span>
-        `;
+            html +=
+                `
+            <div class="staff-icons-backlog">
+            <span class="staff-icon bg-ci-dark p-1 icon-margin"><img src="${users[staff[index]].img}"></span>
+            </div>
+            <div class="userAndMail">
+            <span>${teamMember}</span>
+            <span>${users[staff[index]].email}</span>
+            </div>`;
         }
     }
     return html;
