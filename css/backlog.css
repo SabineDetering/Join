@@ -15,24 +15,28 @@ p {
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .card {
     display: flex;
-    justify-content: flex-start !important;
     margin-bottom: 12px;
+    width: 80vw;
 }
 
-.card-header {
+.headerOfCard {
     display: flex;
-    justify-content: space-between !important;
+    padding: 1rem 1rem;
+    width: 80vw;
+    margin-top: 128px;
+    font-size: 18px;
+    gap: 48px;
 }
 
 .card-body {
     height: 60vh;
-    width: 80vw;
 }
 
 .cardInBacklog {
@@ -49,18 +53,17 @@ p {
     width: 400px;
 }
 
-/* .date{
-    margin-right: 32px;
-} */
-
-.category {
-    width: 90px;
-
+.date{
+    width: 100px;
 }
 
-/* .title {
-    margin-right: 32px;
-} */
+.category {
+    width: 131px;
+}
+
+.title {
+    width: 30%;
+}
 
 .userAndMail {
     display: flex;

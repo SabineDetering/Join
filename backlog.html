@@ -18,10 +18,10 @@
     <script src="./js/board.js"></script>
     <script src="./js/backlog.js"></script>
 
-    
+
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
-    
+
     <title>Backlog</title>
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
@@ -31,17 +31,22 @@
     <div class="backlog-content">
 
         <div w3-include-html="./html_templates/menu.html"></div>
-        <div class="card-content">
+        <!-- <div class="card-content">
             <div class="card text-dark bg-light mb-3">
-                <div class="card-header">
-                    <p><b>assignet to</b></p>
-                    <p><b>category</b></p>
-                    <p><b>details</b></p>
-                </div>
+
                 <div id="card-body" class="card-body">
     
                 </div>
             </div>
+        </div> -->
+        <div class="card-content">
+            <div class="headerOfCard">
+                <p style="width: 400px"><b>assignet to</b></p>
+                <p style="width: 100px"><b>due Date</b></p>
+                <p style="width: 131px"><b>category</b></p>
+                <p style="margin-left: 42px"><b>title</b></p>
+            </div>
+            <div class="card-body" id="card-body"></div>
         </div>
 
     </div>
