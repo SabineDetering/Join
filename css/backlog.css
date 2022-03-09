@@ -92,3 +92,7 @@ p {
     height: 24px;
     cursor: pointer;
 }
+
+.modal-content {
+    height: 80vh;
+}
