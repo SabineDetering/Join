@@ -1,34 +1,33 @@
+let backlogTasks = [];
 
 async function renderTasksInBacklog() {
-
     await init();
+    backlogTasks = allTasks.filter(task => task.status == 'backlog');
     renderCards();
 }
 
 function renderCards() {
     let backlogContent = document.getElementById('card-body');
     backlogContent.innerHTML = "";
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i].status == 'backlog') {
+    for (let i = 0; i < backlogTasks.length; i++) {
 
-            let backlogTasks = allTasks[i];
+        let task = backlogTasks[i];
 
-            backlogContent.innerHTML +=
-                `<div data-bs-toggle="modal" href="#exampleModalToggle1" onclick="showCard(${i})" class="card">
+        backlogContent.innerHTML +=
+            `<div data-bs-toggle="modal" href="#exampleModalToggle1" onclick="showCard(${i})" class="card">
                 <div class="card-body cardInBacklog">
                     <div class="staff-container">${getStaff(i)}</div>
-                    <div class="date">${backlogTasks.dueDate}</div>
-                    <p class="category">${backlogTasks.category}<p>
-                    <p class="title">${backlogTasks.title}<p>
+                    <div class="date">${task.dueDate}</div>
+                    <p class="category">${task.category}<p>
+                    <p class="title">${task.title}<p>
                     <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png">
                 </div>
             </div>`;
-        }
     }
 }
 
 function getStaff(i) {
-    let staff = allTasks[i].assignedTo;
+    let staff = backlogTasks[i].assignedTo;
     let html = '';
 
     for (let index = 0; index < staff.length; index++) {
@@ -57,21 +56,35 @@ function deleteTask(i) {
 
 function showCard(i) {
 
-    backlogTasks = allTasks[i];
-    contentOfCard = getId('modal-content');
+    let task = backlogTasks[i];
+    let contentOfCard = getId('modal-content');
 
     contentOfCard.innerHTML = `
     <div class="modal-header">
     <h5 class="modal-title" id="title">
-    ${backlogTasks.title}
+    <input type="text" class="form-control" value="${task.title}">
     </h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div id="description" class="modal-body">
-    <h6><b>Description:</b></h6>${backlogTasks.description}
+    <h6><b>Description:</b></h6><textarea class="form-control">${task.description}</textarea>
     <div class="infosOfCard">
-    <div><h6><b>due Date:</b></h6>${backlogTasks.dueDate}</div>
-    <h6><b>assignet to:</b></h6><div style="display: flex">${getStaff(i)}</div>
+    <div><h6><b>due Date:</b></h6><input value="${task.dueDate}" type="date" class="form-control mb-3" required aria-describedby="due-date-button"
+    id="due-date"></div>
+    <h6><b>assignet to:  
+    
+    <div id="assigned-to-backlog">
+    <div class="btn-group dropend">
+        <img onclick="emptyForm()" id="plus-icon-backlog" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false" src="img/icon plus.png" alt="add team member"
+            title="add team member">
+
+        <ul id="assigned-to-list-backlog" class="dropdown-menu p-3">
+        </ul>
+    </div>
+    </div>
+
+</b></h6><div style="display: flex">${getStaff(i)}</div>
     </div>
     </div>
     <div id="button" class="modal-footer">
@@ -81,11 +94,54 @@ function showCard(i) {
 }
 
 function nextCard(i) {
-    if (i == allTasks.length) {
+    if (i == backlogTasks.length -1) {
         i = 0
     } else {
         i++;
-        showCard(i);
     }
+    showCard(i);
 }
 
+
+function emptyForm() {
+    let assignedToBacklog = getId('assigned-to-backlog');
+    assignedToBacklog.innerHTML = addUserHtml();
+    fillAssignedToListBacklog();
+}
+
+
+function addUserHtml() {
+    return `<div class="btn-group dropend">
+                <img id="plus-icon-backlog" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="img/icon plus.png" alt="add team member" title="add team member">
+
+                <ul id="assigned-to-list-backlog" class="dropdown-menu p-2">
+                </ul>
+            </div>`
+}
+
+function fillAssignedToListBacklog() {
+    let list = getId('assigned-to-list-backlog');
+    list.innerHTML = '';
+    for (const name in users) {
+            list.innerHTML += itemMaker(users[name].name);
+        }
+    }
+
+    function assignUser(name) {
+        currentTask.assignedTo.push(name);
+        showAssignedUsers();
+    }
+
+    function showAssignedUsers() {
+        let assignedTo = getId('assigned-to-backlog');
+        assignedTo.innerHTML = '';
+        for (let i = 0; i < currentTask.assignedTo.length; i++) {
+            const name = currentTask.assignedTo[i];
+            assignedTo.innerHTML += staffIconHtml(name);
+        }
+
+        if (moreStaffAllowed()) {
+            assignedTo.innerHTML += addUserHtml();
+            fillAssignedToList();
+        }
+    }
