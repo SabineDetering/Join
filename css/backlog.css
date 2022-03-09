@@ -94,5 +94,13 @@ p {
 }
 
 .modal-content {
-    height: 80vh;
+    min-height: 60vh;
+    max-height: 80vh;
+}
+
+.infosOfCard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 24px;
 }

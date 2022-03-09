@@ -58,16 +58,31 @@ function deleteTask(i) {
 function showCard(i) {
 
     backlogTasks = allTasks[i];
+    contentOfCard = getId('modal-content');
 
-    getId('exampleModalToggleLabel1').innerHTML = `${backlogTasks.title}`;
-    getId('description').innerHTML = `${backlogTasks.description}`;
-    getId('button').innerHTML = 
-    `<button onclick="nextCard(${i})" class="btn btn-primary">next Task</button>`;
+    contentOfCard.innerHTML = `
+    <div class="modal-header">
+    <h5 class="modal-title" id="title">
+    ${backlogTasks.title}
+    </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div id="description" class="modal-body">
+    <h6><b>Description:</b></h6>${backlogTasks.description}
+    <div class="infosOfCard">
+    <div><h6><b>due Date:</b></h6>${backlogTasks.dueDate}</div>
+    <h6><b>assignet to:</b></h6><div style="display: flex">${getStaff(i)}</div>
+    </div>
+    </div>
+    <div id="button" class="modal-footer">
+    <button onclick="nextCard(${i})" class="btn btn-primary">next Task</button>
+    </div>`;
+
 }
 
 function nextCard(i) {
-    if(i == allTasks.length) {
-        i = 0 
+    if (i == allTasks.length) {
+        i = 0
     } else {
         i++;
         showCard(i);
