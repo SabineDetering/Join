@@ -20,7 +20,7 @@ function renderCards() {
                     <div class="date">${task.dueDate}</div>
                     <p class="category">${task.category}<p>
                     <p class="title">${task.title}<p>
-                    <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png">
+                    <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-2" src="./img/delete.png">
                 </div>
             </div>`;
     }
@@ -48,9 +48,14 @@ function getStaff(i) {
 }
 
 function deleteTask(i) {
-    allTasks.splice(i, 1);
+    let idToDelete = backlogTasks[i].id;
+    let indexToDelete = allTasks.findIndex(task => task.id == idToDelete);
+
+    allTasks[indexToDelete].deletedFrom = allTasks[indexToDelete].status;
+    allTasks[indexToDelete].status = "trash";
     save(allTasks, 'tasks');
 
+    backlogTasks = allTasks.filter(task => task.status == 'backlog');
     renderCards();
 }
 

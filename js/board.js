@@ -4,7 +4,7 @@ let currentDraggedElement;
  * loads all tasks from server
  * renders all tasks that belong to the board according to their status
  */
-async function renderBoardTasks(onload) {
+async function renderBoardTasks(onload=false) {
     if (onload) {
         await init();
     }
@@ -41,13 +41,17 @@ async function renderBoardTasks(onload) {
  */
 function taskCard(i) {
     return `    
-    <div id="task${i}" draggable="true" ondragstart="startDragging(${i})" class="card task p-2 mb-1" onclick="showTask(${i})">
+    <div id="task${i}" draggable="true" ondragstart="startDragging(${i})" class="card task shadow p-2 mb-1" onclick="showTask(${i})">
         <h6>${allTasks[i].title}</h6>
 
-        <div id='staff-icons' class="text-end">
-             ${staffIcons(i)}
+        <div class="d-flex justify-content-between">
+            <div id='staff-icons' >
+                ${staffIcons(i)}
+            </div>
+            <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-2" src="./img/delete.png">
         </div>
-    </div>`;
+    </div>
+    `;
 }
 /**
  * 
@@ -85,11 +89,11 @@ async function moveTo(status, event) {
     renderBoardTasks(false);
 }
 
-// function getIndexInAllTasks(id) {
-//     for (let i = 0; i < allTasks.length; i++) {
-//         const task = allTasks[i];
-//         if (task.id == id) {
-//             return i;
-//         }
-//     }
-// }
+
+function deleteTask(i) {
+    allTasks[i].deletedFrom = allTasks[i].status;
+    allTasks[i].status = "trash";
+    save(allTasks, 'tasks');
+
+    renderBoardTasks();
+}
