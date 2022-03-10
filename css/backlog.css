@@ -117,6 +117,7 @@ gap: 32px;
 .textarea-backlog {
     width: 410px !important;
     border: 0;
+    padding-left: 0;
     cursor: pointer;
     resize: none;
 }
@@ -125,6 +126,7 @@ gap: 32px;
     width: 480px !important;
     min-height: 60px !important;
     max-height: 180px !important;
+    padding-left: 0;
     border: 0;
     cursor: pointer;
     resize: none;
@@ -140,8 +142,23 @@ textarea:focus {
     width: 155px;
     border: 0;
     cursor: pointer;
+    padding-left: 0;
 }
 
 .background-color-grey {
     background-color: rgb(122, 117, 117) !important;
+}
+
+.form-select {
+    width: 210px;
+}
+
+.div-of-moveToBoard-btn{
+display: flex;
+justify-content: flex-end;
+}
+
+.moveToBoard-btn {
+    margin-right: 12px;
+    margin-bottom: 12px;
 }

@@ -70,14 +70,21 @@ function showCard(i) {
     <h6><b>Description:</b></h6><textarea id="backlog-description" class="textarea-backlog-description form-control">${task.description}</textarea>
     <div class="infosOfCard">
     <div class="dateAndCategory">
-    <div><h6><b style="padding-left: 12px">due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
-    <div><h6><b>category:</b></h6>${task.category}</div>
+    <div><h6><b>due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
+    <div><h6><b>category:</b></h6>
+    <select id="category-backlog" class="form-select" aria-label="Default select example">
+    <option selected>${task.category}</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select></div>
     </div>
     <h6><b>assignet to:  
     
     </b></h6><div style="display: flex">${getStaff(i)}</div>
     </div>
     </div>
+    <div class="div-of-moveToBoard-btn"><button onclick="moveToBoard(${i})" type="button" class="moveToBoard-btn btn btn-primary btn-sm">move card to board</button></div>
     <div id="button" class="modal-footer">
     <button onclick="previousCard(${i})" class="btn btn-primary">previous task</button>
     <button onclick="saveChanges(${i})" type="button" class="btn btn-outline-success">save changes</button>
@@ -117,6 +124,13 @@ backlogTasks[i].dueDate = date;
 
 save(allTasks, 'tasks');
 renderCards();
+}
+
+function moveToBoard(i) {
+allTasks[i].status == 'todo';
+
+renderTasksInBacklog();
+save(allTasks, 'tasks');
 }
 
 
