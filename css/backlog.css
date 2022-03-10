@@ -44,6 +44,10 @@ p {
     gap: 48px;
 }
 
+.modal-title {
+    width: 100%;
+}
+
 .card-body {
     height: 60vh;
 }
@@ -68,7 +72,7 @@ p {
 }
 
 .date {
-    width:12%;
+    width: 12%;
 }
 
 .category {
@@ -196,6 +200,39 @@ p {
         margin-top: 18px;
     }
 
+    .textarea-backlog {
+        width: 100% !important;
+    }
+
+    .textarea-backlog-description {
+        width: 100% !important;
+        height: 90px;
+    }
+
+    .backlog-date {
+        width: 140px;
+    }
+
+    .dateAndCategory {
+        gap: 8px;
+    }
+
+    .form-select {
+        width: 170px;
+    }
+
+    .personInCard {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .btn {
+        width: 30%;
+        height: 50px;
+        font-size: 14px;
+    }
+
     .title {
         width: 90%;
     }
@@ -243,6 +280,39 @@ p {
         width: 90%;
         gap: 12px;
         margin-top: 18px;
+    }
+
+    .textarea-backlog {
+        width: 100% !important;
+    }
+
+    .textarea-backlog-description {
+        width: 100% !important;
+        height: 90px;
+    }
+
+    .backlog-date {
+        width: 140px;
+    }
+
+    .dateAndCategory {
+        gap: 8px;
+    }
+
+    .form-select {
+        width: 170px;
+    }
+
+    .personInCard {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .btn {
+        width: 30%;
+        height: 50px;
+        font-size: 14px;
     }
 
     .title {
@@ -325,7 +395,7 @@ p {
         width: 12%;
     }
 
-    .category {
+    git .category {
         width: 12%;
     }
 
@@ -342,5 +412,3 @@ p {
     }
 
 }
-
-

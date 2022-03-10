@@ -81,7 +81,7 @@ function showCard(i) {
     </div>
     <h6><b>assignet to:  
     
-    </b></h6><div style="display: flex">${getStaff(i)}</div>
+    </b></h6><div class="personInCard" style="display: flex">${getStaff(i)}</div>
     </div>
     </div>
     <div class="div-of-moveToBoard-btn"><button onclick="moveToBoard(${i})" type="button" class="moveToBoard-btn btn btn-primary btn-sm">move card to board</button></div>
