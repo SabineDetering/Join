@@ -22,13 +22,11 @@ function getId(id) {
 
 function showMenu() {
     let menubar = getId('menubar');
-    // menubar.classList.remove('d-none');
     menubar.style.left = '0';
 }
 function hideMenu() {
     let menubar = getId('menubar');
-    // menubar.classList.add('d-none');
-    menubar.style.left = '-160px';
+    menubar.style.left = '- var(--menu-width)';
 }
 
 
