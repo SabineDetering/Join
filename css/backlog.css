@@ -54,6 +54,11 @@ p {
     width: 400px;
 }
 
+.dateAndCategory {
+display: flex;
+gap: 32px;
+}
+
 .date{
     width: 100px;
 }
@@ -98,9 +103,45 @@ p {
     max-height: 80vh;
 }
 
+.modal-footer {
+    justify-content: space-between;
+}
+
 .infosOfCard {
     display: flex;
     flex-direction: column;
     margin-top: 24px;
     gap: 24px;
+}
+
+.textarea-backlog {
+    width: 410px !important;
+    border: 0;
+    cursor: pointer;
+    resize: none;
+}
+
+.textarea-backlog-description {
+    width: 480px !important;
+    min-height: 60px !important;
+    max-height: 180px !important;
+    border: 0;
+    cursor: pointer;
+    resize: none;
+}
+
+textarea:focus {
+        border: 0 !important;
+        resize: none !important;
+        outline: none !important;
+    }
+
+.backlog-date {
+    width: 155px;
+    border: 0;
+    cursor: pointer;
+}
+
+.background-color-grey {
+    background-color: rgb(122, 117, 117) !important;
 }
