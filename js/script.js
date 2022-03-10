@@ -20,6 +20,15 @@ function getId(id) {
     return document.getElementById(id);
 }
 
+function showMenu() {
+    let menubar = getId('menubar');
+    menubar.classList.remove('d-none');
+}
+function hideMenu() {
+    let menubar = getId('menubar');
+    menubar.classList.add('d-none');
+}
+
 /**
  * 
  * @param {string} user -name of a user
