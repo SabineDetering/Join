@@ -34,14 +34,14 @@ function getStaff(i) {
         const teamMember = staff[index];
         if (teamMember) {
             html +=
-                `
+                `<div class="personContent">
             <div class="staff-icons-backlog">
             <span class="staff-icon bg-ci-dark p-1 icon-margin"><img src="${users[staff[index]].img}"></span>
             </div>
             <div class="userAndMail">
             <span>${teamMember}</span>
             <span>${users[staff[index]].email}</span>
-            </div>`;
+            </div></div>`;
         }
     }
     return html;
