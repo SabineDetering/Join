@@ -24,5 +24,20 @@ function includeHTML() {
             return;
         }
     }
-//  init();
+    updateActivePage();
+}
+
+function updateActivePage() {
+    let active = window.location.pathname.split('/').pop();
+    let links = document.getElementsByClassName('nav-link');
+    for (let i = 0; i < links.length; i++) {
+        const link = links[i];
+        link.classList.remove('active');
+        link.ariaCurrent = null;
+        let path = link.href.split('/').pop();
+        if (active == path) {
+            link.classList.add('active');
+            link.ariaCurrent = "page";
+        }
+    }
 }

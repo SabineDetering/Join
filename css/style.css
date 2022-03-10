@@ -13,6 +13,17 @@ h1 {
     font-weight: bold;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: unset;
+    box-shadow: unset;
+}
+
 .pointer {
     cursor: pointer;
 }

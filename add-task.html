@@ -34,12 +34,12 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();updateActivePage();renderAddTaskForm(true);">
+<body onload="includeHTML();renderAddTaskForm(true);">
 
     <div w3-include-html="./html_templates/menu.html"></div>
 
-    <div class="container wrapper">
-        <h1 class="pt-5 mb-0">Add task</h1>
+    <div class="container wrapper py-5">
+        <h1 class=" mb-0">Add task</h1>
         <h6 class="mb-4 text-dark">Learning Management System Project</h6>
 
         <form id="task-form" onsubmit="addTask(event)"

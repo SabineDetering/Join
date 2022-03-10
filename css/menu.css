@@ -30,16 +30,19 @@
 #menubar {
     height: 100%;
     min-height: 100vh;
+    transition: all 500ms;
 }
 
 #menu {
     width: var(--menu-width);
     height: 100vh;
+    transition: all 500ms;
 }
 
 .nav-link {
     font-size: 20px;
     padding-left: 1.5em !important;
+    border-left: 5px transparent solid;
     /* font-weight: bold; */
 }
 
