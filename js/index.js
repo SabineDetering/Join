@@ -6,7 +6,7 @@ function signIn() {
     let checkBox = getId('guest');
 
     if (checkBox.checked) {
-        location.href = 'board.html';
+        window.open('board.html');
 
     } else {
         for (const name in users) {
@@ -14,8 +14,8 @@ function signIn() {
             if (email == users[name].email) {
 
                 if (password == users[name].password) {
-                    location.href = 'board.html'; userFound = true;
-
+                    window.open('board.html');
+                    userFound = true;
                 }
             }
         }

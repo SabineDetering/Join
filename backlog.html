@@ -11,7 +11,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/backlog.css">
 
-  
+
   <script src="./js/add-task.js"></script>
   <script src="./js/include_html.js"></script>
   <script src="./js/script.js"></script>
@@ -36,14 +36,16 @@
   <div class="backlog-content">
 
     <div w3-include-html="./html_templates/menu.html"></div>
-    <div class="card-content">
-      <div class="headerOfCard">
-        <p style="width: 400px"><b>assignet to</b></p>
-        <p style="width: 100px"><b>due Date</b></p>
-        <p style="width: 131px"><b>category</b></p>
-        <p style="margin-left: 42px"><b>title</b></p>
+    <div class="container wrapper">
+      <div class="card-content">
+        <div class="headerOfCard">
+          <p style="width: 400px"><b>assignet to</b></p>
+          <p style="width: 100px"><b>due Date</b></p>
+          <p style="width: 131px"><b>category</b></p>
+          <p style="margin-left: 42px"><b>title</b></p>
+        </div>
+        <div class="card-body" id="card-body"></div>
       </div>
-      <div class="card-body" id="card-body"></div>
     </div>
 
   </div>
