@@ -12,8 +12,7 @@
 async function renderAddTaskForm(onload=false) {
     if (onload) {
         await init();
-        updateActivePage();
-    }
+            }
     if (!allTasks == []) {
         highestTaskId = allTasks[allTasks.length - 1].id;
     }
