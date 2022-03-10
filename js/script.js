@@ -29,6 +29,24 @@ function hideMenu() {
     menubar.classList.add('d-none');
 }
 
+function updateActivePage() {
+    let active = window.location.pathname.slice(1);//remove slash
+    let links = document.getElementsByClassName('nav-link');
+    for (let i = 0; i < links.length; i++) {
+        const link = links[i];
+        link.classList.remove('active');
+        link.ariaCurrent = null;
+        let path = link.href.split('/').pop();
+        if (active == path) {
+            link.classList.add('active');
+            link.ariaCurrent = "page";
+        }
+    }
+
+
+}
+
+
 /**
  * 
  * @param {string} user -name of a user
