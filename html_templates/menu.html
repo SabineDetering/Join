@@ -1,4 +1,3 @@
-
 <!-- 
 <div id="login" class="menu-logged-out" style="display: flex;">
     <div><img class="menu-logo" src="img/logo.png"></div>
@@ -7,19 +6,67 @@
         <a onclick="login()"class="menu-tabs">Login</a>
     </div>
 </div> -->
+<!-- 
+<nav class="menubar navbar navbar-expand fixed-top bg-ci-dark">
 
-<div  id="logout" class="menu-logged-in" style="display: flex;">
-    <div><a href="index.html"><img class="menu-logo" src="img/logo.png"></a></div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menubar"
+        aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="menu-logged-in">
-        <a href="board.html" class="menu-tabs">Board</a>
-        <a href="backlog.html" class="menu-tabs">Backlog</a>
-        <a href="add-task.html" class="menu-tabs">Add task</a>
-        <a href="archive.html" class="menu-tabs">Archive</a>
-        <a href="help.html" class="menu-tabs">Help</a>
-        <a href="about.html" class="menu-tabs">About</a>
-        <a href="privacy.html" class="menu-tabs">Privacy</a>
-        <a onclick="logout()" href="index.html" class="menu-tabs">Logout</a>
+    <div class="collapse navbar-collapse " id="menu">
+        
+        <div><a class="my-4" href="index.html">
+            <img src="./img/logo.png"></a>
+        </div>
+
+        <div class="navbar-nav ">
+            <a href="board.html" class="nav-link">Board</a>
+            <a href="backlog.html" class="nav-link">Backlog</a>
+            <a href="add-task.html" class="nav-link">Add task</a>
+            <a href="archive.html" class="nav-link">Archive</a>
+            <a href="help.html" class="nav-link">Help</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="privacy.html" class="nav-link">Privacy</a>
+            <a href="index.html" class="nav-link" onclick="logout()">Logout</a>
+
+        </div>
     </div>
-</div>
+    </nav> -->
 
+
+<!-- toggle button for navbar only visible in narrow screens -->
+<button id="btn-show-menu" class="navbar-light d-block d-md-none position-absolute top-0 mt-1 ms-1" type="button"
+    aria-label="Show navigation" onclick="showMenu()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+
+<nav id="menubar" class="justify-content-start navbar navbar-dark bg-ci-dark position-fixed d-none d-md-block">
+
+    <div id="menu">
+
+        <button type="button"
+            class="btn-close btn-close-white d-block d-md-none position-absolute top-0 end-0 mt-1 me-1"
+            aria-label="Close" onclick="hideMenu()"></button>
+
+        <div class="navbar-brand my-4 text-center">
+            <a href="index.html">
+                <img src="./img/logo.png">
+            </a>
+        </div>
+        <div id="menu-links" class="navbar-nav flex-column  mb-6 ">
+            <a href="board.html" class="nav-link active" aria-current="page">Board</a>
+            <a href="backlog.html" class="nav-link">Backlog</a>
+            <a href="add-task.html" class="nav-link">Add task</a>
+            <a href="archive.html" class="nav-link">Archive</a>
+            <a href="trash.html" class="nav-link">Trash</a>
+            <hr style="width:90px;margin:1em  1.5em;">
+            <a href="help.html" class="nav-link">Help</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="privacy.html" class="nav-link">Privacy</a>
+            <hr style="width:90px;margin:1em  1.5em;">
+            <a href="index.html" class="nav-link" onclick="logout()">Logout</a>
+        </div>
+    </div>
+</nav>

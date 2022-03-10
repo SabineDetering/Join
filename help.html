@@ -29,14 +29,14 @@
 </head>
 
 <body onload="includeHTML()">
-    <div class="d-flex">
-        <div w3-include-html="html_templates/menu.html"></div>
-        <div class=' container privacy p-4'>
-            <h1>Help</h1>
-            <p>Join is a Kanban Board. It visualises the project flow in agile project management. </p>
-            <p>This app was built as a training project at Developer Akademie. There is no security layer implemented.
-                It is not supposed to be used with real life data.</p>
-            <p><strong>Do not enter personal data.</strong> </p>
+
+    <div w3-include-html="html_templates/menu.html"></div>
+    <div class="container wrapper px-2 py-5">
+        <h1>Help</h1>
+        <p>Join is a Kanban Board. It visualises the project flow in agile project management. </p>
+        <p>This app was built as a training project at Developer Akademie. There is no security layer implemented.
+            It is not supposed to be used with real life data.</p>
+        <p><strong>Do not enter personal data.</strong> </p>
 
         <div class="accordion accordion-flush " id="accordionFlushExample">
             <div class="accordion-item">
@@ -63,7 +63,8 @@
                 <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2"
                     data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        The backlog is a collection of tasks and ideas that are not yet in the focus of implementation. Items can be moved either to the to-do-list or to the archive or be deleted.
+                        The backlog is a collection of tasks and ideas that are not yet in the focus of implementation.
+                        Items can be moved either to the to-do-list or to the archive or be deleted.
                     </div>
                 </div>
             </div>
@@ -77,7 +78,8 @@
                 <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3"
                     data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        The board holds all tasks in the current sprint. During the process of implementation and testing, tasks move from left to right through the stages of the board. 
+                        The board holds all tasks in the current sprint. During the process of implementation and
+                        testing, tasks move from left to right through the stages of the board.
                     </div>
                 </div>
             </div>
@@ -91,7 +93,8 @@
                 <div id="flush-collapse4" class="accordion-collapse collapse" aria-labelledby="flush-heading4"
                     data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        The archive can be used as a history of tasks that were not implemented or that are already done but not longer shown on the board.
+                        The archive can be used as a history of tasks that were not implemented or that are already done
+                        but not longer shown on the board.
                     </div>
                 </div>
             </div>

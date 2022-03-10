@@ -20,6 +20,7 @@
 
     <script src="./js/include_html.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/menu.js"></script>
     <script src="./js/add-task.js"></script>
     <script src="./js/mini_backend.js"> </script>
     <script src="./js/backend.js"></script>
@@ -35,115 +36,113 @@
 
 <body onload="includeHTML();renderAddTaskForm(true);">
 
-    <div class="wrapper">
+    <div w3-include-html="./html_templates/menu.html"></div>
 
-        <div class="position-sticky" w3-include-html="./html_templates/menu.html"></div>
+    <div class="container wrapper">
+        <h1 class="pt-5 mb-0">Add task</h1>
+        <h6 class="mb-4 text-dark">Learning Management System Project</h6>
 
-        <div class="container">
-            <h1 class="mt-5 mb-0">Add task</h1>
-            <h6 class="mb-4">Learning Management System Project</h6>
+        <form id="task-form" onsubmit="addTask(event)"
+            class="container shadow rounded bg-ci-light p-4 position-relative">
 
-            <form id="task-form" onsubmit="addTask(event)" class="container bg-ci-light p-4 position-relative">
-
-                <div class="form-row d-flex">
-                    <!-- title -->
-                    <div class="col-left me-3 mb-3">
-                        <label for="title" class="form-label">TITLE*</label>
-                        <input type="text" class="form-control" id="title" required minlength="3" maxlength="100">
-                    </div>
-
-                    <!-- category -->
-                    <div class="col-right mb-3">
-                        <label for="category" class="form-label">CATEGORY*</label>
-                        <select class="form-select" id="category" required onchange="checkIfNewCategorySelected()">
-                        </select>
-                    </div>
+            <div class="form-row d-flex">
+                <!-- title -->
+                <div class="col-left me-3 mb-3">
+                    <label for="title" class="form-label">TITLE*</label>
+                    <input type="text" class="form-control" id="title" required minlength="3" maxlength="100">
                 </div>
 
-                <div class="form-row d-flex">
-                    <!-- description -->
-                    <div class="col-left me-3 mb-3">
-                        <label for="description" class="form-label">DESCRIPTION*</label>
-                        <!-- important: textarea must be defined on a single line of code! -->
-                        <textarea class="form-control" required
-                            placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
-                            id="description"></textarea>
-                    </div>
+                <!-- category -->
+                <div class="col-right mb-3">
+                    <label for="category" class="form-label">CATEGORY*</label>
+                    <select class="form-select" id="category" required onchange="checkIfNewCategorySelected()">
+                    </select>
+                </div>
+            </div>
 
-                    <div class="col-right mb-3">
-                        <!-- due date -->
-                        <label for="due-date" class="form-label">DUE DATE*</label>
-
-                        <input type="date" class="form-control mb-3" required aria-describedby="due-date-button"
-                            id="due-date">
-
-                        <!-- importance -->
-                        <label for="importance" class="form-label">IMPORTANCE*</label>
-                        <select class="form-select" id="importance" required>
-                            <option value="" selected>Choose...</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
-                    </div>
+            <div class="form-row d-flex">
+                <!-- description -->
+                <div class="col-left me-3 mb-3">
+                    <label for="description" class="form-label">DESCRIPTION*</label>
+                    <!-- important: textarea must be defined on a single line of code! -->
+                    <textarea class="form-control" required
+                        placeholder="Which need or wish is adressed? What should be done? How can success be measured?"
+                        id="description"></textarea>
                 </div>
 
-                <div class="form-row d-flex">
-                    <!-- assignment -->
-                    <div class="col-left me-3 mb-3">
-                        <label for="assigned-to" class="form-label">ASSIGNED TO</label>
+                <div class="col-right mb-3">
+                    <!-- due date -->
+                    <label for="due-date" class="form-label">DUE DATE*</label>
 
-                        <div id="assigned-to">
-                            <div class="btn-group dropend">
-                                <img id="plus-icon" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false" src="img/icon plus.png" alt="add team member"
-                                    title="add team member">
+                    <input type="date" class="form-control mb-3" required aria-describedby="due-date-button"
+                        id="due-date">
 
-                                <ul id="assigned-to-list" class="dropdown-menu p-3">
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- importance -->
+                    <label for="importance" class="form-label">IMPORTANCE*</label>
+                    <select class="form-select" id="importance" required>
+                        <option value="" selected>Choose...</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+            </div>
 
-                    <!-- choice to send task to backlog or todo-list -->
-                    <div class="col-right mb-3">
-                        <label for="status" class="form-label d-block">
-                            SEND TASK TO*
-                        </label>
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="statusBacklog" required>
-                                <label class="form-check-label" for="statusBacklog">
-                                    Backlog
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="statusToDo">
-                                <label class="form-check-label" for="statusToDo">
-                                    To-Do
-                                </label>
-                            </div>
+            <div class="form-row d-flex">
+                <!-- assignment -->
+                <div class="col-left me-3 mb-3">
+                    <label for="assigned-to" class="form-label">ASSIGNED TO</label>
+
+                    <div id="assigned-to">
+                        <div class="btn-group dropend">
+                            <img id="plus-icon" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" src="img/icon plus.png" alt="add team member"
+                                title="add team member">
+
+                            <ul id="assigned-to-list" class="dropdown-menu p-3">
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- buttons -->
-                <div class="button-row d-flex align-items-center justify-content-end">
-
-                    <button type="reset" class="btn ci-button-transparent">CANCEL</button>
-
-                    <button type="submit" class="btn ci-button-dark">
-                        CREATE TASK
-                    </button>
+                <!-- choice to send task to backlog or todo-list -->
+                <div class="col-right mb-3">
+                    <label for="status" class="form-label d-block">
+                        SEND TASK TO*
+                    </label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="statusBacklog" required>
+                            <label class="form-check-label" for="statusBacklog">
+                                Backlog
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="statusToDo">
+                            <label class="form-check-label" for="statusToDo">
+                                To-Do
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <!-- success message after saving -->
-                <div id="success" class="ci-border-dark position-absolute p-4 d-none">
-                    The task was saved.
-                </div>
-            </form>
-        </div>
+            </div>
+
+            <!-- buttons -->
+            <div class="button-row d-flex align-items-center justify-content-end">
+
+                <button type="reset" class="btn ci-button-transparent">CANCEL</button>
+
+                <button type="submit" class="btn ci-button-dark">
+                    CREATE TASK
+                </button>
+            </div>
+            <!-- success message after saving -->
+            <div id="success" class="ci-border-dark position-absolute p-4 d-none">
+                The task was saved.
+            </div>
+        </form>
     </div>
-
+    
 
     <!-- Modal for adding a new category -->
     <div class="modal fade" id="addCategoryModal">
@@ -176,14 +175,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <script>
-    // activate popovers
-    let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
-    })
-</script> -->
 
 </body>
 

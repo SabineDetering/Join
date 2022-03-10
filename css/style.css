@@ -1,11 +1,12 @@
 :root {
     --ci-light: #F4F3FB;
     --ci-dark: #1E3190;
+    --menu-width: 160px;
 }
 
 body {
     font-family: 'PT Sans', sans-serif;
-    background-color: rgb(216, 216, 216);
+    background-color: #fdfdff;
 }
 
 h1 {
@@ -47,4 +48,11 @@ h1 {
 
 .icon-margin {
     margin-right: 5px;
+}
+
+@media(min-width:768px) {
+    .wrapper {
+        padding-left: var(--menu-width) !important;
+    }
+
 }
