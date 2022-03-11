@@ -79,8 +79,8 @@ function showCard(i) {
     <div><h6><b>due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
     <div><h6><b>category:</b></h6>
     <select onclick="renderCategories()" id="category-backlog" class="form-select" aria-label="Default select example">
-    <option selected>${task.category}</option>
-  </select></div>
+    <option id="selectedCategory" selected>${task.category}</option>
+    </select></div>
     </div>
     <h6><b>assignet to:  
     
@@ -142,8 +142,15 @@ function renderCategories() {
     category.innerHTML = '';
     
     for(j=0; j < categories.length; j++) {
-        category.innerHTML += `<option value="${j}">${categories[j]}</option>`;
+        category.innerHTML += `<option onclick="changeCategory(${j})" value="${j}">${categories[j]}</option>`;
     }
+}
+
+function changeCategory(j) {
+let selectedCategory = getId('selectedCategory');
+// let clickedCategory = getId(`category${j}`).value;
+
+selectedCategory.innerHTML = categories[j];
 }
 
 
