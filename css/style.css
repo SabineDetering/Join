@@ -2,6 +2,7 @@
     --ci-light: #F4F3FB;
     --ci-dark: #1E3190;
     --menu-width: 160px;
+    --menu-width-neg: -160px;
 }
 
 body {

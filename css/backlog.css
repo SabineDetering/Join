@@ -130,7 +130,6 @@ p {
     width: 410px !important;
     border: 0;
     padding-left: 0;
-    cursor: pointer;
     resize: none;
 }
 
@@ -138,7 +137,6 @@ p {
     width: 480px !important;
     padding-left: 0;
     border: 0;
-    cursor: pointer;
     resize: none;
 }
 
