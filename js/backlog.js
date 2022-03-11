@@ -150,7 +150,11 @@ function changeCategory(j) {
 let selectedCategory = getId('selectedCategory');
 // let clickedCategory = getId(`category${j}`).value;
 
-selectedCategory.innerHTML = categories[j];
+selectedCategory.value = categories[3];
+
+
+// var value=selectedCategory.options[selectedCategory.j].value;// get selected option value
+// var text=selectedCategory.options[selectedCategory.j].text;
 }
 
 
