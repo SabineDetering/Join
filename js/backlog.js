@@ -138,9 +138,9 @@ function moveToBoard(i) {
 
 function renderCategories() {
 
-    
     let category = document.getElementById('category-backlog');
     category.innerHTML = '';
+    
     for(j=0; j < categories.length; j++) {
         category.innerHTML += `<option value="${j}">${categories[j]}</option>`;
     }
