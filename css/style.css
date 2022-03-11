@@ -61,9 +61,9 @@ select:focus {
     margin-right: 5px;
 }
 
-/* @media(min-width:768px) {
+@media(min-width:768px) {
     .wrapper {
         padding-left: var(--menu-width) !important;
     }
 
-} */
+}

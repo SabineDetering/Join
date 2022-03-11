@@ -142,7 +142,7 @@ function renderCategories() {
     category.innerHTML = '';
     
     for(j=0; j < categories.length; j++) {
-        category.innerHTML += `<option onclick="changeCategory(${j})" value="${j}">${categories[j]}</option>`;
+        category.innerHTML += `<option onchange="checkIfNewCategorySelected(${j})" value="${j}">${categories[j]}</option>`;
     }
 }
 
