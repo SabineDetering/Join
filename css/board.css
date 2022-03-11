@@ -53,6 +53,11 @@
     .board-content{
         flex-direction: column;
     }
+
+
+    .card-body {
+        min-height: 400px;
+    }
 }
 
 
@@ -72,6 +77,11 @@
 
     .card-body {
         min-height: 100px;
+    }
+
+
+    .body{
+        height: 100vh;
     }
 }
 
