@@ -150,7 +150,7 @@ function changeCategory(j) {
 let selectedCategory = getId('selectedCategory');
 // let clickedCategory = getId(`category${j}`).value;
 
-selectedCategory.value = categories[3];
+selectedCategory.value = categories[j];
 
 
 // var value=selectedCategory.options[selectedCategory.j].value;// get selected option value
