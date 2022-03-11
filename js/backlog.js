@@ -12,6 +12,7 @@ function renderCards() {
     for (let i = 0; i < backlogTasks.length; i++) {
 
         let task = backlogTasks[i];
+        currentTask = backlogTasks[i];
 
         backlogContent.innerHTML +=
             `<div data-bs-toggle="modal" href="#exampleModalToggle1" onclick="showCard(${i})" class="card">
@@ -34,14 +35,7 @@ function getStaff(i) {
         const teamMember = staff[index];
         if (teamMember) {
             html +=
-                `<div class="personContent">
-            <div class="staff-icons-backlog">
-            <span class="staff-icon bg-ci-dark p-1 icon-margin"><img src="${users[staff[index]].img}"></span>
-            </div>
-            <div class="userAndMail">
-            <span>${teamMember}</span>
-            <span>${users[staff[index]].email}</span>
-            </div></div>`;
+                `${staffIconHtml(teamMember)}`;
         }
     }
     return html;
@@ -61,6 +55,7 @@ function deleteTask(i) {
 
 function showCard(i) {
 
+
     let task = backlogTasks[i];
     let contentOfCard = getId('modal-content');
 
@@ -78,13 +73,12 @@ function showCard(i) {
     <div class="dateAndCategory">
     <div><h6><b>due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
     <div><h6><b>category:</b></h6>
-    <select onclick="renderCategories()" id="category-backlog" class="form-select" aria-label="Default select example">
+    <select onchange="changeCategory(${i})" id="category-backlog" class="form-select" aria-label="Default select example">
     <option id="selectedCategory" selected>${task.category}</option>
     </select></div>
     </div>
-    <h6><b>assignet to:  
-    
-    </b></h6><div class="personInCard" style="display: flex">${getStaff(i)}</div>
+    <h6><b>assigned to:</b></h6>
+    <div id="assigned-to-backlog" class="personInCard" style="display: flex">${getStaff(i)}</div>
     </div>
     </div>
     <div class="div-of-moveToBoard-btn"><button onclick="moveToBoard(${i})" type="button" class="moveToBoard-btn btn btn-primary btn-sm">move card to board</button></div>
@@ -94,6 +88,8 @@ function showCard(i) {
     <button id="nextTask" onclick="nextCard(${i})" class="btn btn-primary">next task</button>
     </div>`;
 
+    showAssignedUsers();
+    renderCategories();
 }
 
 function previousCard(i) {
@@ -121,11 +117,18 @@ function saveChanges(i) {
     let description = getId('backlog-description').textContent;
     let date = getId('backlog-date').value;
 
-    backlogTasks[i].title = title;
-    backlogTasks[i].description = description;
-    backlogTasks[i].dueDate = date;
+    let idToSave = backlogTasks[i].id;
+    let indexToSave = allTasks.findIndex(task => task.id == idToSave);
+
+    
+    allTasks[indexToSave].title = title;
+    allTasks[indexToSave].description = description;
+    allTasks[indexToSave].dueDate = date;
+    allTasks[indexToSave].assignedTo = currentTask.assignedTo;
+    allTasks[indexToSave].category = backlogTasks[i].category;
 
     save(allTasks, 'tasks');
+    backlogTasks = allTasks.filter(task => task.status == 'backlog');
     renderCards();
 }
 
@@ -140,76 +143,32 @@ function renderCategories() {
 
     let category = document.getElementById('category-backlog');
     category.innerHTML = '';
-    
-    for(j=0; j < categories.length; j++) {
-        category.innerHTML += `<option onchange="checkIfNewCategorySelected(${j})" value="${j}">${categories[j]}</option>`;
+
+    for (j = 0; j < categories.length; j++) {
+        category.innerHTML += `<option>${categories[j]}</option>`;
     }
 }
 
-function changeCategory(j) {
-let selectedCategory = getId('selectedCategory');
-// let clickedCategory = getId(`category${j}`).value;
+function changeCategory(i) {
+    let categorySelector = getId('category-backlog');
 
-selectedCategory.value = categories[j];
+    categorySelector[categorySelector.selectedIndex].value;
 
-
-// var value=selectedCategory.options[selectedCategory.j].value;// get selected option value
-// var text=selectedCategory.options[selectedCategory.j].text;
+    backlogTasks[i].category = categorySelector[categorySelector.selectedIndex].value;
 }
 
 
 
-/* <div id="assigned-to-backlog">
-<div class="btn-group dropend">
-    <img onclick="emptyForm()" id="plus-icon-backlog" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
-        aria-expanded="false" src="img/icon plus.png" alt="add team member"
-        title="add team member">
+function showAssignedUsers() {
+    let assignedTo = getId('assigned-to-backlog');
+    assignedTo.innerHTML = '';
+    for (let i = 0; i < currentTask.assignedTo.length; i++) {
+        const name = currentTask.assignedTo[i];
+        assignedTo.innerHTML += staffIconHtml(name);
+    }
 
-    <ul id="assigned-to-list-backlog" class="dropdown-menu p-3">
-    </ul>
-</div>
-</div> */
-
-
-// function emptyForm() {
-//     let assignedToBacklog = getId('assigned-to-backlog');
-//     assignedToBacklog.innerHTML = addUserHtml();
-//     fillAssignedToListBacklog();
-// }
-
-
-// function addUserHtml() {
-//     return `<div class="btn-group dropend">
-//                 <img id="plus-icon-backlog" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="img/icon plus.png" alt="add team member" title="add team member">
-
-//                 <ul id="assigned-to-list-backlog" class="dropdown-menu p-2">
-//                 </ul>
-//             </div>`
-// }
-
-// function fillAssignedToListBacklog() {
-//     let list = getId('assigned-to-list-backlog');
-//     list.innerHTML = '';
-//     for (const name in users) {
-//             list.innerHTML += itemMaker(users[name].name);
-//         }
-//     }
-
-//     function assignUser(name) {
-//         currentTask.assignedTo.push(name);
-//         showAssignedUsers();
-//     }
-
-//     function showAssignedUsers() {
-//         let assignedTo = getId('assigned-to-backlog');
-//         assignedTo.innerHTML = '';
-//         for (let i = 0; i < currentTask.assignedTo.length; i++) {
-//             const name = currentTask.assignedTo[i];
-//             assignedTo.innerHTML += staffIconHtml(name);
-//         }
-
-//         if (moreStaffAllowed()) {
-//             assignedTo.innerHTML += addUserHtml();
-//             fillAssignedToList();
-//         }
-//     }
+    if (moreStaffAllowed()) {
+        assignedTo.innerHTML += addUserHtml();
+        fillAssignedToList();
+    }
+}

@@ -180,11 +180,6 @@ function assignUser(name) {
     showAssignedUsers();
 }
 
-function removeUser(name) {
-    currentTask.assignedTo = currentTask.assignedTo.filter(user => user != name);
-    showAssignedUsers();
-}
-
 /**
  * shows icon(s) for assigned user(s)
  * if it is feasible to add more staff to the task, plus icon is shown

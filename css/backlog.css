@@ -126,6 +126,7 @@ p {
     gap: 24px;
 }
 
+
 .textarea-backlog {
     width: 410px !important;
     border: 0;
@@ -138,6 +139,7 @@ p {
     padding-left: 0;
     border: 0;
     resize: none;
+
 }
 
 .form-control:focus {

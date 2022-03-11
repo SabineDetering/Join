@@ -68,3 +68,8 @@ function staffIconHtml(user, onclick = true) {
         return `<span class="staff-icon bg-ci-dark p-2 me-1">${staffIconContent(user)}</span>`;
     }
 }
+
+function removeUser(name) {
+    currentTask.assignedTo = currentTask.assignedTo.filter(user => user != name);
+    showAssignedUsers();
+}
