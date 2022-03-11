@@ -29,3 +29,10 @@
         left: var(--menu-width-neg);
     }
 }
+
+@media (min-width:768px) {
+    #menubar {
+        z-index: 2000;
+        left: 0!important;
+    }
+}
