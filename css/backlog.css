@@ -45,7 +45,7 @@ p {
 }
 
 .modal-title {
-    width: 100%;
+    width: 95%;
 }
 
 .card-body {
@@ -136,8 +136,6 @@ p {
 
 .textarea-backlog-description {
     width: 480px !important;
-    min-height: 60px !important;
-    max-height: 180px !important;
     padding-left: 0;
     border: 0;
     cursor: pointer;
@@ -206,7 +204,6 @@ p {
 
     .textarea-backlog-description {
         width: 100% !important;
-        height: 90px;
     }
 
     .backlog-date {
@@ -288,7 +285,6 @@ p {
 
     .textarea-backlog-description {
         width: 100% !important;
-        height: 90px;
     }
 
     .backlog-date {

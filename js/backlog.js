@@ -67,21 +67,19 @@ function showCard(i) {
     contentOfCard.innerHTML = `
     <div class="modal-header">
     <h5 class="modal-title" id="title">
-    <textarea id="backlog-title" class="textarea-backlog form-control">${task.title}</textarea>
+    <span id="backlog-title" class="textarea-backlog form-control" role="textbox" contenteditable>${task.title}</span>
     </h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div id="description" class="modal-body">
-    <h6><b>Description:</b></h6><textarea id="backlog-description" class="textarea-backlog-description form-control">${task.description}</textarea>
+    <h6><b>Description:</b></h6>
+    <span id="backlog-description" class="textarea-backlog-description form-control" role="textbox" contenteditable>${task.description}</span></p>
     <div class="infosOfCard">
     <div class="dateAndCategory">
     <div><h6><b>due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
     <div><h6><b>category:</b></h6>
-    <select id="category-backlog" class="form-select" aria-label="Default select example">
+    <select onclick="renderCategories()" id="category-backlog" class="form-select" aria-label="Default select example">
     <option selected>${task.category}</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
   </select></div>
     </div>
     <h6><b>assignet to:  
@@ -109,7 +107,7 @@ function previousCard(i) {
 }
 
 function nextCard(i) {
-    if (i == backlogTasks.length -1) {
+    if (i == backlogTasks.length - 1) {
         alert('no more tasks available')
         document.getElementById('nextTask').classList.add('background-color-grey');
     } else {
@@ -119,23 +117,33 @@ function nextCard(i) {
 }
 
 function saveChanges(i) {
-let title = getId('backlog-title').value;
-let description = getId('backlog-description').value;
-let date = getId('backlog-date').value;
+    let title = getId('backlog-title').textContent;
+    let description = getId('backlog-description').textContent;
+    let date = getId('backlog-date').value;
 
-backlogTasks[i].title = title;
-backlogTasks[i].description = description;
-backlogTasks[i].dueDate = date;
+    backlogTasks[i].title = title;
+    backlogTasks[i].description = description;
+    backlogTasks[i].dueDate = date;
 
-save(allTasks, 'tasks');
-renderCards();
+    save(allTasks, 'tasks');
+    renderCards();
 }
 
 function moveToBoard(i) {
-allTasks[i].status == 'todo';
+    allTasks[i].status == 'todo';
 
-renderTasksInBacklog();
-save(allTasks, 'tasks');
+    renderTasksInBacklog();
+    save(allTasks, 'tasks');
+}
+
+function renderCategories() {
+
+    
+    let category = document.getElementById('category-backlog');
+    category.innerHTML = '';
+    for(j=0; j < categories.length; j++) {
+        category.innerHTML += `<option value="${j}">${categories[j]}</option>`;
+    }
 }
 
 
