@@ -26,7 +26,7 @@ function showMenu() {
 }
 function hideMenu() {
     let menubar = getId('menubar');
-    menubar.style.left = '- var(--menu-width)';
+    menubar.style.left = 'var(--menu-width-neg)';
 }
 
 
