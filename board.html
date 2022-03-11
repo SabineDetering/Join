@@ -26,36 +26,41 @@
 </head>
 
 <body class="body" onload="includeHTML();renderBoardTasks(true);">
-    
+
     <div w3-include-html="./html_templates/menu.html"></div>
     <div class="main-content wrapper">
         <div class="board-content">
-            <div class="categories">
-                <div class="card text-dark bg-light mb-3">
-                    <div class="card-header"><b>TO DO</b></div>
-                    <div id="todo" ondrop="moveTo('todo',event)" ondragover="allowDrop(event)" class="card-body">
+            <div class="status-wrap">
+                <div class="categories">
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header"><b>TO DO</b></div>
+                        <div id="todo" ondrop="moveTo('todo',event)" ondragover="allowDrop(event)" class="card-body">
+                        </div>
+                    </div>
+                </div>
+                <div class="categories">
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header"><b>IN PROGRESS</b></div>
+                        <div id="progress" ondrop="moveTo('progress',event)" ondragover="allowDrop(event)"
+                            class="card-body">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="categories">
-                <div class="card text-dark bg-light mb-3">
-                    <div class="card-header"><b>IN PROGRESS</b></div>
-                    <div id="progress" ondrop="moveTo('progress',event)" ondragover="allowDrop(event)"
-                        class="card-body">
+            <div class="status-wrap">
+                <div class="categories">
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header"><b>TESTING</b></div>
+                        <div id="testing" ondrop="moveTo('testing',event)" ondragover="allowDrop(event)"
+                            class="card-body">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="categories">
-                <div class="card text-dark bg-light mb-3">
-                    <div class="card-header"><b>TESTING</b></div>
-                    <div id="testing" ondrop="moveTo('testing',event)" ondragover="allowDrop(event)" class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div class="categories">
-                <div class="card text-dark bg-light mb-3">
-                    <div class="card-header"><b>DONE</b></div>
-                    <div id="done" ondrop="moveTo('done',event)" ondragover="allowDrop(event)" class="card-body">
+                <div class="categories">
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header"><b>DONE</b></div>
+                        <div id="done" ondrop="moveTo('done',event)" ondragover="allowDrop(event)" class="card-body">
+                        </div>
                     </div>
                 </div>
             </div>

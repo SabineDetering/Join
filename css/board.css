@@ -9,10 +9,20 @@
     width: 100vw;
 }
 
+
+.categories{
+    margin-right: 16px;
+}
+
+
+.status-wrap{
+    display: flex;
+}
+
 .board-content {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
@@ -23,7 +33,7 @@
 
 .card-body {
     min-height: 600px;
-    width: 300px;
+    width: 290px;
 }
 
 .task:hover {
@@ -36,4 +46,39 @@
     filter: brightness(0.5);
     height: 44px;
     cursor: pointer;
+}
+
+
+@media (max-width: 1440px){
+    .board-content{
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 660px){
+    .status-wrap{
+        display: block;
+    }
+
+    .main-content{
+        height: unset;
+    }
+
+    .categories{
+        margin-right: 0;
+    }
+
+
+    .card-body {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 340px){
+    .card-body{
+        width: 100vw;
+  
+    }
+
 }
