@@ -26,6 +26,6 @@
 @media (max-width:768px) {
     #menubar {
         z-index: 2000;
-        left: - var(--menu-width);
+        left: var(--menu-width-neg);
     }
 }
