@@ -8,8 +8,8 @@
 }
 
 .card span, .card div {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 .trashbin {

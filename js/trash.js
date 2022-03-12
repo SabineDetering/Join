@@ -21,14 +21,12 @@ function trashHtml() {
         return "There are no deleted tasks."
     }
 }
-function showAlert(text) {
-    alert(text);
-}
+
 
 function trashCard(i) {
     const task = allTasks[i];
     return `
-    <div class="card trash-card px-3 pt-4 mb-3 shadow type="button" onclick="showAlert('Card was clicked')">
+    <div class="card trash-card px-3 pt-4 mb-3 shadow type="button">
         <div class=" d-flex align-items-center">
             <div class="date">
                 ${task.deleteDate}
@@ -52,8 +50,9 @@ function trashCard(i) {
         <div class="d-flex w-100 justify-content-end">
             <img type="button" onclick="event.stopPropagation();restoreTask(${i})"
            class="trashbin p-2" src="./img/reuse.png"  alt="restore to last status" title="restore to last status">
+
             <img type="button" onclick="event.stopPropagation();deleteTask(${i})"
-           class="trashbin p-2" src="./img/delete.png" alt="delete irreversibly" title="delete irreversibly">
+           class="trashbin p-2" src="./img/delete.png" alt="delete irrevocably" title="delete irrevocably">
         </div>
     </div>
     `;

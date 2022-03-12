@@ -30,7 +30,7 @@
 .card-header {
     display: flex;
     justify-content: center;
-    background-color: rgba(13, 110, 155, 0.521) !important;
+    background-color: var(--ci-medium) !important;
 }
 
 .card-body {

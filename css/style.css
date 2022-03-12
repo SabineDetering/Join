@@ -1,5 +1,6 @@
 :root {
-    --ci-light: #F4F3FB;
+    --ci-light: #e2ecf1;
+    --ci-medium: rgba(13, 110, 155, 0.521);
     --ci-dark: #0d6e9b;
     --menu-width: 160px;
     --menu-width-neg: -160px;
@@ -7,7 +8,7 @@
 
 body {
     font-family: 'PT Sans', sans-serif;
-    background-color: #bec5e98c;
+    background-color: #bcd1db;
 }
 
 h1 {
@@ -21,6 +22,10 @@ select:focus,
 .form-control:focus {
     outline: none;
     box-shadow: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--ci-dark);
 }
 
 .pointer {
@@ -47,6 +52,7 @@ select:focus,
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--ci-medium);
 }
 
 .staff-icon img {
