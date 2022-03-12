@@ -1,7 +1,7 @@
-.body {
+/* .body {
     display: flex;
     justify-content: space-between;
-}
+} */
 
 .main-content {
     display: flex;
@@ -10,13 +10,14 @@
 }
 
 
-.categories {
+/* .categories {
     margin-right: 16px;
-}
+} */
 
 
 .status-wrap {
     display: flex;
+    justify-content: center;
 }
 
 .board-content {
@@ -50,9 +51,14 @@
 
 
 @media (max-width: 1440px) {
-    .board-content {
-        flex-direction: column;
+    .status-wrap{
+    display: flex;
+    flex-wrap: wrap;
+
     }
+    /* .board-content {
+        flex-direction: column;
+    } */
 
 
     /* .card-body {
