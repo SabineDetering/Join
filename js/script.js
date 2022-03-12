@@ -15,6 +15,9 @@ let maxTeamSizePerTask = 2;
 let maxActiveTasksPerUser = 2;
 let highestTaskId = -1;
 let currentTask = {};
+let now = new Date();
+let today = now.toISOString().slice(0, 10);
+
 
 function getId(id) {
     return document.getElementById(id);

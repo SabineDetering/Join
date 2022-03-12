@@ -140,8 +140,6 @@ function selectCategory(cat) {
  * only future dates are feasible as due date
  */
 function restrictDueDate() {
-    let now = new Date();
-    let today = now.toISOString().slice(0, 10);
     let dueDate = getId('due-date');
     dueDate.min = today;
 }

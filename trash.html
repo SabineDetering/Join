@@ -14,34 +14,52 @@
     <script src="./js/script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
-    <script src="./js/backlog.js"></script>
+    <script src="./js/trash.js"></script>
 
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/trash.css">
 
     <title>Trash</title>
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML();renderTrashTasks(true);">
+<body onload="includeHTML();renderTrash(true);">
 
     <div w3-include-html="./html_templates/menu.html"></div>
 
-    <div class="container-xxl wrapper px-2 py-5">
-        <h1>Trash</h1>
-        TExt vor dem fluid container
-        <div class="container-xxl p-2 ci-border-dark">
-            hier steht textg
-            <div class="card w-100">
-                Title Kategorie Datum Assigned to
-            </div><div class="card">
-                Title
-            </div><div class="card">
-                Title
+    <div class="wrapper  py-5">
+        <div class="container-xxl px-4">
+            <h1>Trash</h1>
+            <p class="text-danger"><strong> Deleting tasks from this view is irreversible!</strong></p>
+
+            <div class="container-xxl p-0 mt-5 ci-border-dark">
+                <div class="card trash-header fw-bold flex-row p-3 mb-1">
+                    <div class="date d-flex align-items-end">
+                        DELETE DATE
+                    </div>
+                    <div class="status d-flex align-items-end">
+                        DELETED FROM
+                    </div>
+                    <div class="category d-flex align-items-end">
+                        CATEGORY
+                    </div>
+                    <div class="title d-flex align-items-end">
+                        TITLE
+                    </div>
+                    <div class="description d-flex align-items-end d-inline-block">
+                        DESCRIPTION
+                    </div>
+                    <div class="assignedTo d-flex align-items-end">
+                        ASSIGNED TO
+                    </div>
+                </div>
+
+                <div id="trash-content">
+                </div>
             </div>
         </div>
-
     </div>
 
 </body>

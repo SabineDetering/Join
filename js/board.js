@@ -93,6 +93,7 @@ async function moveTo(status, event) {
 function deleteTask(i) {
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
+    allTasks[i].deleteDate = today;
     save(allTasks, 'tasks');
 
     renderBoardTasks();

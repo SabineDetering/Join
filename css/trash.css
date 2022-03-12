@@ -1,0 +1,43 @@
+.trash-card {
+    min-height: 100px;
+}
+
+.trash-header {
+    background-color: unset;
+    border:unset;
+}
+
+.card span {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.trashbin {
+    filter: invert(0.5);
+    height: 44px;
+    object-fit: contain;
+}
+
+.date {
+    width: 12%;
+}
+
+.status {
+    width: 10%
+}
+
+.category {
+    width: 15%
+}
+
+.title {
+    width: 20%
+}
+
+.description {
+    width: 20%
+}
+
+.assignedTo {
+    width: 15%
+}

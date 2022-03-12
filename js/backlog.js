@@ -47,6 +47,7 @@ function deleteTask(i) {
 
     allTasks[indexToDelete].deletedFrom = allTasks[indexToDelete].status;
     allTasks[indexToDelete].status = "trash";
+    allTasks[indexToDelete].deleteDate = today;
     save(allTasks, 'tasks');
 
     backlogTasks = allTasks.filter(task => task.status == 'backlog');
