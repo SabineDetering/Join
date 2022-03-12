@@ -23,6 +23,10 @@ select:focus,
     box-shadow: none;
 }
 
+.btn-primary {
+    background-color: #0d6e9b;
+}
+
 .pointer {
     cursor: pointer;
 }
