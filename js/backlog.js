@@ -15,7 +15,7 @@ function renderCards() {
         currentTask = backlogTasks[i];
 
         backlogContent.innerHTML +=
-            `<div data-bs-toggle="modal" href="#exampleModalToggle1" onclick="showCard(${i})" class="card">
+            `<div onclick="showCard(${i})" class="card">
                 <div class="card-body cardInBacklog">
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${task.dueDate}</div>
@@ -55,8 +55,8 @@ function deleteTask(i) {
 }
 
 function showCard(i) {
-
-
+    let cardModal = new bootstrap.Modal(getId('cardModal'), {});
+    cardModal.show();
     let task = backlogTasks[i];
     let contentOfCard = getId('modal-content');
 
