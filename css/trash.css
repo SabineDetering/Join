@@ -7,9 +7,9 @@
     border:unset;
 }
 
-.card span {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+.card span, .card div {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
 }
 
 .trashbin {

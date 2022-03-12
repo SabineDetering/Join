@@ -44,7 +44,7 @@ function trashCard(i) {
                 ${task.description.slice(0, 97) + '...'}
             </div>
             <div class="assignedTo">
-                ${task.assignedTo}
+                ${getTeam(i)}
             </div>
         </div>
         <div class="d-flex w-100 justify-content-end">
@@ -55,6 +55,20 @@ function trashCard(i) {
         </div>
     </div>
     `;
+}
+
+function getTeam(i) {
+    let team = allTasks[i].assignedTo;
+    let html = '';
+    if (team) {
+        html += '<div>';
+        for (let j = 0; j < team.length; j++) {
+            const name = team[j];
+            html += `<p>${name}</p>`;            
+        }
+        html += '</div>';
+    }
+    return html;
 }
 
 function deleteTask(i) {
