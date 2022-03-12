@@ -35,7 +35,13 @@ function getStaff(i) {
         const teamMember = staff[index];
         if (teamMember) {
             html +=
-                `${staffIconHtml(teamMember)}`;
+                `<div class="userContent">
+                ${staffIconHtml(teamMember)}
+                <div class="userAndMail">
+                <p>${users[teamMember].name}<p>
+                <p>${users[teamMember].email}<p>
+                </div>
+                </div>`;
         }
     }
     return html;
@@ -79,7 +85,8 @@ function showCard(i) {
     </select></div>
     </div>
     <h6><b>assigned to:</b></h6>
-    <div id="assigned-to-backlog" class="personInCard" style="display: flex">${getStaff(i)}</div>
+    <div id="assigned-to-backlog" class="personInCard" style="display: flex"></div>
+    
     </div>
     </div>
     <div class="div-of-moveToBoard-btn"><button onclick="moveToBoard(${i})" type="button" class="moveToBoard-btn btn btn-primary btn-sm">move card to board</button></div>
@@ -165,7 +172,14 @@ function showAssignedUsers() {
     assignedTo.innerHTML = '';
     for (let i = 0; i < currentTask.assignedTo.length; i++) {
         const name = currentTask.assignedTo[i];
-        assignedTo.innerHTML += staffIconHtml(name);
+        assignedTo.innerHTML += 
+        `<div class="userContent">
+        ${staffIconHtml(name)}
+        <div class="userAndMail">
+        <p>${users[name].name}</p>
+        <p>${users[name].email}</p>
+        </div> </div>`;
+
     }
 
     if (moreStaffAllowed()) {
