@@ -56,7 +56,7 @@
 
 
     .card-body {
-        min-height: 350px;
+        min-height: 290px;
     }
 }
 
@@ -66,9 +66,9 @@
         display: block;
     }
 
-    .main-content{
+    /* .main-content{
         height: unset;
-    }
+    } */
 
     .categories{
         margin-right: 0;
@@ -81,7 +81,7 @@
 
 
     .body{
-        height: 100vh;
+        height: 80vh;
     }
 }
 
