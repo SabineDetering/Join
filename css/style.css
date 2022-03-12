@@ -28,6 +28,10 @@ select:focus,
     background-color: var(--ci-dark);
 }
 
+.btn-primary {
+    background-color: var(--ci-dark);
+}
+
 .pointer {
     cursor: pointer;
 }
