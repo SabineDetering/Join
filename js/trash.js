@@ -26,7 +26,7 @@ function trashHtml() {
 function trashCard(i) {
     const task = allTasks[i];
     return `
-    <div class="card trash-card  p-3 mb-3 shadow">
+    <div class="card trash-card px-3 pt-4 mb-3 shadow">
         <div class=" d-flex align-items-center">
             <div class="date">
                 ${task.deleteDate}
