@@ -60,6 +60,14 @@ select:focus,
     margin-right: 5px;
 }
 
+.responsive-button {
+    background-color:rgb(30, 49, 144);
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
 @media(min-width:768px) {
     .wrapper {
         padding-left: var(--menu-width);
