@@ -1,6 +1,6 @@
 :root {
     --ci-light: #F4F3FB;
-    --ci-dark: #1E3190;
+    --ci-dark: #0d6e9b;
     --menu-width: 160px;
     --menu-width-neg: -160px;
 }
@@ -61,11 +61,14 @@ select:focus,
 }
 
 .responsive-button {
-    background-color:rgb(30, 49, 144);
+    position: fixed;
     right: 0;
     left: 0;
     bottom: 0;
     z-index: 1;
+    height: 10vh;
+    border: unset;
+
 }
 
 @media(min-width:768px) {
