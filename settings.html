@@ -14,12 +14,11 @@
     <script src="./js/script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
-    <script src="./js/backlog.js"></script>
+    <script src="./js/settings.js"></script>
 
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
-    <link rel="stylesheet" href="./css/backlog.css">
 
     <title>Settings</title>
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
@@ -29,7 +28,18 @@
 
     <div w3-include-html="./html_templates/menu.html"></div>
 
-    <div class="container wrapper px-2 py-5">
+    <div class="wrapper  py-5">
+        <div class="container-xxl px-4">
+            <h1>Settings</h1>
+            <form action="" class="card d-block">
+                Restrict the number of team members assigned to a task to: <select></select>
+                Restrict the number of active tasks (in progress or in testing) one person can be assigned
+                to:<select></select>
+
+                <button>SAVE</button>
+            </form>
+            Note: The number of people assigned to a task shouldn't exceed two. If you feel the need to assign more people, you can probably split the task.
+        </div>
     </div>
 
 </body>
