@@ -27,6 +27,7 @@ function archiveHtml() {
     if (html) {
         return html;
     } else {
+        getId('archive-header').classList.add('invisible');
         return "There are no archived tasks."
     }
 }

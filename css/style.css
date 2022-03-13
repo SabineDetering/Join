@@ -68,6 +68,11 @@ select:focus,
 .icon-margin {
     margin-right: 5px;
 }
+
+.dropdown-item.disabled {
+    color: inherit;
+}
+
 /******************************************************** */
 @media(min-width:768px) {
     .wrapper {

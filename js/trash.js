@@ -28,6 +28,7 @@ function trashHtml() {
     if (html) {
         return html;
     } else {
+        getId('trash-header').classList.add('invisible');
         return "There are no deleted tasks."
     }
 }

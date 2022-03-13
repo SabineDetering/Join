@@ -32,10 +32,6 @@ form label {
     background-color: var(--ci-light);
 }
 
-.dropdown-item.disabled {
-    color: inherit;
-}
-
 .ci-button-dark {
     border-radius: 10px !important;
     font-weight: bold !important;
@@ -60,8 +56,8 @@ form label {
 #success {
     z-index: 10;
     border-radius: 10px !important;
-    right: 1.5em;
-    bottom: 1.5em;
+    right: 1em;
+    bottom: 1em;
     background-color: white;
 }
 
