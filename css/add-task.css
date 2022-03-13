@@ -63,7 +63,6 @@ form label {
     right: 1.5em;
     bottom: 1.5em;
     background-color: white;
-    box-shadow: 2px 2px 3px 1px var(--ci-dark);
 }
 
 @media (max-width:575px) {

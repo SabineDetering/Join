@@ -51,8 +51,8 @@
 @media(max-width:992px) {
     .trash-card {
         width: 48%;
-        min-width: 200px;
-
+        max-width: 48%;
+        min-width: 230px;
     }
 
     .date, .status, .category, .title, .description, .assignedTo {
@@ -64,5 +64,7 @@
 @media(max-width:576px) {
     .trash-card {
         width: 100%;
+        max-width: unset;
+        min-width: unset;
     }
 }
