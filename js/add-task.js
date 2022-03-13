@@ -4,10 +4,11 @@
 //     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png', email: 'testmail@web.de', password: '' },
 //     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: './img/tuncay-icon.png', email: 'muster@email.de', password: '' },
 // };
+// ////////////////////////////////////////////////////////////////////
 
 /**
  * loads data from server
- * fills dropdown menus in add taks form dynamically
+ * calls functions to fill dropdown menus in add tasks form dynamically
  */
 async function renderAddTaskForm(onload=false) {
     if (onload) {
@@ -22,9 +23,15 @@ async function renderAddTaskForm(onload=false) {
     restrictDueDate();
     fillAssignedToList();
 }
+
+
 /////////////////////////////////////////////////////////////////
+// functions concerning categories
+
+
 /**
- * fills the drop down menu for categories with all category names from array categories
+ * fills the drop down list for categories with all category names from array categories
+ * additional option "New category" allows adding a new Category
  */
 function fillCategorySelector() {
     let selector = getId('category');
@@ -36,9 +43,10 @@ function fillCategorySelector() {
     selector.innerHTML += optionMaker('New category', 'new');
 }
 
+
 /**
  * renders an option for select-tag
- * @param {string} text - the text shown in the drop down
+ * @param {string} text - the text shown in the drop down menu
  * @param {string} value - the value saved on selection (optional)
  * @param {string} attributes - attributes for the option e.g. 'selected' (optional)
  * @returns html code of the option
@@ -53,6 +61,8 @@ function optionMaker(text, value, attributes) {
         return `<option value="${value}" ${attributes}>${text}</option>`;
     }
 }
+
+
 /**
  * triggers that a modal is shown when "new Category" is selected
  * modal allows to enter a new category name
@@ -65,6 +75,8 @@ function checkIfNewCategorySelected() {
         catModal.show();
     }
 }
+
+
 /**
  * adds a new category name to the list of categories (first letter is changed to upper case)
  * new category name selected
@@ -72,7 +84,7 @@ function checkIfNewCategorySelected() {
 function addCategory() {
     let categoryInput = getId('new-category');
     let newCategory = categoryInput.value;
-    if (newCategory) {
+    if (newCategory) {//input field not empty
         newCategory = firstLetterUpper(newCategory);
         if (isNewCategory(newCategory)) {
             integrateNewCategory(newCategory);
@@ -84,23 +96,26 @@ function addCategory() {
     categoryInput.value = '';
 }
 
+
 /**
  * changes the first letter of a string to upper case
- * @param {string} word 
- * @returns 
+ * @param {string} word - the word to capitalize
+ * @returns capitalized word
  */
 function firstLetterUpper(word) {
     return word.slice(0, 1).toUpperCase() + word.slice(1);
 }
 
+
 /**
- * returns true if cat is not in array categories
- * @param {string} cat -category to check
+ * returns true if cat is not in array categories i.e. if cat is indeed a new category name
+ * @param {string} cat - category to check
  * @returns boolean
  */
 function isNewCategory(cat) {
     return categories.indexOf(cat) == -1;
 }
+
 
 /**
  * updates array categories 
@@ -116,6 +131,7 @@ function integrateNewCategory(cat) {
     fillCategorySelector();
 }
 
+
 /**
  * sets selected value of category list to default
  * (used if new category was selected but no new category was entered)
@@ -125,15 +141,17 @@ function resetCategory() {
     catSelector.selectedIndex = 0;
 }
 
+
 /**
  * selects category cat in drop down list of categories
- * @param {string} cat -name of category to be selected
+ * @param {string} cat - name of category to be selected
  */
 function selectCategory(cat) {
     let catSelector = getId('category');
     let index = categories.indexOf(cat);
     catSelector.selectedIndex = index + 1;//first option is "Choose.."
 }
+
 ///////////////////////////////////////////////////////////////////
 
 /**
@@ -145,19 +163,33 @@ function restrictDueDate() {
 }
 
 ///////////////////////////////////////////////////////////////////
+//functions concerning assigned to
 
 /**
- * fills the drop down menu in the "assigned-to" section with all names from users (json)
+ * fills the drop down menu in the "assigned-to" section with all users (json)
+ * already assigned users are excluded
  */
 function fillAssignedToList() {
     let list = getId('assigned-to-list');
     list.innerHTML = '';
     for (const name in users) {
-        if (!currentTask.assignedTo.includes(users[name].name)) {
+        if (!userAlreadyAssigned(users[name].name)) {
             list.innerHTML += itemMaker(users[name].name);
         }
     }
 }
+
+
+/**
+ * true if name is already assigned to currentTask
+ * @param {string} name - name of user to check
+ * @returns boolean 
+ */
+function userAlreadyAssigned(name) {
+    return currentTask.assignedTo.includes(users[name].name);
+}
+
+
 /**
  * returns the html code for a list item consisting of an icon with the image or the initials of the user and the name of the user
  * @param {string} name - name of a user
@@ -173,10 +205,17 @@ function itemMaker(name) {
     `;
 }
 
+
+/**
+ * name of selected user is pushed to assignedTo array of currentTask
+ * user is shown in form
+ * @param {string} name - name of selected user
+ */
 function assignUser(name) {
     currentTask.assignedTo.push(name);
     showAssignedUsers();
 }
+
 
 /**
  * shows icon(s) for assigned user(s)
@@ -194,16 +233,20 @@ function showAssignedUsers() {
         fillAssignedToList();
     }
 }
+
+
 /**
- * returns true, if task may be assigned to more users
+ * true, if task may be assigned to more users
  * @returns boolean
  */
 function moreStaffAllowed() {
     return currentTask.assignedTo.length < maxTeamSizePerTask;
 }
 
+
 /**
- * @returns string - html code for plus icon and dropdown list
+ * creates html code for plus icon and dropdown list
+ * @returns string - html code 
  */
 function addUserHtml() {
     return `<div class="btn-group dropend">
@@ -215,10 +258,12 @@ function addUserHtml() {
 }
 
 ///////////////////////////////////////////////////////////////////////
+//functions concerning retrieving data from the form
+
 /**
- * gets data from addtask form as json and pushes it into array allTasks
+ * retrieves data from addtask form as json and pushes it into array allTasks
  * unique id for each task
- * initiates saving allTasks
+ * calls saving allTasks
  */
 function addTask(event) {
     event.preventDefault();
@@ -228,14 +273,16 @@ function addTask(event) {
     currentTask.id = highestTaskId;
     allTasks.push(currentTask);
     save(allTasks, 'tasks');
+
     showSuccessMessage(currentTask.status);
     emptyForm();
     setTimeout(hideSuccessMessage, 2500);
 }
 
+
 /**
- * reads all inputs in add-task form
- * @returns json with all data of the task
+ * reads inputs from add-task form
+ * @returns json with data of the task
  */
 function getTaskData() {
     let title = getId('title').value;
@@ -259,16 +306,24 @@ function getTaskData() {
     return { title, description, category, dueDate, importance, status }
 }
 
+/**
+ * @param {string} status - status of the created task (backlog or todo)
+ */
 function showSuccessMessage(status) {
     let successMessage = getId('success');
     successMessage.innerHTML = `The task was created in ${status}.`;
     successMessage.classList.remove('d-none');
 }
+
+
 function hideSuccessMessage() {
     let successMessage = getId('success');
     successMessage.classList.add('d-none');
 }
 
+/**
+ * resets addTask form completely
+ */
 function emptyForm() {
     currentTask = {};
     currentTask.assignedTo = [];
