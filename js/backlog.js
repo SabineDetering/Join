@@ -66,40 +66,29 @@ function deleteTask(i) {
     renderTasksInBacklog();
 }
 
+// renders the content of Modal which opens when card gets clicked
 function showCard(i) {
     let cardModal = new bootstrap.Modal(getId('cardModal'), {});
     cardModal.show();
     let task = backlogTasks[i];
-    let contentOfCard = getId('modal-content');
     currentTask = backlogTasks[i];
 
-    contentOfCard.innerHTML = `
-    <div class="modal-header">
-    <h5 class="modal-title" id="title">
-    <span id="backlog-title" class="textarea-backlog form-control" role="textbox" contenteditable>${task.title}</span>
-    </h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div id="description" class="modal-body">
-    <h6><b>Description:</b></h6>
-    <span id="backlog-description" class="textarea-backlog-description form-control" role="textbox" contenteditable>${task.description}</span></p>
-    <div class="infosOfCard">
-    <div class="dateAndCategory">
-    <div><h6><b>due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
-    <div><h6><b>category:</b></h6>
-    <select onchange="changeCategory(${i})" id="category-backlog" class="form-select" aria-label="Default select example">
-    </select></div>
-    </div>
-    <h6><b>assigned to:</b></h6>
-    <div id="assigned-to-backlog" class="personInCard" style="display: flex"></div>
+    getId('backlog-title').innerHTML = task.title;
+    getId('backlog-description').innerHTML = task.description;
+    getId('backlog-date').value = task.dueDate;
     
+    getId('selectCategory').innerHTML = 
+    `<h6><b>CATEGORY:</b></h6>
+    <select onchange="changeCategory(${i})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
+    
+    getId('containerOfBacklogButtons').innerHTML = 
+    `<div class="div-of-moveToBoard-btn">
+        <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon" title="move to board">
     </div>
-    </div>
-    <div class="div-of-moveToBoard-btn"><button onclick="moveToBoard(${i})" type="button" class="moveToBoard-btn btn btn-primary btn-sm">move card to board</button></div>
     <div id="button" class="modal-footer">
-    <button onclick="previousCard(${i})" class="btn btn-primary">previous task</button>
-    <button onclick="saveChanges(${i})" type="button" class="btn btn-outline-success">save changes</button>
-    <button id="nextTask" onclick="nextCard(${i})" class="btn btn-primary">next task</button>
+        <button onclick="previousCard(${i})" class="btn btn-primary">previous task</button>
+        <button onclick="saveChanges(${i})" type="button" class="btn btn-outline-success">save changes</button>
+        <button id="nextTask" onclick="nextCard(${i})" class="btn btn-primary">next task</button>
     </div>`;
 
     showAssignedUsers();
@@ -151,6 +140,7 @@ function moveToBoard(i) {
     save(allTasks, 'tasks');
 }
 
+// renders the option fields of category-selector and displays the chosen one
 function renderCategories(i) {
 
     let category = document.getElementById('category-backlog');
@@ -166,11 +156,11 @@ function renderCategories(i) {
     }
 }
 
+
 function changeCategory(i) {
     let categorySelector = getId('category-backlog');
 
     categorySelector[categorySelector.selectedIndex].value;
-
     backlogTasks[i].category = categorySelector[categorySelector.selectedIndex].value;
 }
 
