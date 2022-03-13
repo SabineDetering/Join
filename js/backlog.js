@@ -58,8 +58,7 @@ function deleteTask(i) {
     allTasks[indexToDelete].deleteDate = today;
     save(allTasks, 'tasks');
 
-    backlogTasks = allTasks.filter(task => task.status == 'backlog');
-    renderCards();
+    renderTasksInBacklog();
 }
 
 function showCard(i) {
@@ -129,7 +128,6 @@ function saveChanges(i) {
 
     let idToSave = backlogTasks[i].id;
     let indexToSave = allTasks.findIndex(task => task.id == idToSave);
-
     
     allTasks[indexToSave].title = title;
     allTasks[indexToSave].description = description;
@@ -138,8 +136,7 @@ function saveChanges(i) {
     allTasks[indexToSave].category = backlogTasks[i].category;
 
     save(allTasks, 'tasks');
-    backlogTasks = allTasks.filter(task => task.status == 'backlog');
-    renderCards();
+    renderTasksInBacklog();
 }
 
 function moveToBoard(i) {
@@ -166,7 +163,6 @@ function changeCategory(i) {
 
     backlogTasks[i].category = categorySelector[categorySelector.selectedIndex].value;
 }
-
 
 
 function showAssignedUsers() {

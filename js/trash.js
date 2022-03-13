@@ -12,6 +12,7 @@ async function renderTrash(onload = false) {
 }
 
 
+
 /**
  * 
  * @returns html code for all tasks in trash
