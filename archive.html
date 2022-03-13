@@ -14,27 +14,55 @@
     <script src="./js/script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
-    <script src="./js/backlog.js"></script>
+    <script src="./js/archive.js"></script>
 
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
-    <link rel="stylesheet" href="./css/backlog.css">
+    <link rel="stylesheet" href="./css/archive.css">
 
     <title>Archive</title>
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
-
-<body onload="includeHTML(); renderTasksInArchive(true);">
+<body onload="includeHTML();renderArchive(true);">
 
     <div w3-include-html="./html_templates/menu.html"></div>
 
     <div class="wrapper  py-5">
         <div class="container-xxl px-4">
-        <h1>Archive</h1>
+            <h1>Archive</h1>
+            <p class="text-danger"><strong> Deleting tasks from this view is irrevocable!</strong></p>
+
+            <div class="container-xxl p-0 mt-5 ci-border-dark">
+                <!-- header only visible for wide screens (<990px) -->
+                <div class="card archive-header fw-bold flex-row d-none d-lg-flex p-3 mb-1">
+                    <div class="date d-flex align-items-end">
+                        ARCHIVE DATE
+                    </div>
+                    <div class="category d-flex align-items-end">
+                        CATEGORY
+                    </div>
+                    <div class="title d-flex align-items-end">
+                        TITLE
+                    </div>
+                    <div class="description d-flex align-items-end">
+                        DESCRIPTION
+                    </div>
+                    <div class="assignedTo d-flex align-items-end">
+                        ASSIGNED TO
+                    </div>
+                </div>
+
+                <div id="archive-content" class="d-flex flex-row flex-lg-column flex-wrap justify-content-center gap-3">
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
+
+
+</html>
 
 
 </html>

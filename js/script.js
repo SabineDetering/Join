@@ -76,3 +76,43 @@ function removeUser(name) {
     currentTask.assignedTo = currentTask.assignedTo.filter(user => user != name);
     showAssignedUsers();
 }
+
+/**
+ * renders html code for icon and name for each person assigned to a task
+ * @param {integer} i -index of the task 
+ * @returns html code
+ */
+function getTeam(i) {
+    let team = allTasks[i].assignedTo;
+    let html = '';
+    if (team) {
+        html += '<div class="px-0">';
+        for (let j = 0; j < team.length; j++) {
+            const name = team[j];
+            html += `
+                <div class="px-0 d-flex flex-column flex-sm-row">
+                    ${staffIconHtml(name)} <p>${name}</p> 
+                </div>
+                `;
+        }
+        html += '</div>';
+    }
+    return html;
+}
+
+
+/**
+ * renders code for restore and delete buttons
+ * @param {integer} i- index of the task 
+ * @returns html code 
+ */
+function trashButtons(i) {
+    return `<div class="d-flex w-100 justify-content-end">
+                <img type="button" onclick="event.stopPropagation();restoreTask(${i})"
+                class="trashbin p-2" src="./img/reuse.png" alt="restore to last status" title="restore to last status">
+
+                <img type="button" onclick="event.stopPropagation();deleteTask(${i})"
+                class="trashbin p-2" src="./img/delete.png" alt="delete irrevocably" title="delete irrevocably">
+            </div>
+            `;
+}

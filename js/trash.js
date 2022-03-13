@@ -1,3 +1,8 @@
+/**
+ * loads data from server is function is called onload
+ * calls render function
+ * @param {boolean} onload - true, if the function is called onload
+ */
 async function renderTrash(onload = false) {
     if (onload) {
         await init();
@@ -7,6 +12,10 @@ async function renderTrash(onload = false) {
 }
 
 
+/**
+ * 
+ * @returns html code for all tasks in trash
+ */
 function trashHtml() {
     html = '';
     for (let i = 0; i < allTasks.length; i++) {
@@ -23,6 +32,11 @@ function trashHtml() {
 }
 
 
+/**
+ * renders the information for one task in trash
+ * @param {integer} i - index of the task
+ * @returns html code 
+ */
 function trashCard(i) {
     const task = allTasks[i];
     return `
@@ -53,41 +67,27 @@ function trashCard(i) {
                 ${getTeam(i)}
             </div>
         </div>
-        <div class="d-flex w-100 justify-content-end">
-            <img type="button" onclick="event.stopPropagation();restoreTask(${i})"
-           class="trashbin p-2" src="./img/reuse.png"  alt="restore to last status" title="restore to last status">
-
-            <img type="button" onclick="event.stopPropagation();deleteTask(${i})"
-           class="trashbin p-2" src="./img/delete.png" alt="delete irrevocably" title="delete irrevocably">
-        </div>
+        ${trashButtons(i)}
     </div>
     `;
 }
 
-function getTeam(i) {
-    let team = allTasks[i].assignedTo;
-    let html = '';
-    if (team) {
-        html += '<div class="px-0">';
-        for (let j = 0; j < team.length; j++) {
-            const name = team[j];
-            html += `
-                <div class="px-0 d-flex flex-column flex-sm-row">
-                    ${ staffIconHtml(name)} <p>${name}</p> 
-                </div>
-                `;         
-        }
-        html += '</div>';
-    }
-    return html;
-}
 
+/**
+ * final deletion
+ * @param {integer} i - index of task
+ */
 function deleteTask(i) {
     allTasks.splice(i, 1);
     save(allTasks, 'tasks');
     renderTrash();
 }
 
+
+/**
+ * restores task to 'done' status
+ * @param {integer} i - index of task
+ */
 function restoreTask(i) {
     allTasks[i].status = allTasks[i].deletedFrom;
     save(allTasks, 'tasks');

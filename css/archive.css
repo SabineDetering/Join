@@ -1,8 +1,8 @@
-.trash-card {
+.archive-card {
     min-height: 100px;
 }
 
-.trash-header {
+.archive-header {
     background-color: unset;
     border: unset;
 }
@@ -19,18 +19,13 @@
 }
 
 .date {
-    width: 10%;
-    min-width: 120px;
-}
-
-.status {
-    width: 10%;
-    min-width: 70px;
+    width: 12%;
+    min-width: 130px;
 }
 
 .category {
     width: 15%;
-    min-width: 110px;
+    min-width: 120px;
 }
 
 .title {
@@ -49,8 +44,8 @@
 }
 
 @media(max-width:992px) {
-    .trash-card {
-        width: 48%;
+    .archive-card {
+        width: 45%;
         min-width: 200px;
 
     }
@@ -62,7 +57,7 @@
 }
 
 @media(max-width:576px) {
-    .trash-card {
+    .archive-card {
         width: 100%;
     }
 }

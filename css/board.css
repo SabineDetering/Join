@@ -45,8 +45,8 @@
 }
 
 .trashbin {
-    filter: brightness(0.5);
-    height: 44px;
+    filter: invert(0.5);
+    height: 40px;
     cursor: pointer;
 }
 

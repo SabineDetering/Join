@@ -48,14 +48,19 @@ function taskCard(i) {
             <div id='staff-icons' >
                 ${staffIcons(i)}
             </div>
-            <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-2" src="./img/delete.png">
+            <div>
+                ${archiveButton(i)}
+                <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-1" src="./img/delete.png">
+            </div>
         </div>
     </div>
     `;
 }
+
+
 /**
  * 
- * @param {integer} i id of the task
+ * @param {integer} i - index of the task
  * @returns html code for rendering the assigned team members
  */
 function staffIcons(i) {
@@ -71,6 +76,14 @@ function staffIcons(i) {
     return html;
 }
 
+function archiveButton(i) {
+    if (allTasks[i].status == 'done') {
+        return ` <img onclick="event.stopPropagation();archiveTask(${i})" class="trashbin p-1" src="./img/archive.png"></img>`;
+    } else {
+        return '';
+    }
+}
+
 
 function startDragging(index) {
     currentDraggedElement = index;
@@ -83,7 +96,6 @@ function allowDrop(ev) {
 
 async function moveTo(status, event) {
     event.preventDefault();
-    // let index = getIndexInAllTasks(currentDraggedElement);
     allTasks[currentDraggedElement].status = status;
     await save(allTasks, 'tasks');
     renderBoardTasks(false);
@@ -94,6 +106,13 @@ function deleteTask(i) {
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;
+    save(allTasks, 'tasks');
+
+    renderBoardTasks();
+}
+function archiveTask(i) {
+    allTasks[i].status = 'archive';
+    allTasks[i].archiveDate = today;
     save(allTasks, 'tasks');
 
     renderBoardTasks();
