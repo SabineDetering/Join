@@ -4,7 +4,7 @@
 
 .trash-header {
     background-color: unset;
-    border:unset;
+    border: unset;
 }
 
 .card span, .card div {
@@ -19,25 +19,50 @@
 }
 
 .date {
-    width: 15%;
+    width: 10%;
+    min-width: 120px;
 }
 
 .status {
-    width: 15%
+    width: 10%;
+    min-width: 70px;
 }
 
 .category {
-    width: 15%
+    width: 15%;
+    min-width: 110px;
 }
 
 .title {
-    width: 25%
+    flex: 1;
+    min-width: 110px;
 }
 
 .description {
-    width: 25%
+    flex: 1;
+    min-width: 110px;
 }
 
 .assignedTo {
-    width: 15%
+    width: 25%;
+    min-width: 130px;
+}
+
+@media(max-width:992px) {
+    .trash-card {
+        width: 45%;
+        min-width: 200px;
+
+    }
+
+    .date, .status, .category, .title, .description, .assignedTo {
+        width: 100%;
+        flex: 0;
+    }
+}
+
+@media(max-width:576px) {
+    .trash-card {
+        width: 100%;
+    }
 }

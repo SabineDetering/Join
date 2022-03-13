@@ -15,7 +15,7 @@ function renderCards() {
         currentTask = backlogTasks[i];
 
         backlogContent.innerHTML +=
-            `<div onclick="showCard(${i})" class="card">
+            `<div onclick="showCard(${i})" class="card shadow">
                 <div class="card-body cardInBacklog">
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${task.dueDate}</div>

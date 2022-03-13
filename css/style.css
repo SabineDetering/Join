@@ -65,16 +65,18 @@ select:focus,
     width: 30px;
 }
 
-
 .icon-margin {
     margin-right: 5px;
 }
-
-
+/******************************************************** */
 @media(min-width:768px) {
     .wrapper {
         padding-left: var(--menu-width);
-        /* margin-right:0; */
     }
+}
 
+@media(max-width:768px) {
+    .wrapper {
+        margin-bottom: 10vh;
+    }
 }
