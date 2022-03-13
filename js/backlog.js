@@ -18,11 +18,14 @@ function renderCards() {
         backlogContent.innerHTML +=
             `<div onclick="showCard(${i})" class="card shadow">
                 <div class="card-body cardInBacklog">
+                <div class="iconsInCards">
+                    <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon" title="move to board">
+                    <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-2" src="./img/delete.png">
+                </div>
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${task.dueDate}</div>
                     <p class="category">${task.category}<p>
                     <p class="title">${task.title}<p>
-                    <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-2" src="./img/delete.png">
                 </div>
             </div>`;
     }
@@ -82,8 +85,8 @@ function showCard(i) {
     <select onchange="changeCategory(${i})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
     
     getId('containerOfBacklogButtons').innerHTML = 
-    `<div class="div-of-moveToBoard-btn">
-        <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon" title="move to board">
+    `<div class="moveToBoardContainer">
+        <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
     </div>
     <div id="button" class="modal-footer">
         <button onclick="previousCard(${i})" class="btn btn-primary">previous task</button>

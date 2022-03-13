@@ -113,12 +113,22 @@ h6 {
 }
 
 .plane-icon {
-    height: 40px;
-    margin-right: 18px;
-    margin-bottom: 5px;
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
     cursor: pointer;
+    filter: invert(0.2);
 }
 
+.plane-icon:hover {
+    filter: invert(0);
+}
+
+.plane-icon-in-modal {
+    position: absolute;
+    right: 18px;
+    bottom: 5px;
+}
 .assignTask {
     display: flex;
     filter: grayscale(0.8);
@@ -134,11 +144,20 @@ h6 {
     align-items: center;
 }
 
-.trashbin {
-    filter: brightness(0.5);
+.iconsInCards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    right: 0;
+    right: 12px;
+    bottom: 5px;
+}
+
+.trashbin {
+    filter: brightness(0.3);
     height: 44px;
+    width: 44px;
+    object-fit: cover;
 }
 
 .modal-content {
@@ -194,9 +213,10 @@ h6 {
     padding-left: 0;
 }
 
-.div-of-moveToBoard-btn {
+.moveToBoardContainer {
     display: flex;
     justify-content: flex-end;
+    position: relative;
 }
 
 .moveToBoard-btn {
