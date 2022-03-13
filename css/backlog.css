@@ -40,6 +40,13 @@ h6 {
     box-shadow: rgba(116, 116, 116, 0.24) 0px 3px 8px;
 }
 
+.importance {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 20px;
+}
+
 .headerOfCard {
     display: flex;
     padding: 1rem 1rem;

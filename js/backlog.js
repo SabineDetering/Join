@@ -19,15 +19,30 @@ function renderCards() {
             `<div onclick="showCard(${i})" class="card shadow">
                 <div class="card-body cardInBacklog">
                 <div class="iconsInCards">
-                    <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon" title="move to board">
+                    <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
                     <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin p-2" src="./img/delete.png">
                 </div>
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${task.dueDate}</div>
                     <p class="category">${task.category}<p>
                     <p class="title">${task.title}<p>
+                    <div class="importance" id="importance${i}"><div>
                 </div>
             </div>`;
+            checkImportance(i);
+    }
+}
+
+function checkImportance(i) {
+    let chosenImportance = backlogTasks[i].importance;
+    let containerColor = getId(`importance${i}`);
+
+    if(chosenImportance == 'low') {
+        containerColor.style = "background-color: #036603e6";  
+    } else if(chosenImportance == 'medium') {
+        containerColor.style = "background-color: #e5cf08"; 
+    } else {
+        containerColor.style = "background-color: #9b2020";  
     }
 }
 
@@ -137,10 +152,9 @@ function saveChanges(i) {
 }
 
 function moveToBoard(i) {
-    allTasks[i].status == 'todo';
-
-    renderTasksInBacklog();
+    backlogTasks[i].status = 'todo';
     save(allTasks, 'tasks');
+    renderTasksInBacklog();
 }
 
 // renders the option fields of category-selector and displays the chosen one
