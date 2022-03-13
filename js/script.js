@@ -1,17 +1,9 @@
-// function login(){
-//     document.getElementById('login').style.display = 'none';
-//     document.getElementById('logout').style.display = 'flex';
-// }
-
-// function logout(){
-//     document.getElementById('login').style.display = 'flex';
-//     document.getElementById('logout').style.display = 'none';
-// }
-
 let allTasks = [];
 let users = {};
 let categories = [];
+//maximum number of people that can be assigned to one task
 let maxTeamSizePerTask = 2;
+//maximum number of active tasks (in progress, testing) that one person can be assigned to
 let maxActiveTasksPerUser = 2;
 let highestTaskId = -1;
 let currentTask = {};
@@ -23,10 +15,13 @@ function getId(id) {
     return document.getElementById(id);
 }
 
+
 function showMenu() {
     let menubar = getId('menubar');
     menubar.style.left = '0';
 }
+
+
 function hideMenu() {
     let menubar = getId('menubar');
     menubar.style.left = 'var(--menu-width-neg)';
@@ -35,7 +30,7 @@ function hideMenu() {
 
 /**
  * 
- * @param {string} user -name of a user
+ * @param {string} user - name of a user
  * @returns either the image or the initials of a user
  */
 function staffIconContent(user) {
@@ -46,13 +41,36 @@ function staffIconContent(user) {
     }
 }
 
-function staffIconHtml(user, onclick = true) {
-    if (onclick) {
+
+/**
+ * creates html code for staff icons 
+ * if clickable is true, a drop down list is appended to the icon, showing name and email of the user and allowing to remove the user from the assignedTo array
+ * @param {string} user 
+ * @param {boolean} clickable - true if icon must have a drop down list
+ * @returns 
+ */
+function staffIconHtml(user, clickable = true) {
+    if (clickable) {
         return `
         <div class="btn-group dropend">
             <span class="staff-icon p-2 me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">${staffIconContent(user)}</span>
+            ${dropDownHtml(user)};             
+        </div>
+        `;
+    }
+    else {
+        return `<span class="staff-icon p-2 me-1">${staffIconContent(user)}</span>`;
+    }
+}
 
-             <ul class="dropdown-menu">
+/**
+ * creates html code for drop down appended to a staff icon
+ * content: name, email, possibility to remove user from assignedTo array
+ * @param {string} user - name of user
+ * @returns html code
+ */
+function dropDownHtml(user) {
+    return `<ul class="dropdown-menu">
                  <li>
                     <span class="dropdown-item disabled">${user}</span>
                  </li>
@@ -63,19 +81,20 @@ function staffIconHtml(user, onclick = true) {
                 <li>
                     <a class="dropdown-item" onclick = "removeUser('${user}')">Remove from task</a>
                 </li>
-            </ul>
-        </div>
-        `;
-    }
-    else {
-        return `<span class="staff-icon p-2 me-1">${staffIconContent(user)}</span>`;
-    }
+            </ul>`;    
 }
 
+
+/**
+ * removes a user form being assigned to a task
+ * updates the presentation of assigned to users
+ * @param {string} name - name of user in array assignedTo 
+ */
 function removeUser(name) {
     currentTask.assignedTo = currentTask.assignedTo.filter(user => user != name);
     showAssignedUsers();
 }
+
 
 /**
  * renders html code for icon and name for each person assigned to a task
@@ -102,8 +121,8 @@ function getTeam(i) {
 
 
 /**
- * renders code for restore and delete buttons
- * @param {integer} i- index of the task 
+ * renders html code for restore and delete buttons
+ * @param {integer} i - index of the task 
  * @returns html code 
  */
 function trashButtons(i) {

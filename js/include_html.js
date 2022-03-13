@@ -27,9 +27,14 @@ function includeHTML() {
     updateActivePage();
 }
 
+
+/**
+ * marks actual page as active page in menubar
+ */
 function updateActivePage() {
     let active = window.location.pathname.split('/').pop();
     let links = document.getElementsByClassName('nav-link');
+    
     for (let i = 0; i < links.length; i++) {
         const link = links[i];
         link.classList.remove('active');
