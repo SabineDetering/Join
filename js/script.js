@@ -54,7 +54,7 @@ function staffIconHtml(user, clickable = true) {
         return `
         <div class="btn-group dropend">
             <span class="staff-icon p-2 me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">${staffIconContent(user)}</span>
-            ${dropDownHtml(user)};             
+            ${dropDownHtml(user)}            
         </div>
         `;
     }
