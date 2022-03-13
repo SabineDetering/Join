@@ -85,7 +85,7 @@ function removeUser(name) {
 function getTeam(i) {
     let team = allTasks[i].assignedTo;
     let html = '';
-    if (team) {
+    if (team.length > 0) {
         html += '<div class="px-0">';
         for (let j = 0; j < team.length; j++) {
             const name = team[j];
@@ -96,7 +96,7 @@ function getTeam(i) {
                 `;
         }
         html += '</div>';
-    }
+        } else { html = `<div>&nbsp;</div>` }
     return html;
 }
 
