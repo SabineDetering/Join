@@ -7,7 +7,7 @@
 // ////////////////////////////////////////////////////////////////////
 
 /**
- * loads data from server
+ * loads data from server if function is called onload
  * calls functions to fill dropdown menus in add tasks form dynamically
  */
 async function renderAddTaskForm(onload=false) {

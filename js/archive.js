@@ -1,5 +1,5 @@
 /**
- * loads data from server is function is called onload
+ * loads data from server if function is called onload
  * calls render function
  * @param {boolean} onload - true, if the function is called onload
  */
@@ -31,6 +31,7 @@ function archiveHtml() {
         return "There are no archived tasks."
     }
 }
+
 
 /**
  * renders the information for one task in archive
@@ -70,7 +71,7 @@ function archiveCard(i) {
 
 
 /**
- * final deletion
+ * final deletion of a task
  * @param {integer} i - index of task
  */
 function deleteTask(i) {

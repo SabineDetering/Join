@@ -1,5 +1,5 @@
 /**
- * loads data from server is function is called onload
+ * loads data from server if function is called onload
  * calls render function
  * @param {boolean} onload - true, if the function is called onload
  */
@@ -10,7 +10,6 @@ async function renderTrash(onload = false) {
     let trash = getId('trash-content');
     trash.innerHTML = trashHtml();
 }
-
 
 
 /**
@@ -76,7 +75,7 @@ function trashCard(i) {
 
 
 /**
- * final deletion
+ * final deletion of task
  * @param {integer} i - index of task
  */
 function deleteTask(i) {
@@ -87,7 +86,7 @@ function deleteTask(i) {
 
 
 /**
- * restores task to 'done' status
+ * restores task to the status where it was deleted from
  * @param {integer} i - index of task
  */
 function restoreTask(i) {
@@ -95,5 +94,3 @@ function restoreTask(i) {
     save(allTasks, 'tasks');
     renderTrash();
 }
-
-
