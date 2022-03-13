@@ -1,7 +1,9 @@
 let backlogTasks = [];
 
-async function renderTasksInBacklog() {
-    await init();
+async function renderTasksInBacklog(onload = false) {
+    if(onload){
+        await init();
+    }
     backlogTasks = allTasks.filter(task => task.status == 'backlog');
     renderCards();
 }
@@ -31,9 +33,10 @@ function getStaff(i) {
     let staff = backlogTasks[i].assignedTo;
     let html = '';
 
+    if (staff.length > 1) {
     for (let index = 0; index < staff.length; index++) {
         const teamMember = staff[index];
-        if (teamMember) {
+
             html +=
                 `<div class="userContent">
                 ${staffIconHtml(teamMember)}
@@ -43,9 +46,13 @@ function getStaff(i) {
                 </div>
                 </div>`;
         }
-    }
-    return html;
+    } 
+    else { html += `<div class="assignTask">
+    <img class="plus-icon" src="./img/icon plus.png">
+    <p>Click card to assign task!</p></div>` }
+return html;
 }
+
 
 function deleteTask(i) {
     let idToDelete = backlogTasks[i].id;
@@ -56,8 +63,7 @@ function deleteTask(i) {
     allTasks[indexToDelete].deleteDate = today;
     save(allTasks, 'tasks');
 
-    backlogTasks = allTasks.filter(task => task.status == 'backlog');
-    renderCards();
+    renderTasksInBacklog();
 }
 
 function showCard(i) {
@@ -127,7 +133,6 @@ function saveChanges(i) {
 
     let idToSave = backlogTasks[i].id;
     let indexToSave = allTasks.findIndex(task => task.id == idToSave);
-
     
     allTasks[indexToSave].title = title;
     allTasks[indexToSave].description = description;
@@ -136,8 +141,7 @@ function saveChanges(i) {
     allTasks[indexToSave].category = backlogTasks[i].category;
 
     save(allTasks, 'tasks');
-    backlogTasks = allTasks.filter(task => task.status == 'backlog');
-    renderCards();
+    renderTasksInBacklog();
 }
 
 function moveToBoard(i) {
@@ -164,7 +168,6 @@ function changeCategory(i) {
 
     backlogTasks[i].category = categorySelector[categorySelector.selectedIndex].value;
 }
-
 
 
 function showAssignedUsers() {
