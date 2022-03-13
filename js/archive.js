@@ -86,7 +86,9 @@ function deleteTask(i) {
  * @param {integer} i - index of task
  */
 function restoreTask(i) {
-    allTasks[i].status = 'done';
+    let task = allTasks[i];
+    task.status = 'done';
+    task.archiveDate = '';
     save(allTasks, 'tasks');
     renderArchive();
 }

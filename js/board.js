@@ -5,34 +5,47 @@ let currentDraggedElement;
  * loads all tasks from server if function is called onload
  * renders all tasks that belong to the board according to their status
  */
-async function renderBoardTasks(onload=false) {
+async function renderBoardTasks(onload = false) {
     if (onload) {
         await init();
     }
-
-    let todo = getId('todo');
-    let progress = getId('progress');
-    let testing = getId('testing');
-    let done = getId('done');
-
-    todo.innerHTML = '';
-    progress.innerHTML = '';
-    testing.innerHTML = '';
-    done.innerHTML = '';
-
-    for (let i = 0; i < allTasks.length; i++) {
-        const task = allTasks[i];
-        if (task.status == 'todo') {
-            todo.innerHTML += taskCard(i);
-        } else if (task.status == 'progress') {
-            progress.innerHTML += taskCard(i);
-        } else if (task.status == 'testing') {
-            testing.innerHTML += taskCard(i);
-        } else if (task.status == 'done') {
-            done.innerHTML += taskCard(i);
+    let statusList = ['todo', 'progress', 'testing', 'done'];
+    for (let j = 0; j < statusList.length; j++) {
+        const status = statusList[j];
+        let statusElement = getId(status);
+        statusElement.innerHTML = '';
+        for (let i = 0; i < allTasks.length; i++) {
+            const task = allTasks[i];
+            if (task.status == status) {
+                statusElement.innerHTML += taskCard(i);
+            }
         }
     }
 }
+
+//     let todo = getId('todo');
+//     let progress = getId('progress');
+//     let testing = getId('testing');
+//     let done = getId('done');
+
+//     todo.innerHTML = '';
+//     progress.innerHTML = '';
+//     testing.innerHTML = '';
+//     done.innerHTML = '';
+
+//     for (let i = 0; i < allTasks.length; i++) {
+//         const task = allTasks[i];
+//         if (task.status == 'todo') {
+//             todo.innerHTML += taskCard(i);
+//         } else if (task.status == 'progress') {
+//             progress.innerHTML += taskCard(i);
+//         } else if (task.status == 'testing') {
+//             testing.innerHTML += taskCard(i);
+//         } else if (task.status == 'done') {
+//             done.innerHTML += taskCard(i);
+//         }
+//     }
+// }
 
 
 /**
@@ -71,7 +84,7 @@ function staffIcons(i) {
     for (let index = 0; index < staff.length; index++) {
         const teamMember = staff[index];
         if (teamMember) {
-            html += staffIconHtml(teamMember,false);
+            html += staffIconHtml(teamMember, false);
         }
     }
     return html;

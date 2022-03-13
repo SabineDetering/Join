@@ -90,7 +90,10 @@ function deleteTask(i) {
  * @param {integer} i - index of task
  */
 function restoreTask(i) {
-    allTasks[i].status = allTasks[i].deletedFrom;
+    let task = allTasks[i];
+    task.status = allTasks[i].deletedFrom;
+    task.deletedFrom = '';
+    task.deleteDate = '';
     save(allTasks, 'tasks');
     renderTrash();
 }
