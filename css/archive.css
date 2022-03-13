@@ -45,12 +45,13 @@
 
 @media(max-width:992px) {
     .archive-card {
-        width: 45%;
+        width: 48%;
+        max-width:48%;
         min-width: 200px;
 
     }
 
-    .date, .status, .category, .title, .description, .assignedTo {
+    .date, .category, .title, .description, .assignedTo {
         width: 100%;
         flex: 0;
     }

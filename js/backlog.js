@@ -1,7 +1,9 @@
 let backlogTasks = [];
 
-async function renderTasksInBacklog() {
-    await init();
+async function renderTasksInBacklog(onload = false) {
+    if(onload){
+        await init();
+    }
     backlogTasks = allTasks.filter(task => task.status == 'backlog');
     renderCards();
 }
