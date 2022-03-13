@@ -1,7 +1,7 @@
 let backlogTasks = [];
 
 async function renderTasksInBacklog(onload = false) {
-    if(onload){
+    if (onload) {
         await init();
     }
     backlogTasks = allTasks.filter(task => task.status == 'backlog');
@@ -14,7 +14,6 @@ function renderCards() {
     for (let i = 0; i < backlogTasks.length; i++) {
 
         let task = backlogTasks[i];
-        currentTask = backlogTasks[i];
 
         backlogContent.innerHTML +=
             `<div onclick="showCard(${i})" class="card shadow">
@@ -33,24 +32,25 @@ function getStaff(i) {
     let staff = backlogTasks[i].assignedTo;
     let html = '';
 
-    if (staff.length > 1) {
-    for (let index = 0; index < staff.length; index++) {
-        const teamMember = staff[index];
+    if (staff.length > 0) {
+        for (let index = 0; index < staff.length; index++) {
+            const teamMember = staff[index];
 
             html +=
                 `<div class="userContent">
-                ${staffIconHtml(teamMember)}
+                ${staffIconHtml(teamMember, false)}
                 <div class="userAndMail">
                 <p>${users[teamMember].name}<p>
                 <p>${users[teamMember].email}<p>
                 </div>
                 </div>`;
         }
-    } 
-    else { html += `<div class="assignTask">
+    }
+    else {
+        html += `<div class="assignTask">
     <img class="plus-icon" src="./img/icon plus.png">
     <p>Click card to assign task!</p></div>` }
-return html;
+    return html;
 }
 
 
@@ -71,6 +71,7 @@ function showCard(i) {
     cardModal.show();
     let task = backlogTasks[i];
     let contentOfCard = getId('modal-content');
+    currentTask = backlogTasks[i];
 
     contentOfCard.innerHTML = `
     <div class="modal-header">
@@ -87,7 +88,6 @@ function showCard(i) {
     <div><h6><b>due Date:</b></h6><input id="backlog-date" value="${task.dueDate}" type="date" class="backlog-date form-control mb-3" required aria-describedby="due-date-button" id="due-date"></div>
     <div><h6><b>category:</b></h6>
     <select onchange="changeCategory(${i})" id="category-backlog" class="form-select" aria-label="Default select example">
-    <option id="selectedCategory" selected>${task.category}</option>
     </select></div>
     </div>
     <h6><b>assigned to:</b></h6>
@@ -103,7 +103,7 @@ function showCard(i) {
     </div>`;
 
     showAssignedUsers();
-    renderCategories();
+    renderCategories(i);
 }
 
 function previousCard(i) {
@@ -133,7 +133,7 @@ function saveChanges(i) {
 
     let idToSave = backlogTasks[i].id;
     let indexToSave = allTasks.findIndex(task => task.id == idToSave);
-    
+
     allTasks[indexToSave].title = title;
     allTasks[indexToSave].description = description;
     allTasks[indexToSave].dueDate = date;
@@ -151,13 +151,18 @@ function moveToBoard(i) {
     save(allTasks, 'tasks');
 }
 
-function renderCategories() {
+function renderCategories(i) {
 
     let category = document.getElementById('category-backlog');
     category.innerHTML = '';
 
     for (j = 0; j < categories.length; j++) {
-        category.innerHTML += `<option>${categories[j]}</option>`;
+        if (backlogTasks[i].category == categories[j]) {
+            category.innerHTML += `<option selected>${categories[j]}</option>`;
+        } else {
+            category.innerHTML += `<option>${categories[j]}</option>`;
+        }
+
     }
 }
 
@@ -171,12 +176,13 @@ function changeCategory(i) {
 
 
 function showAssignedUsers() {
+
     let assignedTo = getId('assigned-to-backlog');
     assignedTo.innerHTML = '';
     for (let i = 0; i < currentTask.assignedTo.length; i++) {
         const name = currentTask.assignedTo[i];
-        assignedTo.innerHTML += 
-        `<div class="userContent">
+        assignedTo.innerHTML +=
+            `<div class="userContent">
         ${staffIconHtml(name)}
         <div class="userAndMail">
         <p>${users[name].name}</p>
