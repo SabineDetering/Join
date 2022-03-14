@@ -115,7 +115,7 @@ function showCard(i, board) {
     </div>
     <div id="button" class="modal-footer">
         <button onclick="previousCard(${i})" class="btn btn-primary">previous task</button>
-        <button onclick="saveChanges(${i})" type="button" class="btn btn-outline-success">save changes</button>
+        <button onclick="saveChanges(${i}, ${board})" type="button" class="btn btn-outline-success">save changes</button>
         <button id="nextTask" onclick="nextCard(${i})" class="btn btn-primary">next task</button>
     </div>`;
 
@@ -143,19 +143,26 @@ function nextCard(i) {
     showCard(i);
 }
 
-function saveChanges(i) {
+function saveChanges(i, board) {
     let title = getId('backlog-title').textContent;
     let description = getId('backlog-description').textContent;
     let date = getId('backlog-date').value;
+    let idToSave;
+    let indexToSave;
 
-    let idToSave = backlogTasks[i].id;
-    let indexToSave = allTasks.findIndex(task => task.id == idToSave);
+    if(board == 'board') {
+        indexToSave = i;
+    } else {
+        idToSave = backlogTasks[i].id;
+        indexToSave = allTasks.findIndex(task => task.id == idToSave);
+    }
+
 
     allTasks[indexToSave].title = title;
     allTasks[indexToSave].description = description;
     allTasks[indexToSave].dueDate = date;
     allTasks[indexToSave].assignedTo = currentTask.assignedTo;
-    allTasks[indexToSave].category = backlogTasks[i].category;
+    allTasks[indexToSave].category = currentTask.category;
 
     save(allTasks, 'tasks');
     renderTasksInBacklog();
