@@ -1,13 +1,10 @@
-body {
-    height: 100%;
-}
 
 body {
+    height: 100vh;
     display: flex;
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #f5f5f5;
 }
 
 .form-signin {
@@ -45,4 +42,5 @@ body {
 .join-btn-color:hover{
     background-color: #0b587c;
     border: 1px solid #0b587c;
+    color: white;
 }
