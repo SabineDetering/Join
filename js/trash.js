@@ -41,8 +41,8 @@ function trashHtml() {
 function trashCard(i) {
     const task = allTasks[i];
     return `
-    <div class="card trash-card px-2 pt-4 d-flex flex-column justify-content-between shadow type="button">
-        <div class=" d-flex align-items-start flex-column flex-lg-row">
+    <div class="card trash-card px-2 pt-4 d-flex flex-column justify-content-between shadow">
+        <div class="d-flex align-items-start flex-column flex-lg-row">
             <div class="fw-bold d-lg-none">Delete date</div>
             <div class="date">
                 ${task.deleteDate}
@@ -86,12 +86,12 @@ function deleteTask(i) {
 
 
 /**
- * restores task to the status where it was deleted from
+ * restores task to board with status todo
  * @param {integer} i - index of task
  */
 function restoreTask(i) {
     let task = allTasks[i];
-    task.status = allTasks[i].deletedFrom;
+    task.status = 'todo';
     task.deletedFrom = '';
     task.deleteDate = '';
     save(allTasks, 'tasks');

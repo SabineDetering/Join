@@ -41,7 +41,7 @@ function archiveHtml() {
 function archiveCard(i) {
     const task = allTasks[i];
     return `
-    <div class="card archive-card px-2 pt-4 d-flex flex-column justify-content-between shadow type="button">
+    <div class="card archive-card px-2 pt-4 d-flex flex-column justify-content-between shadow">
         <div class=" d-flex align-items-start flex-column flex-lg-row">
             <div class="fw-bold d-lg-none">Delete date</div>
             <div class="date">
