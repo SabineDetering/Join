@@ -11,7 +11,8 @@
 
 
 /* .categories {
-    margin-right: 16px;
+    max-height: 300px;
+    overflow-y: auto;
 } */
 
 
@@ -34,8 +35,13 @@
 }
 
 .card-body {
-    /* min-height: 500px; */
     width: 290px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.card-margin{
+    margin: 5px;
 }
 
 .task:hover {
@@ -62,16 +68,16 @@
     } */
 
 
-    /* .card-body {
-        min-height: 290px;
-    } */
+    .card-body {
+        max-height: 300px;
+    }
 }
 
 
 @media(max-width:768px) {
-    .board-content {
+    /* .board-content {
         height: 90vh;
-    }
+    } */
 
 }
 
@@ -79,6 +85,11 @@
 @media (max-width: 660px) {
     .status-wrap {
         display: block;
+    }
+
+
+    .card-body {
+        max-height: 200px;
     }
 
     .categories {
@@ -96,10 +107,14 @@
     }
 }
 
-/* @media (max-width: 340px) {
+@media (max-width: 340px) {
     .card-body {
         width: 99vw;
 
     }
 
-} */
+    .card-margin{
+        margin: 0;
+    }
+
+}
