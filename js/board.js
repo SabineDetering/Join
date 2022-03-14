@@ -40,7 +40,7 @@ function taskCard(i) {
             </div>
             <div>
                 ${archiveButton(i)}
-                <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin" src="./img/delete.png">
+                <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin plane-icon" src="./img/delete.png">
             </div>
         </div>
     </div>

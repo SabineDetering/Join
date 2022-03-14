@@ -35,7 +35,7 @@ h6 {
     margin-bottom: 12px;
     width: 80vw;
     cursor: pointer;
-    transition: all ease-in-out 125ms;
+    /* transition: all ease-in-out 125ms; */
 }
 
 .card:hover {
