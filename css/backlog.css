@@ -486,3 +486,36 @@ h6 {
     }
 
 }
+
+
+@media (max-width: 340px){
+    .userContent{
+        flex-direction: column;
+    }
+
+
+    .container{
+        width: 100vw;
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+
+    .card{
+        overflow: auto;
+        /* width: 100vw; */
+    }
+
+
+    .card-body{
+        padding: 0 !important;
+    }
+
+
+    /* .iconsInCards {
+        bottom: -30 !important;
+    } */
+
+}
