@@ -31,7 +31,7 @@ async function renderBoardTasks(onload = false) {
  */
 function taskCard(i) {
     return `    
-    <div id="task${i}" draggable="true" ondragstart="startDragging(${i})" class="card task shadow p-2 mb-1" onclick="showCard(${i})">
+    <div id="task${i}" draggable="true" ondragstart="startDragging(${i})" class="card task shadow p-2 mb-1" onclick="showTask(${i})">
         <h6>${allTasks[i].title}</h6>
 
         <div class="d-flex justify-content-between">
