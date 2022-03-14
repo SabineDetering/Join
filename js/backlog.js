@@ -33,6 +33,7 @@ function renderCards() {
     }
 }
 
+// 
 function checkImportance(i) {
     let chosenImportance = backlogTasks[i].importance;
     let containerColor = getId(`card${i}`);
