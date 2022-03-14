@@ -29,7 +29,7 @@ function renderCards() {
                     <div class="importance" id="importance${i}"><div>
                 </div>
             </div>`;
-            checkImportance(i);
+        checkImportance(i);
     }
 }
 
@@ -38,12 +38,12 @@ function checkImportance(i) {
     let chosenImportance = backlogTasks[i].importance;
     let containerColor = getId(`card${i}`);
 
-    if(chosenImportance == 'low') {
-        containerColor.style = "border-left: 20px solid #036603e6";  
-    } else if(chosenImportance == 'medium') {
-        containerColor.style = "border-left: 20px solid #e5cf08"; 
+    if (chosenImportance == 'low') {
+        containerColor.style = "border-left: 20px solid #036603e6";
+    } else if (chosenImportance == 'medium') {
+        containerColor.style = "border-left: 20px solid #e5cf08";
     } else {
-        containerColor.style = "border-left: 20px solid #9b2020";  
+        containerColor.style = "border-left: 20px solid #9b2020";
     }
 }
 
@@ -86,22 +86,30 @@ function deleteTask(i) {
 }
 
 // renders the content of Modal which opens when card gets clicked
-function showCard(i) {
+function showCard(i, board) {
     let cardModal = new bootstrap.Modal(getId('cardModal'), {});
     cardModal.show();
-    let task = backlogTasks[i];
-    currentTask = backlogTasks[i];
+    let task;
+
+    if (board == 'board') { // if the modal is rendered from board, it fills content of allTasks Array
+        task = allTasks[i];
+        currentTask = allTasks[i];
+    } else {
+        task = backlogTasks[i];
+        currentTask = backlogTasks[i];
+    }
+
 
     getId('backlog-title').innerHTML = task.title;
     getId('backlog-description').innerHTML = task.description;
     getId('backlog-date').value = task.dueDate;
-    
-    getId('selectCategory').innerHTML = 
-    `<h6><b>CATEGORY:</b></h6>
-    <select onchange="changeCategory(${i})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
-    
-    getId('containerOfBacklogButtons').innerHTML = 
-    `<div class="moveToBoardContainer">
+
+    getId('selectCategory').innerHTML =
+        `<h6><b>CATEGORY:</b></h6>
+    <select onchange="changeCategory(${i}, ${board})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
+
+    getId('containerOfBacklogButtons').innerHTML =
+        `<div class="moveToBoardContainer">
         <img onclick="deleteTask(${i})" class="trashbin p-2" src="./img/delete.png" title="delete this card">
         <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
     </div>
@@ -112,7 +120,7 @@ function showCard(i) {
     </div>`;
 
     showAssignedUsers();
-    renderCategories(i);
+    renderCategories(i, board);
 }
 
 function previousCard(i) {
@@ -160,27 +168,38 @@ function moveToBoard(i) {
 }
 
 // renders the option fields of category-selector and displays the chosen one
-function renderCategories(i) {
+function renderCategories(i, board) {
 
     let category = document.getElementById('category-backlog');
     category.innerHTML = '';
+    let tasks;
+
+    if (board == 'board') { // if board is chosesn, function renders categories of allTasks
+        tasks = allTasks[i];
+    } else {
+        tasks = backlogTasks[i];
+    }
 
     for (j = 0; j < categories.length; j++) {
-        if (backlogTasks[i].category == categories[j]) {
+        if (tasks.category == categories[j]) {
             category.innerHTML += `<option selected>${categories[j]}</option>`;
         } else {
             category.innerHTML += `<option>${categories[j]}</option>`;
         }
-
     }
 }
 
-
-function changeCategory(i) {
+function changeCategory(i, board) {
     let categorySelector = getId('category-backlog');
 
     categorySelector[categorySelector.selectedIndex].value;
+    
+    if(board == 'board') {
+    allTasks[i].category = categorySelector[categorySelector.selectedIndex].value; 
+    } else {
     backlogTasks[i].category = categorySelector[categorySelector.selectedIndex].value;
+    }
+
 }
 
 

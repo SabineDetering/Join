@@ -1,0 +1,179 @@
+p {
+    margin: 0;
+}
+
+.infosOfCard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 24px;
+}
+
+.textarea-backlog {
+    width: 410px !important;
+    border: 0;
+    padding-left: 0;
+    resize: none;
+}
+
+.textarea-backlog-description {
+    width: 480px !important;
+    padding-left: 0;
+    border: 0;
+    resize: none;
+}
+
+.dateAndCategory {
+    display: flex;
+    gap: 32px;
+}
+
+.backlog-date {
+    width: 140px;
+    border: 0;
+    cursor: pointer;
+    padding-left: 0;
+}
+
+.personInCard {
+    display: flex;
+    gap: 18px;
+}
+
+.plane-icon {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    cursor: pointer;
+    filter: invert(0.2);
+}
+
+.plane-icon:hover {
+    filter: invert(0);
+}
+
+.plane-icon-in-modal {
+    position: absolute;
+    right: 40px;
+    bottom: 5px;
+}
+
+#plus-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.userContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.userAndMail {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-select {
+    width: 155px;
+    border: 0;
+    padding: 0;
+}
+
+.moveToBoardContainer {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.trashbin {
+    filter: brightness(0.3);
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+}
+
+.trashbin:hover {
+    filter: brightness(0.1);
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 360px) { 
+
+    .textarea-backlog {
+        width: 100% !important;
+    }
+    
+    .textarea-backlog-description {
+        width: 100% !important;
+    }
+
+    .personContent {
+        display: flex;
+        align-items: center;
+    }
+
+    .personInCard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 30%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .dateAndCategory {
+        gap: 12px;
+    }
+
+}
+
+@media only screen and (min-width: 360px) { 
+
+    .textarea-backlog {
+        width: 100% !important;
+    }
+    
+    .textarea-backlog-description {
+        width: 100% !important;
+    }
+
+    .personContent {
+        display: flex;
+        align-items: center;
+    }
+
+    .personInCard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 30%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .dateAndCategory {
+        gap: 12px;
+    }
+
+}
+
+
+@media only screen and (min-width: 600px) {
+
+    .personInCard {
+        flex-direction: row;
+    }
+
+}
+
+
