@@ -77,12 +77,25 @@ select:focus,
     border-left: 12px solid #036603e6;
 }
 
-.bd-imp-medium{
+.bd-imp-medium {
     border-left: 12px solid #e5cf08;
 }
 
 .bd-imp-high {
     border-left: 12px solid #9b2020;
+}
+
+
+.trashbin {
+    filter: brightness(0.6);
+    height: 44px;
+    width: 44px;
+    padding:8px;
+    object-fit: cover;
+}
+
+.trashbin:hover {
+    filter: brightness(0.1);
 }
 
 /******************************************************** */
