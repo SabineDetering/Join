@@ -34,7 +34,7 @@ function taskCard(i) {
     <div id="task${i}" draggable="true" ondragstart="startDragging(${i})" class="card task shadow p-2 mb-1" onclick="showTask(${i})">
         <h6>${allTasks[i].title}</h6>
 
-        <div class="d-flex justify-content-between">
+        <div class="icons-responsive d-flex justify-content-between">
             <div id='staff-icons' class="d-flex" >
                 ${staffIcons(i)}
             </div>

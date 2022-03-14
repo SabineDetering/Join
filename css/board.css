@@ -36,7 +36,7 @@
 
 .card-body {
     width: 290px;
-    max-height: 600px;
+    max-height: 650px;
     overflow-y: auto;
 }
 
@@ -117,4 +117,16 @@
         margin: 0;
     }
 
+    .trashbin {
+        height: 30px;
+    }
+
 }
+
+
+@media (max-width: 200px) {
+    .icons-responsive{
+        flex-direction: column;
+    }
+}
+
