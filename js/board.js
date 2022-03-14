@@ -2,7 +2,7 @@ let currentDraggedElement;
 
 
 /**
- * loads all tasks from server if function is called onload
+ * loads data from server if function is called onload
  * renders all tasks that belong to the board according to their status
  */
 async function renderBoardTasks(onload = false) {
@@ -22,30 +22,6 @@ async function renderBoardTasks(onload = false) {
         }
     }
 }
-
-//     let todo = getId('todo');
-//     let progress = getId('progress');
-//     let testing = getId('testing');
-//     let done = getId('done');
-
-//     todo.innerHTML = '';
-//     progress.innerHTML = '';
-//     testing.innerHTML = '';
-//     done.innerHTML = '';
-
-//     for (let i = 0; i < allTasks.length; i++) {
-//         const task = allTasks[i];
-//         if (task.status == 'todo') {
-//             todo.innerHTML += taskCard(i);
-//         } else if (task.status == 'progress') {
-//             progress.innerHTML += taskCard(i);
-//         } else if (task.status == 'testing') {
-//             testing.innerHTML += taskCard(i);
-//         } else if (task.status == 'done') {
-//             done.innerHTML += taskCard(i);
-//         }
-//     }
-// }
 
 
 /**
@@ -117,9 +93,40 @@ function allowDrop(ev) {
 
 async function moveTo(status, event) {
     event.preventDefault();
-    allTasks[currentDraggedElement].status = status;
-    await save(allTasks, 'tasks');
-    renderBoardTasks();
+    if (moveFeasible(status)) {
+        allTasks[currentDraggedElement].status = status;
+        await save(allTasks, 'tasks');
+        await save(users, 'users');
+        renderBoardTasks();
+    }
+}
+
+function moveFeasible(status) {
+    let task = allTasks[currentDraggedElement];
+    let calculatedActiveTasks = [];
+    if (!task.assignedTo == []) {
+        let statusBefore = task.status;
+        for (let i = 0; i < task.assignedTo.length; i++) {
+            const name = task.assignedTo[i];
+            calculatedActiveTasks[i] = users[name].activeTasks;
+            if (statusBefore == 'progress' || statusBefore == 'testing') {
+                calculatedActiveTasks[i]--;
+            } 
+            if (status == 'progress' || status == 'testing') {
+                calculatedActiveTasks[i]++;
+            }
+        }
+        if (Math.max(...calculatedActiveTasks) > maxActiveTasksPerUser) {
+            alert(`${task.assignedTo[calculatedActiveTasks.indexOf(3)]} is already assigned to 2 active tasks!`);
+            return false;
+        } else {
+            for (let i = 0; i < task.assignedTo.length; i++) {
+                const name = task.assignedTo[i];
+                users[name].activeTasks = calculatedActiveTasks[i];
+            }
+            return true;
+        }
+    }
 }
 
 
