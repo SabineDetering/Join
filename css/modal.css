@@ -1,3 +1,6 @@
+p {
+    margin: 0;
+}
 
 .infosOfCard {
     display: flex;
@@ -26,7 +29,7 @@
 }
 
 .backlog-date {
-    width: 155px;
+    width: 140px;
     border: 0;
     cursor: pointer;
     padding-left: 0;
@@ -34,7 +37,6 @@
 
 .personInCard {
     display: flex;
-    align-items: center;
     gap: 18px;
 }
 
@@ -73,6 +75,33 @@
     flex-direction: column;
 }
 
+.form-select {
+    width: 155px;
+    border: 0;
+    padding: 0;
+}
+
+.moveToBoardContainer {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.trashbin {
+    filter: brightness(0.3);
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+}
+
+.trashbin:hover {
+    filter: brightness(0.1);
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
+
 
 @media only screen and (max-width: 360px) { 
 
@@ -88,6 +117,22 @@
         display: flex;
         align-items: center;
     }
+
+    .personInCard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 30%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .dateAndCategory {
+        gap: 12px;
+    }
+
 }
 
 @media only screen and (min-width: 360px) { 
@@ -104,5 +149,31 @@
         display: flex;
         align-items: center;
     }
+
+    .personInCard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 30%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .dateAndCategory {
+        gap: 12px;
+    }
+
 }
+
+
+@media only screen and (min-width: 600px) {
+
+    .personInCard {
+        flex-direction: row;
+    }
+
+}
+
 
