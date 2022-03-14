@@ -19,7 +19,7 @@ function renderCards() {
             `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
                 <div class="card-body cardInBacklog">
                 <div class="iconsInCards">
-                    <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon trashbin" title="move to board">
+                    <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
                     <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin" src="./img/delete.png">
                 </div>
                     <div class="staff-container">${getStaff(i)}</div>
@@ -95,7 +95,7 @@ function showCard(i, board) {
     getId('containerOfBacklogButtons').innerHTML =
         `<div class="moveToBoardContainer">
         <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png" title="delete this card">
-        <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal trashbin plane-icon" title="move to board">
+        <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
     </div>
     <div id="button" class="modal-footer">
         <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>

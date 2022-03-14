@@ -91,6 +91,7 @@ select:focus,
     height: 44px;
     width: 44px;
     padding:8px;
+    cursor:pointer;
     object-fit: cover;
 }
 
