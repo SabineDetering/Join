@@ -1,0 +1,72 @@
+.textarea-backlog {
+    width: 410px !important;
+    border: 0;
+    padding-left: 0;
+    resize: none;
+}
+
+.textarea-backlog-description {
+    width: 480px !important;
+    padding-left: 0;
+    border: 0;
+    resize: none;
+}
+
+.dateAndCategory {
+    display: flex;
+    gap: 32px;
+}
+
+.backlog-date {
+    width: 155px;
+    border: 0;
+    cursor: pointer;
+    padding-left: 0;
+}
+
+.personInCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.userContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+@media only screen and (max-width: 360px) { 
+
+    .textarea-backlog {
+        width: 100% !important;
+    }
+    
+    .textarea-backlog-description {
+        width: 100% !important;
+    }
+
+    .personContent {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 360px) { 
+
+    .textarea-backlog {
+        width: 100% !important;
+    }
+    
+    .textarea-backlog-description {
+        width: 100% !important;
+    }
+
+    .personContent {
+        display: flex;
+        align-items: center;
+    }
+}
+
