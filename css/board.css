@@ -10,10 +10,11 @@
 }
 
 
-/* .categories {
-    max-height: 300px;
-    overflow-y: auto;
-} */
+.categories {
+    /* min-height:400px; */
+    /* max-height: 300px; */
+    /* overflow-y: auto; */
+} 
 
 
 .status-wrap {
@@ -36,6 +37,7 @@
 
 .card-body {
     width: 290px;
+    min-height:400px;
     max-height: 650px;
     overflow-y: auto;
 }
@@ -49,12 +51,12 @@
     transition: 125ms ease-in-out;
     cursor: pointer;
 }
-
+/* 
 .trashbin {
-    filter: invert(0.5);
+    filter: brightness(0.5);
     height: 40px;
     cursor: pointer;
-}
+} */
 
 
 @media (max-width: 1440px) {

@@ -208,11 +208,11 @@ h6 {
     .category {
         width: 100%;
     }
-
+/* 
     .trashbin {
         bottom: 5px;
         right: 5px;
-    }
+    } */
 
     .personContent {
         display: flex;
