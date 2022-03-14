@@ -16,7 +16,7 @@ function renderCards() {
         let task = backlogTasks[i];
 
         backlogContent.innerHTML +=
-            `<div onclick="showCard(${i})" class="card shadow">
+            `<div id="card${i}" onclick="showCard(${i})" class="card shadow">
                 <div class="card-body cardInBacklog">
                 <div class="iconsInCards">
                     <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
@@ -35,14 +35,14 @@ function renderCards() {
 
 function checkImportance(i) {
     let chosenImportance = backlogTasks[i].importance;
-    let containerColor = getId(`importance${i}`);
+    let containerColor = getId(`card${i}`);
 
     if(chosenImportance == 'low') {
-        containerColor.style = "background-color: #036603e6";  
+        containerColor.style = "border-left: 20px solid #036603e6";  
     } else if(chosenImportance == 'medium') {
-        containerColor.style = "background-color: #e5cf08"; 
+        containerColor.style = "border-left: 20px solid #e5cf08"; 
     } else {
-        containerColor.style = "background-color: #9b2020";  
+        containerColor.style = "border-left: 20px solid #9b2020";  
     }
 }
 
