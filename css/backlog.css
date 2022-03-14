@@ -37,7 +37,7 @@ h6 {
 }
 
 .card:hover {
-    box-shadow: rgba(116, 116, 116, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .importance {
@@ -133,7 +133,7 @@ h6 {
 
 .plane-icon-in-modal {
     position: absolute;
-    right: 18px;
+    right: 40px;
     bottom: 5px;
 }
 .assignTask {
@@ -165,6 +165,10 @@ h6 {
     height: 44px;
     width: 44px;
     object-fit: cover;
+}
+
+.trashbin:hover {
+    filter: brightness(0.1);
 }
 
 .modal-content {
@@ -238,6 +242,7 @@ h6 {
 
     .card-content {
         padding-top: 80px;
+        margin-bottom: 96px;
     }
 
     .headerOfCard {
@@ -320,6 +325,7 @@ h6 {
 
     .card-content {
         padding-top: 80px;
+        margin-bottom: 96px;
     }
 
     .headerOfCard {
@@ -411,6 +417,10 @@ h6 {
 }
 
 @media only screen and (min-width: 768px) {
+
+    .card-content {
+        margin-bottom: 0;
+    }
 
     .card {
         margin-left: 162px;

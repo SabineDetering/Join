@@ -101,6 +101,7 @@ function showCard(i) {
     
     getId('containerOfBacklogButtons').innerHTML = 
     `<div class="moveToBoardContainer">
+        <img onclick="deleteTask(${i})" class="trashbin p-2" src="./img/delete.png" title="delete this card">
         <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
     </div>
     <div id="button" class="modal-footer">
