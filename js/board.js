@@ -81,6 +81,10 @@ function archiveButton(i) {
 }
 
 
+/**
+ * saves index of moved task in currentDraggedElement
+ * @param {integer} index - index of moved task
+ */
 function startDragging(index) {
     currentDraggedElement = index;
 }
@@ -91,6 +95,10 @@ function allowDrop(ev) {
 }
 
 
+/**
+ * moves the dragged task to status, it it is feasible
+ * @param {string} status - status the task is moved to
+ */
 async function moveTo(status, event) {
     event.preventDefault();
     if (moveFeasible(status)) {
@@ -101,31 +109,60 @@ async function moveTo(status, event) {
     }
 }
 
+
+/**
+ * true, if moving the task doesn't exceed the allowed number of active tasks for any assigned person
+ * @param {string} status - status the task is moved to
+ * @returns boolean
+ */
 function moveFeasible(status) {
     let task = allTasks[currentDraggedElement];
     let calculatedActiveTasks = [];
     if (!task.assignedTo == []) {
-        let statusBefore = task.status;
-        for (let i = 0; i < task.assignedTo.length; i++) {
-            const name = task.assignedTo[i];
-            calculatedActiveTasks[i] = users[name].activeTasks;
-            if (statusBefore == 'progress' || statusBefore == 'testing') {
-                calculatedActiveTasks[i]--;
-            } 
-            if (status == 'progress' || status == 'testing') {
-                calculatedActiveTasks[i]++;
-            }
-        }
+        calculatedActiveTasks = calculateActiveTasks(status);
         if (Math.max(...calculatedActiveTasks) > maxActiveTasksPerUser) {
-            alert(`${task.assignedTo[calculatedActiveTasks.indexOf(3)]} is already assigned to 2 active tasks!`);
+            alert(`${task.assignedTo[calculatedActiveTasks.indexOf( maxActiveTasksPerUser+1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!`);
             return false;
         } else {
-            for (let i = 0; i < task.assignedTo.length; i++) {
-                const name = task.assignedTo[i];
-                users[name].activeTasks = calculatedActiveTasks[i];
-            }
+            updateActiveTasks(calculatedActiveTasks);           
             return true;
         }
+    }
+}
+
+
+/**
+ * calculates the resulting number of active tasks for assigned people in case the intended move of taks is done 
+ * @param {string} status - status the task is moved to
+ * @returns array with resulting number of active tasks for assigned persons
+ */
+function calculateActiveTasks(status) {
+    let task = allTasks[currentDraggedElement];
+    let statusBefore = task.status;
+    let calculatedActiveTasks = [];
+    for (let i = 0; i < task.assignedTo.length; i++) {
+        const name = task.assignedTo[i];
+        calculatedActiveTasks[i] = users[name].activeTasks;
+        if (statusBefore == 'progress' || statusBefore == 'testing') {
+            calculatedActiveTasks[i]--;
+        }
+        if (status == 'progress' || status == 'testing') {
+            calculatedActiveTasks[i]++;
+        }
+    }
+    return calculatedActiveTasks;
+}
+
+
+/**
+ * updates users json with calculatedActiveTasks 
+ * @param {array} calculatedActiveTasks 
+ */
+function updateActiveTasks(calculatedActiveTasks) {
+    let task = allTasks[currentDraggedElement];
+    for (let i = 0; i < task.assignedTo.length; i++) {
+        const name = task.assignedTo[i];
+        users[name].activeTasks = calculatedActiveTasks[i];
     }
 }
 
