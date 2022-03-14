@@ -16,7 +16,7 @@ function renderCards() {
         let task = backlogTasks[i];
 
         backlogContent.innerHTML +=
-            `<div id="card${i}" onclick="showCard(${i})" class="card shadow">
+            `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
                 <div class="card-body cardInBacklog">
                 <div class="iconsInCards">
                     <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
@@ -29,21 +29,6 @@ function renderCards() {
                     <div class="importance" id="importance${i}"><div>
                 </div>
             </div>`;
-        checkImportance(i);
-    }
-}
-
-// 
-function checkImportance(i) {
-    let chosenImportance = backlogTasks[i].importance;
-    let containerColor = getId(`card${i}`);
-
-    if (chosenImportance == 'low') {
-        containerColor.style = "border-left: 20px solid #036603e6";
-    } else if (chosenImportance == 'medium') {
-        containerColor.style = "border-left: 20px solid #e5cf08";
-    } else {
-        containerColor.style = "border-left: 20px solid #9b2020";
     }
 }
 
@@ -99,7 +84,6 @@ function showCard(i, board) {
         currentTask = backlogTasks[i];
     }
 
-
     getId('backlog-title').innerHTML = task.title;
     getId('backlog-description').innerHTML = task.description;
     getId('backlog-date').value = task.dueDate;
@@ -114,9 +98,9 @@ function showCard(i, board) {
         <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
     </div>
     <div id="button" class="modal-footer">
-        <button onclick="previousCard(${i})" class="btn btn-primary">previous task</button>
-        <button onclick="saveChanges(${i}, ${board})" type="button" class="btn btn-outline-success">save changes</button>
-        <button id="nextTask" onclick="nextCard(${i})" class="btn btn-primary">next task</button>
+        <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>
+        <button onclick="saveChanges(${i}, '${board}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">save changes</button>
+        <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">next task</button>
     </div>`;
 
     showAssignedUsers();
@@ -166,6 +150,7 @@ function saveChanges(i, board) {
 
     save(allTasks, 'tasks');
     renderTasksInBacklog();
+    renderBoardTasks();
 }
 
 function moveToBoard(i) {

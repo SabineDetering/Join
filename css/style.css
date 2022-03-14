@@ -73,6 +73,18 @@ select:focus,
     color: inherit;
 }
 
+.bd-imp-low {
+    border-left: 12px solid #036603e6;
+}
+
+.bd-imp-medium{
+    border-left: 12px solid #e5cf08;
+}
+
+.bd-imp-high {
+    border-left: 12px solid #9b2020;
+}
+
 /******************************************************** */
 @media(min-width:768px) {
     .wrapper {
