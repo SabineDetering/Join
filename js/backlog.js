@@ -79,55 +79,32 @@ function showCard(i, board) {
     if (board == 'board') { // if the modal is rendered from board, it fills content of allTasks Array
         task = allTasks[i];
         currentTask = allTasks[i];
-        getId('backlog-title').innerHTML = task.title;
-        getId('backlog-description').innerHTML = task.description;
-        getId('backlog-date').value = task.dueDate;
-    
-        getId('selectCategory').innerHTML =
-            `<h6><b>CATEGORY:</b></h6>
-        <select onchange="changeCategory(${i}, ${board})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
-    
-        getId('containerOfBacklogButtons').innerHTML =
-            `<div class="moveToBoardContainer">
-            <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png" title="delete this card">
-            
-        </div>
-        <div id="button" class="modal-footer">
-            <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>
-            <button onclick="saveChanges(${i}, '${board}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">save changes</button>
-            <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">next task</button>
-        </div>`;
-    
-        showAssignedUsers();
-        renderCategories(i, board);
     } else {
         task = backlogTasks[i];
         currentTask = backlogTasks[i];
-
-        getId('backlog-title').innerHTML = task.title;
-        getId('backlog-description').innerHTML = task.description;
-        getId('backlog-date').value = task.dueDate;
-    
-        getId('selectCategory').innerHTML =
-            `<h6><b>CATEGORY:</b></h6>
-        <select onchange="changeCategory(${i}, ${board})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
-    
-        getId('containerOfBacklogButtons').innerHTML =
-            `<div class="moveToBoardContainer">
-            <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png" title="delete this card">
-            <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
-        </div>
-        <div id="button" class="modal-footer">
-            <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>
-            <button onclick="saveChanges(${i}, '${board}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">save changes</button>
-            <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">next task</button>
-        </div>`;
-    
-        showAssignedUsers();
-        renderCategories(i, board);
     }
 
+    getId('backlog-title').innerHTML = task.title;
+    getId('backlog-description').innerHTML = task.description;
+    getId('backlog-date').value = task.dueDate;
 
+    getId('selectCategory').innerHTML =
+        `<h6><b>CATEGORY:</b></h6>
+    <select onchange="changeCategory(${i}, ${board})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
+
+    getId('containerOfBacklogButtons').innerHTML =
+        `<div class="moveToBoardContainer">
+        <img onclick="deleteTask(${i})" class="trashbin" src="./img/delete.png" title="delete this card">
+        <img src="./img/paperplane.png" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
+    </div>
+    <div id="button" class="modal-footer">
+        <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>
+        <button onclick="saveChanges(${i}, '${board}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">save changes</button>
+        <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">next task</button>
+    </div>`;
+
+    showAssignedUsers();
+    renderCategories(i, board);
 }
 
 function previousCard(i) {
