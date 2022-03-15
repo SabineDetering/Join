@@ -104,7 +104,7 @@ select:focus,
 
 
 .trashbin {
-    filter: brightness(0.6);
+    filter: invert(0.4);
     height: 44px;
     width: 44px;
     padding: 8px;
@@ -114,6 +114,13 @@ select:focus,
 
 .trashbin:hover {
     filter: brightness(0.1);
+}
+
+
+.trashbin-board{
+    filter: invert(0.4);
+    height: 38px;
+    width: 38px;
 }
 
 /******************************************************** */

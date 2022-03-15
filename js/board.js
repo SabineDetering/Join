@@ -40,7 +40,7 @@ function taskCard(i) {
             </div>
             <div>
                 ${archiveButton(i)}
-                <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" class="trashbin plane-icon" src="./img/delete.png">
+                <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" class="trashbin trashbin-board" src="./img/delete.png">
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@ function staffIcons(i) {
  */
 function archiveButton(i) {
     if (allTasks[i].status == 'done') {
-        return ` <img onclick="event.stopPropagation();archiveTask(${i})" class="trashbin p-1" src="./img/archive.png"></img>`;
+        return ` <img onclick="event.stopPropagation();archiveTask(${i})" class="trashbin trashbin-board" src="./img/archive.png"></img>`;
     } else {
         return '';
     }
