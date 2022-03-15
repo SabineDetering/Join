@@ -100,7 +100,7 @@ function showCard(i, board) {
     
         showAssignedUsers();
         renderCategories(i, board);
-    } else {
+    } else {// else the modal is rendered from backlog, it fills content of backlogTasks Array
         task = backlogTasks[i];
         currentTask = backlogTasks[i];
         getId('backlog-title').innerHTML = task.title;

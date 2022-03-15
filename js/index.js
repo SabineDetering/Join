@@ -1,4 +1,9 @@
-
+/**
+ * fuction to logging in to the site
+ * checkes if e @ mail and password is correct
+ * checkes if checkbox for guests is checked to enter site
+ * else alert with error message
+ */
 function signIn(event) {
     event.preventDefault();
     let email = getId('login-email').value;
