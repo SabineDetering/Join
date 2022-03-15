@@ -2,9 +2,9 @@ let allTasks = [];
 let users = {};
 let categories = [];
 //maximum number of people that can be assigned to one task
-let maxTeamSizePerTask = 2;
+let maxTeamSizePerTask ;
 //maximum number of active tasks (in progress, testing) that one person can be assigned to
-let maxActiveTasksPerUser = 2;
+let maxActiveTasksPerUser;
 let highestTaskId = -1;
 let currentTask = {};
 let now = new Date();

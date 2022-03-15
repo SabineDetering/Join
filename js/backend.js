@@ -8,7 +8,9 @@ async function init() {
     users = JSON.parse(backend.getItem('users')) || [];
     categories = JSON.parse(backend.getItem('categories')) || [];
     allTasks = JSON.parse(backend.getItem('tasks')) || [];
-}
+    maxTeamSizePerTask = backend.getItem('teamSize') || 2;
+    maxActiveTasksPerUser = backend.getItem('numberOfTasks') || 2;
+   }
 
 
 /**
@@ -18,4 +20,13 @@ async function init() {
  */
 async function save(array, arrayName) {
     backend.setItem(arrayName, JSON.stringify(array));
+}
+
+/**
+ * saves data to server
+ * @param {array} array - variable name of the array to save
+ * @param {string} arrayName - string to refer to the array on the server
+ */
+async function saveVar(value,varstring) {
+    backend.setItem(varstring, value);
 }

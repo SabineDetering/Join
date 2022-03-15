@@ -24,21 +24,49 @@
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
-<body onload="includeHTML(); ">
+<body onload="includeHTML(); load();">
 
     <div w3-include-html="./html_templates/menu.html"></div>
 
     <div class="wrapper  py-5">
-        <div class="container-xxl px-4">
+        <div class="container-sm px-4">
             <h1>Settings</h1>
-            <form action="" class="card d-block">
-                Restrict the number of team members assigned to a task to: <select></select>
-                Restrict the number of active tasks (in progress or in testing) one person can be assigned
-                to:<select></select>
+            <form id="task-form" onsubmit="saveSettings(event)" class="container shadow rounded bg-ci-light p-4 ">
+                <div class="">
+                    <p> Restrict the number of team members that can be assigned to a single task</p>
+                    <div class="d-flex">
+                        <label for="teamSize" class="form-label">Maximum team size per task</label>
+                        <select class="form-select form-select-sm ms-2" id="teamSize">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <p> Restrict the number of active tasks (i.e. with status "in progress" or "testing") one person can
+                        be assigned to</p>
+                    <div class="d-flex ">
+                        <label for="numberOfTasks" class="form-label">Maximum number of active tasks per person</label>
+                        <select class="form-select form-select-sm ms-2" id="numberOfTasks">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <strong>Note:</strong> Consider splitting tasks that seem to need more than 2 assigned team members.
+                </div>
+                
+                <div class="button-row d-flex align-items-center justify-content-end mt-4">
 
-                <button>SAVE</button>
+                    <button type="reset" class="btn ci-button-transparent">CANCEL</button>
+
+                    <button type="submit" class="btn ci-button-dark">
+                        SAVE SETTINGS
+                    </button>
+                </div>
             </form>
-            Note: The number of people assigned to a task shouldn't exceed two. If you feel the need to assign more people, you can probably split the task.
+
         </div>
     </div>
 

@@ -32,23 +32,6 @@ form label {
     background-color: var(--ci-light);
 }
 
-.ci-button-dark {
-    border-radius: 10px !important;
-    font-weight: bold !important;
-    color: white;
-    background-color: var(--ci-dark);
-}
-
-.ci-button-transparent {
-    font-weight: bold !important;
-    color: var(--ci-dark);
-    background-color: transparent;
-}
-
-.ci-button-transparent:hover {
-    background-color: white;
-}
-
 .ci-border-dark {
     border: 2px solid var(--ci-dark);
 }
