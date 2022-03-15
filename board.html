@@ -2,105 +2,78 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/board.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/board.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
 
-    <script src="./js/include_html.js"></script>
-    <script src="./js/add-task.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/backlog.js"></script>
-    <script src="./js/mini_backend.js"></script>
-    <script src="./js/backend.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  <script src="./js/include_html.js"></script>
+  <script src="./js/add-task.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/board.js"></script>
+  <script src="./js/backlog.js"></script>
+  <script src="./js/mini_backend.js"></script>
+  <script src="./js/backend.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/menu.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <!-- <link rel="stylesheet" href="./css/backlog.css"> -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/menu.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <!-- <link rel="stylesheet" href="./css/backlog.css"> -->
 
-    <title>Join</title>
-    <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+  <title>Join</title>
+  <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 
 <body class="body" onload="includeHTML();renderBoardTasks(true);">
 
-    <div w3-include-html="./html_templates/menu.html"></div>
-    <div class="main-content wrapper">
-        <div class="board-content">
-            <div class="status-wrap">
+  <div w3-include-html="./html_templates/menu.html"></div>
+  <div class="main-content wrapper">
+    <div class="board-content">
+      <div class="status-wrap">
 
-                <div class="categories" ondrop="moveTo('todo',event)" ondragover="allowDrop(event)">
-                    <div class="text-dark bg-light card-margin">
-                        <div class="card-header"><b>TO DO</b></div>
-                        <div id="todo"  class="card-body">
-                        </div>
-                    </div>
-                </div>
-                <div class="categories" ondrop="moveTo('progress',event)" ondragover="allowDrop(event)">
-                    <div class="text-dark bg-light card-margin">
-                        <div class="card-header"><b>IN PROGRESS</b></div>
-                        <div id="progress" 
-                            class="card-body">
-                        </div>
-                    </div>
-                </div>
-                <div class="categories" ondrop="moveTo('testing',event)" ondragover="allowDrop(event)">
-                    <div class="text-dark bg-light card-margin">
-                        <div class="card-header"><b>TESTING</b></div>
-                        <div id="testing" 
-                            class="card-body">
-                        </div>
-                    </div>
-                </div>
-                <div class="categories" ondrop="moveTo('done',event)" ondragover="allowDrop(event)">
-                    <div class="text-dark bg-light card-margin">
-                        <div class="card-header"><b>DONE</b></div>
-                        <div id="done"  class="card-body">
-                        </div>
-                    </div>
-                </div>
+        <div class="categories" ondrop="moveTo('todo',event)" ondragover="allowDrop(event)">
+          <div class="text-dark bg-light card-margin">
+            <div class="card-header"><b>TO DO</b></div>
+            <div id="todo" class="card-body">
             </div>
+          </div>
         </div>
-    </div>
-    <div class="modal fade" id="cardModal" aria-hidden="true" aria-labelledby="cardModal" tabindex="-1">
-        <div id="myModal" class="modal-dialog modal-dialog-centered">
-          <div id="modal-content" class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="title">
-                <span id="backlog-title" class="textarea-backlog form-control" role="textbox" contenteditable></span>
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="categories" ondrop="moveTo('progress',event)" ondragover="allowDrop(event)">
+          <div class="text-dark bg-light card-margin">
+            <div class="card-header"><b>IN PROGRESS</b></div>
+            <div id="progress" class="card-body">
             </div>
-            <div id="description" class="modal-body">
-              <h6><b>DESCRIPTION:</b></h6>
-              <span id="backlog-description" class="textarea-backlog-description form-control" role="textbox"
-                contenteditable></span></p>
-              <div class="infosOfCard">
-                <div class="dateAndCategory">
-                  <div>
-                    <h6><b>DUE DATE:</b></h6><input id="backlog-date" type="date" class="backlog-date form-control mb-3"
-                      required aria-describedby="due-date-button" id="due-date">
-                  </div>
-                  <div id="selectCategory"></div>
-                </div>
-                <h6><b>ASSIGNED TO:</b></h6>
-                <div id="assigned-to-backlog" class="personInCard" style="display: flex"></div>
-              </div>
+          </div>
+        </div>
+        <div class="categories" ondrop="moveTo('testing',event)" ondragover="allowDrop(event)">
+          <div class="text-dark bg-light card-margin">
+            <div class="card-header"><b>TESTING</b></div>
+            <div id="testing" class="card-body">
             </div>
-            <div id="containerOfBacklogButtons">
+          </div>
+        </div>
+        <div class="categories" ondrop="moveTo('done',event)" ondragover="allowDrop(event)">
+          <div class="text-dark bg-light card-margin">
+            <div class="card-header"><b>DONE</b></div>
+            <div id="done" class="card-body">
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- modal for details and editing -->
+  <div w3-include-html="./html_templates/cardModal.html"></div>
+
 </body>
+
 </html>

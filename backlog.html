@@ -53,38 +53,8 @@
 
   </div>
 
-  <div class="modal fade" id="cardModal" aria-hidden="true" aria-labelledby="cardModal" tabindex="-1">
-    <div id="myModal" class="modal-dialog modal-dialog-centered">
-      <div id="modal-content" class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="title">
-            <span id="backlog-title" class="textarea-backlog form-control" role="textbox" contenteditable></span>
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div id="description" class="modal-body">
-          <h6><b>DESCRIPTION:</b></h6>
-          <span id="backlog-description" class="textarea-backlog-description form-control" role="textbox"
-            contenteditable></span></p>
-          <div class="infosOfCard">
-            <div class="dateAndCategory">
-              <div>
-                <h6><b>DUE DATE:</b></h6><input id="backlog-date" type="date" class="backlog-date form-control mb-3"
-                  required aria-describedby="due-date-button" id="due-date">
-              </div>
-              <div id="selectCategory"></div>
-            </div>
-            <h6><b>ASSIGNED TO:</b></h6>
-            <div id="assigned-to-backlog" class="personInCard" style="display: flex"></div>
-          </div>
-        </div>
-        <div id="containerOfBacklogButtons">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+  <!-- modal for details and editing -->
+  <div w3-include-html="./html_templates/cardModal.html"></div>
 
 </body>
 
