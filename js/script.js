@@ -2,7 +2,7 @@ let allTasks = [];
 let users = {};
 let categories = [];
 //maximum number of people that can be assigned to one task
-let maxTeamSizePerTask ;
+let maxTeamSizePerTask;
 //maximum number of active tasks (in progress, testing) that one person can be assigned to
 let maxActiveTasksPerUser;
 let highestTaskId = -1;
@@ -16,10 +16,29 @@ function getId(id) {
 }
 
 
-function showMenu() {
+// function showMenu() {
+//     let menubar = getId('menubar');
+//     menubar.style.left = '0';
+// }
+
+
+
+function toggleMenu() {
     let menubar = getId('menubar');
-    menubar.style.left = '0';
+    if (menubar.style.left == '') {
+        menubar.style.left = '0';
+    } else {
+        if (menubar.style.left == 'var(--menu-width-neg)') {
+            menubar.style.left = '0';
+        } else {
+            menubar.style.left = 'var(--menu-width-neg)';
+        }
+    }
+
+
 }
+
+
 
 
 function hideMenu() {
@@ -35,7 +54,7 @@ function hideMenu() {
  */
 function staffIconContent(user) {
     if (users[user].img) {
-        return `<img src="${users[user].img}">`;
+        return `<img title="${users[user].name}" src="${users[user].img}">`;
     } else {
         return `${users[user].initials}`;
     }
@@ -81,7 +100,7 @@ function dropDownHtml(user) {
                 <li>
                     <a class="dropdown-item" onclick = "removeUser('${user}')">Remove from task</a>
                 </li>
-            </ul>`;    
+            </ul>`;
 }
 
 
@@ -115,7 +134,7 @@ function getTeam(i) {
                 `;
         }
         html += '</div>';
-        } else { html = `<div>&nbsp;</div>` }
+    } else { html = `<div>&nbsp;</div>` }
     return html;
 }
 
@@ -128,7 +147,7 @@ function getTeam(i) {
 function trashButtons(i) {
     return `<div class="d-flex w-100 justify-content-end">
                 <img type="button" onclick="event.stopPropagation();restoreTask(${i})"
-                class="trashbin p-2" src="./img/reuse.png" alt="restore to last status" title="restore to last status">
+                class="trashbin p-2" src="./img/reuse.png" alt="restore to last status" title="restore to todo">
 
                 <img type="button" onclick="event.stopPropagation();deleteTask(${i})"
                 class="trashbin p-2" src="./img/delete.png" alt="delete irrevocably" title="delete irrevocably">

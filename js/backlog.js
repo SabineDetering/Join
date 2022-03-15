@@ -20,7 +20,7 @@ function renderCards() {
                 <div class="card-body cardInBacklog">
                 <div class="iconsInCards">
                     <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
-                    <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin" src="./img/delete.png">
+                    <img onclick="event.stopPropagation();deleteTask(${i})" title="delete this card" class="trashbin" src="./img/delete.png">
                 </div>
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${task.dueDate}</div>
