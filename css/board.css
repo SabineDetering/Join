@@ -10,11 +10,10 @@
 }
 
 
-/* .categories {
-    min-height:400px; 
-     max-height: 300px; 
+.categories {
+    margin-top: 22px;
    overflow-y: auto; 
-}  */
+} 
 
 
 .status-wrap {
@@ -91,7 +90,7 @@
 
 
     .card-body {
-        max-height: 200px;
+        min-height: 0px;
     }
 
     .categories {
