@@ -24,9 +24,9 @@ async function save(array, arrayName) {
 
 /**
  * saves data to server
- * @param {array} array - variable name of the array to save
- * @param {string} arrayName - string to refer to the array on the server
+ * @param {*} value - the value to be saved
+ * @param {string} varName - name of the value on the server
  */
-async function saveVar(value,varstring) {
-    backend.setItem(varstring, value);
+async function saveVar(value,varName) {
+    backend.setItem(varName, value);
 }

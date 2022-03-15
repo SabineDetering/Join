@@ -13,8 +13,8 @@ async function renderArchive(onload = false) {
 
 
 /**
- * 
- * @returns html code for all tasks in archive
+ * creates html code for all tasks in archive or a short message if archive is empty
+ * @returns html code 
  */
 function archiveHtml() {
     html = '';
