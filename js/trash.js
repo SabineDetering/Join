@@ -13,8 +13,8 @@ async function renderTrash(onload = false) {
 
 
 /**
- * 
- * @returns html code for all tasks in trash
+ * creates html code for all tasks in trash or a short message if trash is empty
+ * @returns html code 
  */
 function trashHtml() {
     html = '';
