@@ -40,7 +40,7 @@ function taskCard(i) {
             </div>
             <div>
                 ${archiveButton(i)}
-                <img onclick="event.stopPropagation();deleteTask(${i})" class="trashbin plane-icon" src="./img/delete.png">
+                <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" class="trashbin plane-icon" src="./img/delete.png">
             </div>
         </div>
     </div>
@@ -173,7 +173,7 @@ function updateActiveTasks(calculatedActiveTasks) {
  * updates board
  * @param {integer} i - index of task 
  */
-function deleteTask(i) {
+function deleteTaskFromBoard(i) {
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;
