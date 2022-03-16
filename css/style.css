@@ -143,6 +143,34 @@ select:focus,
 }
 
 /******************************************************** */
+
+@media screen and (max-width: 360px) {
+
+    .help-img {
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+    }
+
+}
+
+@media screen and (min-width: 360px) {
+
+    .help-img {
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+    }
+
+}
+
+@media screen and (min-width: 500px) {
+
+    .help-img {
+        width: 100%;
+        margin: 0;
+    }
+
+}
+
 @media(min-width:768px) {
     .wrapper {
         padding-left: var(--menu-width);
@@ -152,5 +180,13 @@ select:focus,
 @media(max-width:768px) {
     .wrapper {
         margin-bottom: 10vh;
+    }
+}
+
+@media(min-width: 1100px) {
+    
+    .help-img {
+        width: 80%;
+
     }
 }
