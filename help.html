@@ -39,69 +39,47 @@
                 It is not supposed to be used with real life data.</p>
             <p><strong>Do not enter personal data.</strong> </p>
 
-            <div class="accordion accordion-flush " id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-heading1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
-                            Add Task
-                        </button>
-                    </h2>
-                    <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            Text about add task
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-heading2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
-                            Backlog
-                        </button>
-                    </h2>
-                    <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            The backlog is a collection of tasks and ideas that are not yet in the focus of
-                            implementation.
-                            Items can be moved either to the to-do-list or to the archive or be deleted.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-heading3">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
-                            Board
-                        </button>
-                    </h2>
-                    <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            The board holds all tasks in the current sprint. During the process of implementation and
-                            testing, tasks move from left to right through the stages of the board.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-heading4">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapse4" aria-expanded="false" aria-controls="flush-collapse4">
-                            Archive
-                        </button>
-                    </h2>
-                    <div id="flush-collapse4" class="accordion-collapse collapse" aria-labelledby="flush-heading4"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            The archive can be used as a history of tasks that were not implemented or that are already
-                            done
-                            but not longer shown on the board.
-                        </div>
-                    </div>
-                </div>
+            <div class="help-sections">
+                <h4><b>Add a task</b></h4>
+                <p class="help-text">Create a new task in the add-task section.<br>
+                    Fill the form and choose by whom the task should be processed.<br>
+                    Decide whether the task should end up in the board for direct processing or in the backlog first.
+                </p>
+                <img class="help-img" src="./img/add-task.png" alt="add task">
             </div>
+            <div class="help-sections">
+                <h4><b>The board</b></h4>
+                <p class="help-text">On the board each task passes through 4 sections.<br>
+                    The tasks can simply be moved by drag and drop.<br>
+                    After a task has been completed, it can either be archived or deleted.
+                </p>
+                <img class="help-img" src="./img/board.png" alt="add task">
+            </div>
+            <div class="help-sections">
+                <h4><b>The backlog</b></h4>
+                <p class="help-text">The backlog collects all tasks that have to be completed at a later date.<br>
+                    To move the task to the board you can click on the arrow-icon.<br>
+                    You can edit the task by clicking on it.
+                </p>
+                <img class="help-img" src="./img/backlog.png" alt="add task">
+            </div>
+            <div class="help-sections">
+                <h4><b>The Archive</b></h4>
+                <p class="help-text">In the archive, all tasks are stored that have already been completed.<br>
+                    It can be used to figure out who has completed which task.
+                </p>
+                <img class="help-img" src="./img/archive1.png" alt="add task">
+            </div>
+            <div class="help-sections">
+                <h4><b>The Trash</b></h4>
+                <p class="help-text">All tasks that are deleted end up in the recycle bin.<br>
+                    It prevents tasks from being deleted directly.<br>
+                    Deleting from the recycle bin cannot be undone.                  
+                </p>
+                <img class="help-img" src="./img/recyclebin.png" alt="add task">
+            </div>
+
+
         </div>
     </div>
 </body>

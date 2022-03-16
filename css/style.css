@@ -123,6 +123,22 @@ select:focus,
     width: 38px;
 }
 
+.help-sections {
+    width: 100%;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.help-img {
+    width: 65vw;
+    object-fit: cover;
+}
+
+.help-text {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
 /******************************************************** */
 @media(min-width:768px) {
     .wrapper {
