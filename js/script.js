@@ -32,6 +32,17 @@ function toggleMenu() {
     }
 }
 
+//Wieso funktioniert es so nicht?
+
+// function toggleMenu() {
+//     let menubar = getId('menubar');
+//     if (menubar.style.left == 'var(--menu-width-neg)' || '') {
+//         menubar.style.left = '0';
+//     } else {
+//         menubar.style.left = 'var(--menu-width-neg)';
+//     }
+// }
+
 
 /**
  * hides menu (narrow screens only)
