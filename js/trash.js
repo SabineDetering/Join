@@ -86,12 +86,17 @@ function deleteTask(i) {
 
 
 /**
- * restores task to board with status todo
+ * restores task either to board with status todo or to backlog
  * @param {integer} i - index of task
  */
 function restoreTask(i) {
     let task = allTasks[i];
-    task.status = 'todo';
+    if (task.deletedFrom == 'backlog') {
+        task.status = 'backlog';
+    } else {
+        task.status = 'todo';
+    }
+
     task.deletedFrom = '';
     task.deleteDate = '';
     save(allTasks, 'tasks');

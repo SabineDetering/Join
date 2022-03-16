@@ -86,20 +86,10 @@ p {
     justify-content: flex-end;
     position: relative;
 }
-/* 
-.trashbin {
-    filter: brightness(0.3);
-    height: 44px;
-    width: 44px;
-    object-fit: cover;
-}
-
-.trashbin:hover {
-    filter: brightness(0.1);
-} */
 
 .modal-footer {
-    justify-content: space-between;
+    justify-content: center;
+    gap:11px;
 }
 
 
@@ -172,6 +162,7 @@ p {
 
     .personInCard {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
 }

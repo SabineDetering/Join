@@ -39,15 +39,7 @@ function getStaff(i) {
     if (staff.length > 0) {
         for (let index = 0; index < staff.length; index++) {
             const teamMember = staff[index];
-
-            html +=
-                `<div class="userContent">
-                ${staffIconHtml(teamMember, false)}
-                <div class="userAndMail">
-                <p>${users[teamMember].name}<p>
-                <p>${users[teamMember].email}<p>
-                </div>
-                </div>`;
+            html += userIconNameMail(teamMember, false);
         }
     }
     else {
@@ -70,64 +62,95 @@ function deleteTask(i) {
     renderTasksInBacklog();
 }
 
-// renders the content of Modal which opens when card gets clicked
-function showCard(i, board) {
+
+/**
+ * shows task details on a modal
+ * data is editable
+ * @param {integer} i - index of task
+ * @param {string} page - 'board', if task is shown on board
+ */
+function showCard(i, page) {
     let cardModal = new bootstrap.Modal(getId('cardModal'), {});
     cardModal.show();
-    let task;
 
-    if (board == 'board') { // if the modal is rendered from board, it fills content of allTasks Array
-        task = allTasks[i];
+    if (page == 'board') { // if modal is called from board, data from allTasks is rendered
         currentTask = allTasks[i];
-        getId('backlog-title').innerHTML = task.title;
-        getId('backlog-description').innerHTML = task.description;
-        getId('backlog-date').value = task.dueDate;
-    
-        getId('selectCategory').innerHTML =
-            `<h6><b>CATEGORY:</b></h6>
-        <select onchange="changeCategory(${i}, ${board})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
-    
-        getId('containerOfBacklogButtons').innerHTML =
-            `<div class="moveToBoardContainer">
-            <img onclick="deleteTaskFromBoard(${i})"data-bs-dismiss="modal" class="trashbin" src="./img/delete.png" title="delete this card">
-            
-        </div>
-        <div id="button" class="modal-footer">
-            <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>
-            <button onclick="saveChanges(${i}, '${board}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">save changes</button>
-            <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">next task</button>
-        </div>`;
-    
-        showAssignedUsers();
-        renderCategories(i, board);
-    } else {// else the modal is rendered from backlog, it fills content of backlogTasks Array
-        task = backlogTasks[i];
+    } else {// if modal is called from backlog, data from backlogTasks is rendered
         currentTask = backlogTasks[i];
-        getId('backlog-title').innerHTML = task.title;
-        getId('backlog-description').innerHTML = task.description;
-        getId('backlog-date').value = task.dueDate;
-    
-        getId('selectCategory').innerHTML =
-            `<h6><b>CATEGORY:</b></h6>
-        <select onchange="changeCategory(${i}, ${board})" id="category-backlog" class="form-select" aria-label="Default select example"></select>`;
-    
-        getId('containerOfBacklogButtons').innerHTML =
-            `<div class="moveToBoardContainer">
-            <img onclick="deleteTask(${i})" data-bs-dismiss="modal" class="trashbin" src="./img/delete.png" title="delete this card">
-            <img src="./img/paperplane.png" data-bs-dismiss="modal" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
-        </div>
-        <div id="button" class="modal-footer">
-            <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">previous task</button>
-            <button onclick="saveChanges(${i}, '${board}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">save changes</button>
-            <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">next task</button>
-        </div>`;
-    
-        showAssignedUsers();
-        renderCategories(i, board);
     }
 
+    renderCardData(i, page);
 
+    getId('changeStatusButtons').innerHTML = changeStatusButtons(i, page);
+    getId('footer-buttons').innerHTML = footerButtons(i, page);
 }
+
+
+/**
+ * renders task details on modal
+ * @param {integer} i - index of task
+ * @param {string} page - 'board', if task is shown on board
+ */
+function renderCardData(i, page) {
+    getId('card-title').innerHTML = currentTask.title;
+    getId('card-description').innerHTML = currentTask.description;
+    getId('card-date').value = currentTask.dueDate;
+    renderCategories();
+    getId('card-category').onchange = function () { changeCategory(i, page) };
+    showAssignedUsers();
+}
+
+/**
+ * creates buttons in modal 
+ * buttons for send to board is only shown in backlog
+ * @param {integer} i - index of task
+ * @param {string} page - 'board', if task is shown on board
+ * @returns html code
+ */
+function changeStatusButtons(i, page) {
+    html = '';
+    if (page == 'board') {
+        html += `
+        <img onclick="deleteTaskFromBoard(${i})" data-bs-dismiss="modal" class="trashbin" src="./img/delete.png" title="delete this card">
+        `;
+    } else {
+        html += `
+        <img src="./img/paperplane.png" data-bs-dismiss="modal" onclick="moveToBoard(${i})" class="plane-icon-in-modal plane-icon" title="move to board">
+        <img onclick="deleteTask(${i})" data-bs-dismiss="modal" class="trashbin" src="./img/delete.png" title="delete this card">
+        `;
+    }
+    return html;
+}
+
+
+/**
+ * creates buttons in modal footer
+ * buttons for previous/next task are only shown in backlog
+ * @param {integer} i - index of task
+ * @param {string} page - 'board', if task is shown on board
+ * @returns html code
+ */
+function footerButtons(i, page) {
+    html = '';
+    if (page != 'board') {
+        html += `
+        <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">
+            previous task
+        </button>`;
+    }
+    html += `
+        <button onclick="saveChanges(${i}, '${page}')" data-bs-dismiss="modal" type="button" class="btn btn-outline-success">
+             save changes
+        </button>`;
+    if (page != 'board') {
+        html += `
+        <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">
+            next task
+        </button>`;
+    }
+    return html;
+}
+
 
 function previousCard(i) {
     if (i == 0) {
@@ -150,19 +173,18 @@ function nextCard(i) {
 }
 
 function saveChanges(i, board) {
-    let title = getId('backlog-title').textContent;
-    let description = getId('backlog-description').textContent;
-    let date = getId('backlog-date').value;
+    let title = getId('card-title').textContent;
+    let description = getId('card-description').textContent;
+    let date = getId('card-date').value;
     let idToSave;
     let indexToSave;
 
-    if(board == 'board') {
+    if (board == 'board') {
         indexToSave = i;
     } else {
         idToSave = backlogTasks[i].id;
         indexToSave = allTasks.findIndex(task => task.id == idToSave);
     }
-
 
     allTasks[indexToSave].title = title;
     allTasks[indexToSave].description = description;
@@ -171,9 +193,14 @@ function saveChanges(i, board) {
     allTasks[indexToSave].category = currentTask.category;
 
     save(allTasks, 'tasks');
-    renderTasksInBacklog();
-    renderBoardTasks();
+
+    if (board == 'board') {
+        renderBoardTasks();
+    } else {
+        renderTasksInBacklog();
+    }
 }
+
 
 function moveToBoard(i) {
     backlogTasks[i].status = 'todo';
@@ -181,21 +208,14 @@ function moveToBoard(i) {
     renderTasksInBacklog();
 }
 
+
 // renders the option fields of category-selector and displays the chosen one
-function renderCategories(i, board) {
-
-    let category = document.getElementById('category-backlog');
+function renderCategories() {
+    let category = document.getElementById('card-category');
     category.innerHTML = '';
-    let tasks;
-
-    if (board == 'board') { // if board is chosesn, function renders categories of allTasks
-        tasks = allTasks[i];
-    } else {
-        tasks = backlogTasks[i];
-    }
 
     for (j = 0; j < categories.length; j++) {
-        if (tasks.category == categories[j]) {
+        if (currentTask.category == categories[j]) {
             category.innerHTML += `<option selected>${categories[j]}</option>`;
         } else {
             category.innerHTML += `<option>${categories[j]}</option>`;
@@ -203,38 +223,45 @@ function renderCategories(i, board) {
     }
 }
 
+
 function changeCategory(i, board) {
-    let categorySelector = getId('category-backlog');
+    let categorySelector = getId('card-category');
 
-    categorySelector[categorySelector.selectedIndex].value;
-    
-    if(board == 'board') {
-    allTasks[i].category = categorySelector[categorySelector.selectedIndex].value; 
+    let selectedCategory = categorySelector[categorySelector.selectedIndex].value;
+
+    if (board == 'board') {
+        allTasks[i].category = selectedCategory;
     } else {
-    backlogTasks[i].category = categorySelector[categorySelector.selectedIndex].value;
+        backlogTasks[i].category = selectedCategory;
     }
-
 }
 
 
 function showAssignedUsers() {
-
-    let assignedTo = getId('assigned-to-backlog');
+    let assignedTo = getId('card-assigned-to');
     assignedTo.innerHTML = '';
     for (let i = 0; i < currentTask.assignedTo.length; i++) {
         const name = currentTask.assignedTo[i];
-        assignedTo.innerHTML +=
-            `<div class="userContent">
-        ${staffIconHtml(name)}
-        <div class="userAndMail">
-        <p>${users[name].name}</p>
-        <p>${users[name].email}</p>
-        </div> </div>`;
-
+        assignedTo.innerHTML += userIconNameMail(name);;
     }
-
     if (moreStaffAllowed()) {
         assignedTo.innerHTML += addUserHtml();
         fillAssignedToList();
     }
+}
+
+
+/**
+ * creates html code to show the icon, name and email address of a user
+ * @param {string} name - name of (assigned) user
+ * @returns html code
+ */
+function userIconNameMail(name,clickable=true) {
+    return `<div class="userContent">
+                ${staffIconHtml(name, clickable)}
+                <div class="userAndMail">
+                    <p>${users[name].name}</p>
+                    <p><a href="mailto:${ users[name].email}"}>${users[name].email}</a></p>
+                </div>
+            </div>`;
 }

@@ -3,29 +3,47 @@
         <div id="modal-content" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="title">
-                    <span id="backlog-title" class="textarea-backlog form-control" role="textbox"
-                        contenteditable></span>
+                    <span id="card-title" class="textarea-backlog form-control" role="textbox" contenteditable></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="description" class="modal-body">
                 <h6><b>DESCRIPTION:</b></h6>
-                <span id="backlog-description" class="textarea-backlog-description form-control" role="textbox"
+                <span id="card-description" class="textarea-backlog-description form-control" role="textbox"
                     contenteditable></span></p>
                 <div class="infosOfCard">
                     <div class="dateAndCategory">
                         <div>
-                            <h6><b>DUE DATE:</b></h6><input id="backlog-date" type="date"
+                            <h6><b>DUE DATE:</b></h6><input id="card-date" type="date"
                                 class="backlog-date form-control mb-3" required aria-describedby="due-date-button"
                                 id="due-date">
                         </div>
-                        <div id="selectCategory"></div>
+                        <div id="selectCategory">
+                            <h6><b>CATEGORY:</b></h6>
+                            <select id="card-category" class="form-select" aria-label="Default select example">
+                            </select>
+                        </div>
                     </div>
                     <h6><b>ASSIGNED TO:</b></h6>
-                    <div id="assigned-to-backlog" class="personInCard" style="display: flex"></div>
+                    <div id="card-assigned-to" class="personInCard" style="display: flex"></div>
                 </div>
             </div>
-            <div id="containerOfBacklogButtons">
+
+            <div id="containerOfCardButtons">
+
+                <div id="changeStatusButtons" class="moveToBoardContainer">
+                </div>
+
+                <div id="footer-buttons" class="modal-footer ">
+                    <button onclick="previousCard(i)" data-bs-dismiss="modal" class="btn btn-primary">previous
+                        task</button>
+                    <button id="card-save-btn" data-bs-dismiss="modal" type="button"
+                        class="btn btn-outline-success">save changes</button>
+                    <button id="nextTask" onclick="nextCard(i)" data-bs-dismiss="modal" class="btn btn-primary">next
+                        task</button>
+                </div>
+
+
             </div>
         </div>
     </div>

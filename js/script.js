@@ -10,22 +10,18 @@ let currentTask = {};
 let now = new Date();
 let today = now.toISOString().slice(0, 10);
 
-
+/* helper function */
 function getId(id) {
     return document.getElementById(id);
 }
 
 
-// function showMenu() {
-//     let menubar = getId('menubar');
-//     menubar.style.left = '0';
-// }
-
-
-
+/**
+ * switches between menu shown and hidden (narrow screens only)
+ */
 function toggleMenu() {
     let menubar = getId('menubar');
-    if (menubar.style.left == '') {
+    if (menubar.style.left == '') {//after loading the page
         menubar.style.left = '0';
     } else {
         if (menubar.style.left == 'var(--menu-width-neg)') {
@@ -34,13 +30,12 @@ function toggleMenu() {
             menubar.style.left = 'var(--menu-width-neg)';
         }
     }
-
-
 }
 
 
-
-
+/**
+ * hides menu (narrow screens only)
+ */
 function hideMenu() {
     let menubar = getId('menubar');
     menubar.style.left = 'var(--menu-width-neg)';
@@ -154,3 +149,4 @@ function trashButtons(i) {
             </div>
             `;
 }
+
