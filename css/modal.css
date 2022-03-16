@@ -10,14 +10,17 @@ p {
 }
 
 .textarea-backlog {
-    width: 410px !important;
+    /* width: 410px !important; */
+    /* max-width: calc(100% - 32px) !important; */
+    word-wrap: break-word;
     border: 0;
     padding-left: 0;
     resize: none;
 }
 
 .textarea-backlog-description {
-    width: 480px !important;
+    /* width: 480px !important; */
+    word-wrap: break-word;
     padding-left: 0;
     border: 0;
     resize: none;
@@ -37,6 +40,8 @@ p {
 
 .personInCard {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 18px;
 }
 
@@ -89,67 +94,78 @@ p {
 
 .modal-footer {
     justify-content: center;
-    gap:11px;
+    gap: 11px;
+}
+
+.btn {
+    width: 30%;
+    height: 50px;
+    font-size: 14px;
 }
 
 
-@media only screen and (max-width: 360px) { 
+@media only screen and (max-width: 360px) {
 
-    .textarea-backlog {
-        width: 100% !important;
-    }
-    
+    /* .textarea-backlog {
+        width: calc(100% - 32px) !important;
+    } */
+    /* 
     .textarea-backlog-description {
         width: 100% !important;
-    }
+    } */
 
     .personContent {
         display: flex;
         align-items: center;
     }
 
-    .personInCard {
+    /* .personInCard {
         display: flex;
         flex-direction: column;
-    }
+    } */
 
-    .btn {
-        width: 30%;
-        height: 50px;
-        font-size: 14px;
-    }
 
     .dateAndCategory {
         gap: 12px;
+        flex-direction: column;
     }
+
 
 }
 
-@media only screen and (min-width: 360px) { 
+@media only screen and (max-width: 510px) {
 
-    .textarea-backlog {
-        width: 100% !important;
+    .btn {
+        padding: 4px;
+        width:25%;
     }
-    
+
+    .modal-footer {
+        gap: 4px;
+    }
+}
+
+@media only screen and (min-width: 360px) {
+
+    /* .textarea-backlog {
+        width: calc(100% - 32px) !important;
+    }
+
     .textarea-backlog-description {
         width: 100% !important;
-    }
+    } */
 
     .personContent {
         display: flex;
         align-items: center;
     }
 
-    .personInCard {
+    /* .personInCard {
         display: flex;
         flex-direction: column;
-    }
+        align-items:flex-start ;
+    } */
 
-    .btn {
-        width: 30%;
-        height: 50px;
-        font-size: 14px;
-    }
 
     .dateAndCategory {
         gap: 12px;
@@ -160,11 +176,17 @@ p {
 
 @media only screen and (min-width: 600px) {
 
-    .personInCard {
+    /* .personInCard {
         flex-direction: row;
         flex-wrap: wrap;
-    }
+    } */
 
 }
 
+@media (max-height: 800px) {
 
+    .infosOfCard {
+        gap: 4px;
+    }
+
+}

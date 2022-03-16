@@ -5,10 +5,11 @@ body {
 h6 {
     font-size: 14px;
 }
-.modal-backdrop {
+
+/* .modal-backdrop {
     background-color: none;
     opacity: 0.2 !important;
-}
+} */
 
 
 .btn-group {
@@ -117,11 +118,11 @@ h6 {
     right: 12px;
     bottom: 5px;
 }
-
+/* 
 .modal-content {
     min-height: 60vh;
     max-height: 80vh;
-}
+} */
 
 .form-control:focus {
     border-color: lightgray;
@@ -201,7 +202,8 @@ h6 {
     .category {
         width: 100%;
     }
-/* 
+
+    /* 
     .trashbin {
         bottom: 5px;
         right: 5px;
@@ -370,23 +372,23 @@ h6 {
     }
 }
 
-@media (max-width: 340px){
-    .userContent{
+@media (max-width: 340px) {
+    .userContent {
         flex-direction: column;
     }
 
-    .container{
+    .container {
         padding-right: 0;
         padding-left: 0;
         margin-right: 0;
         margin-left: 0;
     }
 
-    .card{
+    .card {
         overflow: auto;
     }
 
-    .card-body{
+    .card-body {
         padding: 0 !important;
     }
 }
