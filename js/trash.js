@@ -9,6 +9,8 @@ async function renderTrash(onload = false) {
     }
     let trash = getId('trash-content');
     trash.innerHTML = trashHtml();
+    getId('restore-btn').alt = "restore to backlog resp. todo";
+    getId('restore-btn').title = "restore to backlog resp. todo";
 }
 
 

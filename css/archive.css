@@ -1,6 +1,5 @@
 .archive-card {
     min-height: 100px;
-    /* height:fit-content; */
 }
 
 .archive-header {
@@ -12,12 +11,6 @@
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
-/* 
-.trashbin {
-    filter: invert(0.5);
-    height: 44px;
-    object-fit: contain;
-} */
 
 .date {
     width: 12%;
@@ -37,6 +30,7 @@
 .description {
     flex: 1;
     min-width: 110px;
+    word-wrap: break-word;
 }
 
 .assignedTo {

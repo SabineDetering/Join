@@ -36,6 +36,7 @@
 .description {
     flex: 1;
     min-width: 110px;
+    word-wrap: break-word;
 }
 
 .assignedTo {

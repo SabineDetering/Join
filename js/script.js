@@ -140,9 +140,9 @@ function getTeam(i) {
  * @returns html code 
  */
 function trashButtons(i) {
-    return `<div class="d-flex w-100 justify-content-end">
+    return `<div id="restore-btn" class="d-flex w-100 justify-content-end">
                 <img type="button" onclick="event.stopPropagation();restoreTask(${i})"
-                class="trashbin p-2" src="./img/reuse.png" alt="restore to last status" title="restore to todo">
+                class="trashbin p-2" src="./img/reuse.png" >
 
                 <img type="button" onclick="event.stopPropagation();deleteTask(${i})"
                 class="trashbin p-2" src="./img/delete.png" alt="delete irrevocably" title="delete irrevocably">
