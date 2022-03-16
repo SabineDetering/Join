@@ -29,12 +29,12 @@
     <div w3-include-html="./html_templates/menu.html"></div>
 
     <div class="wrapper  py-5">
-        <div class="container-sm px-4">
+        <div class="container-xxl px-4 ">
             <h1>Settings</h1>
-            <form id="task-form" onsubmit="saveSettings(event)" class="container shadow rounded bg-ci-light p-4 ">
+            <form id="task-form" onsubmit="saveSettings(event)" class="container ms-0 shadow rounded bg-ci-light p-4">
                 <div class="">
                     <p> Restrict the number of team members that can be assigned to a single task</p>
-                    <div class="d-flex">
+                    <div class="d-flex justify-content-between">
                         <label for="teamSize" class="form-label">Maximum team size per task</label>
                         <select class="form-select form-select-sm ms-2" id="teamSize">
                             <option>1</option>
@@ -47,7 +47,7 @@
                 <div class="mt-5">
                     <p> Restrict the number of active tasks (i.e. with status "in progress" or "testing") one person can
                         be assigned to</p>
-                    <div class="d-flex ">
+                    <div class="d-flex justify-content-between">
                         <label for="numberOfTasks" class="form-label">Maximum number of active tasks per person</label>
                         <select class="form-select form-select-sm ms-2" id="numberOfTasks">
                             <option>1</option>
