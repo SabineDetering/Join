@@ -16,7 +16,7 @@ function renderCards() {
         let task = backlogTasks[i];
 
         backlogContent.innerHTML +=
-            `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
+            `<div id="card${i}" onclick="showCard(${i})" class="overflow-auto card shadow bd-imp-${task.importance}">
                 <div class="card-body cardInBacklog">
                 <div class="iconsInCards">
                     <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
