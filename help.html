@@ -34,49 +34,68 @@
     <div class="wrapper  py-5">
         <div class="container-xxl px-4">
             <h1>Help</h1>
-            <p>Join is a Kanban Board. It visualises the project flow in agile project management. </p>
-            <p>This app was built as a training project at Developer Akademie. There is no security layer implemented.
-                It is not supposed to be used with real life data.</p>
-            <p><strong>Do not enter personal data.</strong> </p>
+            <p class="help-text">Join is a Kanban board. It gives you an overview of your current work situation and helps visualising the
+                project flow in agile project management. </p>
+            <div class="ci-border-dark p-2">
+                This app was built as a training project at Developer Akademie. There is no security layer implemented. The app is not supposed to be used with real life data. <strong>Do not enter personal data.</strong>
+            </div>
 
             <div class="help-sections">
                 <h4><b>Add a task</b></h4>
-                <p class="help-text">• Create a new task in the add-task section.<br>
-                    • Fill the form and choose by whom the task should be processed.<br>
-                    • Decide whether the task should end up in the board for direct processing or in the backlog first.
-                </p>
-                <img class="help-img" src="./img/add-task.png" alt="add task">
+                <ul class="help-text">
+                    <li>Create new tasks in the add-task section.</li>
+                    <li>Fill the form and choose by whom the task should be processed.</li>
+                    <li>Decide whether the task should end up in the board for direct processing or in the backlog first.</li>
+                </ul>
+                <img class="help-img" src="./img/add-task.png" alt="Add task" title="Add task"> 
             </div>
             <div class="help-sections">
                 <h4><b>The board</b></h4>
-                <p class="help-text">• On the board each task passes through 4 sections.<br>
-                    • The tasks can simply be moved by drag and drop.<br>
-                    • After a task has been completed, it can either be archived or deleted.
-                </p>
-                <img class="help-img" src="./img/board.png" alt="add task">
+                <ul class="help-text">
+                    <li>On the board each task passes through 4 stages.</li>
+                    <li>The tasks can simply be moved by drag and drop.</li>
+                    <li>After a task has been completed, it can either be archived or deleted.</li>
+                    <li>The color of the left border of each task illustrates its importance level.</li>
+                    <li>By clicking on the task you can see and edit all details.</li>
+                </ul>
+                <img class="help-img" src="./img/board.png" alt="Board" title="Board">
             </div>
             <div class="help-sections">
                 <h4><b>The backlog</b></h4>
-                <p class="help-text">• The backlog collects all tasks that have to be completed at a later date.<br>
-                    • To move the task to the board you can click on the arrow-icon.<br>
-                    • You can edit the task by clicking on it.
-                </p>
-                <img class="help-img" src="./img/backlog.png" alt="add task">
+                <ul class="help-text">
+                    <li>The backlog is a collection of upcoming tasks and ideas that are not yet in the focus of the project team.</li>
+                    <li>You can edit the task by clicking on it.</li>
+                    <li>To move the task to the board click on the arrow icon.</li>
+                </ul>
+                <img class="help-img" src="./img/backlog.png" alt="Backlog" title="Backlog">
             </div>
             <div class="help-sections">
-                <h4><b>The Archive</b></h4>
-                <p class="help-text">• The archive stores all tasks that have already been completed.<br>
-                    • It can be used to figure out who has completed which task.
-                </p>
-                <img class="help-img" src="./img/archive1.png" alt="add task">
+                <h4><b>The archive</b></h4>
+                <ul class="help-text">
+                    <li>The archive stores all tasks that have already been completed.</li>
+                    <li>It can be used to figure out who has completed which task.</li>
+                    <li>By clicking on the restore icon the task is moved back to the "DONE" section on the board.</li>
+                    <li>Deleting a task from the archive cannot be undone.</li>
+                </ul>
+                <img class="help-img" src="./img/archive1.png" alt="Archive" title="Archive">
             </div>
             <div class="help-sections">
-                <h4><b>The Trash</b></h4>
-                <p class="help-text">• All tasks that are deleted end up in the recycle bin.<br>
-                    • It prevents tasks from being deleted directly.<br>
-                    • Deleting from the recycle bin cannot be undone.                  
-                </p>
-                <img class="help-img" src="./img/recyclebin.png" alt="add task">
+                <h4><b>The trash</b></h4>
+                <ul class="help-text">
+                    <li>All tasks that are deleted end up in the recycle bin.</li>
+                    <li>It prevents tasks from being deleted accidentally.</li>
+                    <li>Tasks that were deleted from the board can be restored to the "TODO" section of the board. Tasks that were deleted from the backlog will be restored there.</li>
+                    <li>Deleting from the recycle bin cannot be undone.</li>
+                </ul>
+                <img class="help-img" src="./img/recyclebin.png" alt="Trash" title="Trash">
+            </div>
+            <div class="help-sections">
+                <h4><b>The Settings</b></h4>
+                <ul class="help-text">
+                    <li>Each task can be assigned to a limited number of team members.</li>
+                    <li>We recommend to restrict this number to 1 or 2 in order to facilitate a clear structure of tasks and responsibilities. Consider splitting tasks that seem to require more contributors. 
+                </ul>
+                <img class="help-img" src="./img/settings.png" alt="Settings" title="Settings">
             </div>
 
 

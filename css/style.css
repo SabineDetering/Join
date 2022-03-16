@@ -102,6 +102,9 @@ select:focus,
     border-left: 12px solid #9b2020;
 }
 
+.ci-border-dark {
+    border: 2px solid var(--ci-dark);
+}
 
 .trashbin {
     filter: invert(0.4);
@@ -117,7 +120,7 @@ select:focus,
 }
 
 
-.trashbin-board{
+.trashbin-board {
     filter: invert(0.4);
     height: 38px;
     width: 38px;
@@ -135,7 +138,7 @@ select:focus,
 }
 
 .help-text {
-    font-size: 18px;
+    font-size: 1.25em;
     margin-bottom: 24px;
 }
 

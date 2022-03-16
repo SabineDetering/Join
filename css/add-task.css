@@ -32,9 +32,6 @@ form label {
     background-color: var(--ci-light);
 }
 
-.ci-border-dark {
-    border: 2px solid var(--ci-dark);
-}
 
 #success {
     z-index: 10;
