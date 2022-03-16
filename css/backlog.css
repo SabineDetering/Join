@@ -44,13 +44,6 @@ h6 {
     transition: all ease-in-out 125ms;
 }
 
-.importance {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 20px;
-}
-
 .headerOfCard {
     display: flex;
     padding: 1rem 1rem;
@@ -68,7 +61,7 @@ h6 {
     display: flex;
     justify-content: flex-start !important;
     align-items: center;
-    height: 110px;
+    /* min-height: 110px; */
     gap: 48px;
 }
 
@@ -306,7 +299,7 @@ h6 {
 @media only screen and (min-width: 600px) {
 
     .cardInBacklog {
-        min-height: 350px;
+        min-height: 200px;
     }
 
 }

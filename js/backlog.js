@@ -16,18 +16,18 @@ function renderCards() {
         let task = backlogTasks[i];
 
         backlogContent.innerHTML +=
-            `<div id="card${i}" onclick="showCard(${i})" class="overflow-auto card shadow bd-imp-${task.importance}">
-                <div class="card-body cardInBacklog">
-                <div class="iconsInCards">
-                    <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
-                    <img onclick="event.stopPropagation();deleteTask(${i})" title="delete this card" class="trashbin" src="./img/delete.png">
-                </div>
+            `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
+                <div class="card-body cardInBacklog mb-4">
                     <div class="staff-container">${getStaff(i)}</div>
                     <div class="date">${task.dueDate}</div>
                     <p class="category">${task.category}<p>
                     <p class="title">${task.title}<p>
                     <div class="importance" id="importance${i}"><div>
                 </div>
+                <div class="iconsInCards">
+                        <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
+                        <img onclick="event.stopPropagation();deleteTask(${i})" title="delete this card" class="trashbin" src="./img/delete.png">
+                    </div>
             </div>`;
     }
 }
