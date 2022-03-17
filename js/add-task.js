@@ -167,58 +167,6 @@ function restrictDueDate() {
 //functions concerning assigned to
 
 /**
- * fills the drop down menu in the "assigned-to" section with all users (json)
- * already assigned users are excluded
- */
-function fillAssignedToList() {
-    let list = getId('assigned-to-list');
-    list.innerHTML = '';
-    for (const name in users) {
-        if (!userAlreadyAssigned(users[name].name)) {
-            list.innerHTML += itemMaker(users[name].name);
-        }
-    }
-}
-
-
-/**
- * true if name is already assigned to currentTask
- * @param {string} name - name of user to check
- * @returns boolean 
- */
-function userAlreadyAssigned(name) {
-    return currentTask.assignedTo.includes(users[name].name);
-}
-
-
-/**
- * returns the html code for a list item consisting of an icon with the image or the initials of the user and the name of the user
- * @param {string} name - name of a user
- * @returns html code
- */
-function itemMaker(name) {
-    return `
-        <li onclick = "assignUser('${users[name].name}')">
-           <div class="d-flex"> ${staffIconHtml(name, false)} 
-            <span>${users[name].name}<span>
-            </div>
-        </li >
-    `;
-}
-
-
-/**
- * name of selected user is pushed to assignedTo array of currentTask
- * user is shown in form
- * @param {string} name - name of selected user
- */
-function assignUser(name) {
-    currentTask.assignedTo.push(name);
-    showAssignedUsers();
-}
-
-
-/**
  * shows icon(s) for assigned user(s)
  * if it is feasible to add more staff to the task, plus icon is shown
  */
@@ -233,29 +181,6 @@ function showAssignedUsers() {
         assignedTo.innerHTML += addUserHtml();
         fillAssignedToList();
     }
-}
-
-
-/**
- * true, if task may be assigned to more users
- * @returns boolean
- */
-function moreStaffAllowed() {
-    return currentTask.assignedTo.length < maxTeamSizePerTask;
-}
-
-
-/**
- * creates html code for plus icon and dropdown list
- * @returns string - html code 
- */
-function addUserHtml() {
-    return `<div class="btn-group dropend">
-                <img id="plus-icon" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="img/icon plus.png" alt="add team member" title="add team member">
-
-                <ul id="assigned-to-list" class="dropdown-menu p-2">
-                </ul>
-            </div>`
 }
 
 ///////////////////////////////////////////////////////////////////////
