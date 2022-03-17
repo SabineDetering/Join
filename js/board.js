@@ -35,16 +35,39 @@ function taskCard(i) {
         <h6>${allTasks[i].title}</h6>
 
         <div class="icons-responsive d-flex justify-content-between">
+    
             <div id='staff-icons' class="d-flex" >
                 ${staffIcons(i)}
             </div>
             <div>
                 ${archiveButton(i)}
                 <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" title="delete this card" class="trashbin trashbin-board" src="./img/delete.png">
+                <img onclick="event.stopPropagation();moveStatus(${i})" title="move" class="trashbin trashbin-board" src="./img/swipe.png">
             </div>
+            
         </div>
     </div>
     `;
+}
+
+function moveStatus(i) {
+    if (allTasks[i]['status'] == 'todo') {
+        allTasks[i]['status'] = 'progress'
+    } else {
+        if (allTasks[i]['status'] == 'progress') {
+            allTasks[i]['status'] = 'testing'
+        } else {
+            if (allTasks[i]['status'] == 'testing') {
+                allTasks[i]['status'] = 'done'
+            } else {
+                if (allTasks[i]['status'] == 'done') {
+                    allTasks[i]['status'] = 'todo'
+                }
+            }
+        }
+    }
+    save(allTasks, 'tasks');
+    renderBoardTasks();
 }
 
 
@@ -121,10 +144,10 @@ function moveFeasible(status) {
     if (!task.assignedTo == []) {
         calculatedActiveTasks = calculateActiveTasks(status);
         if (Math.max(...calculatedActiveTasks) > maxActiveTasksPerUser) {
-            alert(`${task.assignedTo[calculatedActiveTasks.indexOf( maxActiveTasksPerUser+1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!`);
+            alert(`${task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!`);
             return false;
         } else {
-            updateActiveTasks(calculatedActiveTasks);           
+            updateActiveTasks(calculatedActiveTasks);
             return true;
         }
     }
