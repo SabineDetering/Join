@@ -42,7 +42,7 @@ function taskCard(i) {
             <div>
                 ${archiveButton(i)}
                 <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" title="delete this card" class="trashbin trashbin-board" src="./img/delete.png">
-                <img onclick="event.stopPropagation();moveStatus(${i})" title="move to next status" class="trashbin trashbin-board" src="./img/swipe.png">
+                <img onclick="event.stopPropagation();changeStatus(${i})" title="move to next status" class="trashbin trashbin-board" src="./img/swipe.png">
             </div>
             
         </div>
@@ -50,24 +50,36 @@ function taskCard(i) {
     `;
 }
 
-function moveStatus(i) {
+function checkActiveTasks() {
+    for (const name in users) {
+        console.log(users[name].name + ': ' + users[name].activeTasks);        
+    }
+}
+
+function changeStatus(i) {
+    currentDraggedElement = i;
     if (allTasks[i]['status'] == 'todo') {
-        allTasks[i]['status'] = 'progress'
+        // allTasks[i]['status'] = 'progress'
+        moveTo('progress');
     } else {
         if (allTasks[i]['status'] == 'progress') {
-            allTasks[i]['status'] = 'testing'
+            // allTasks[i]['status'] = 'testing'
+            moveTo('testing');
         } else {
             if (allTasks[i]['status'] == 'testing') {
-                allTasks[i]['status'] = 'done'
+                // allTasks[i]['status'] = 'done'
+                moveTo('done');
             } else {
                 if (allTasks[i]['status'] == 'done') {
-                    allTasks[i]['status'] = 'todo'
+                    // allTasks[i]['status'] = 'todo'
+                    moveTo('todo');
                 }
             }
         }
     }
-    save(allTasks, 'tasks');
-    renderBoardTasks();
+    // save(allTasks, 'tasks');
+    // renderBoardTasks();
+    checkActiveTasks();
 }
 
 
@@ -122,14 +134,15 @@ function allowDrop(ev) {
  * moves the dragged task to status, it it is feasible
  * @param {string} status - status the task is moved to
  */
-async function moveTo(status, event) {
-    event.preventDefault();
+async function moveTo(status/*, event*/) {
+    // event.preventDefault();
     if (moveFeasible(status)) {
         allTasks[currentDraggedElement].status = status;
         await save(allTasks, 'tasks');
         await save(users, 'users');
         renderBoardTasks();
     }
+    checkActiveTasks();
 }
 
 
@@ -197,12 +210,18 @@ function updateActiveTasks(calculatedActiveTasks) {
  * @param {integer} i - index of task 
  */
 function deleteTaskFromBoard(i) {
+    currentDraggedElement = i;
+    updateActiveTasks(calculateActiveTasks('trash'));
+    
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;
+
     save(allTasks, 'tasks');
+    save(users, 'users');
 
     renderBoardTasks();
+    checkActiveTasks();
 }
 
 
