@@ -42,7 +42,7 @@ function taskCard(i) {
             <div>
                 ${archiveButton(i)}
                 <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" title="delete this card" class="trashbin trashbin-board" src="./img/delete.png">
-                <img onclick="event.stopPropagation();moveStatus(${i})" title="move" class="trashbin trashbin-board" src="./img/swipe.png">
+                <img onclick="event.stopPropagation();moveStatus(${i})" title="move to next status" class="trashbin trashbin-board" src="./img/swipe.png">
             </div>
             
         </div>
