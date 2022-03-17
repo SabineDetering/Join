@@ -107,7 +107,7 @@ function removeUser(name) {
 
 
 /**
- * renders html code for icon and name for each person assigned to a task
+ * creates html code for icon and name for each person assigned to a task
  * @param {integer} i -index of the task 
  * @returns html code
  */

@@ -33,7 +33,7 @@
             <h1>Settings</h1>
             <form id="settings-task-form" class="container ms-0 shadow rounded bg-ci-light p-4">
                 <div class="">
-                    <p> Restrict the number of team members that can be assigned to a single task</p>
+                    <p> <strong>Restrict the number of team members </strong>that can be assigned to a single task</p>
                     <div class="d-flex justify-content-between">
                         <label for="teamSize" class="form-label">Maximum team size per task</label>
                         <select class="form-select form-select-sm ms-2" id="teamSize">
@@ -42,10 +42,12 @@
                             <option>3</option>
                         </select>
                     </div>
+                    <p> Reducing the maximum team size per task will only affect new tasks and changed assignments.</p>
                     <strong>Note:</strong> Consider splitting tasks that seem to need more than 2 assigned team members.
                 </div>
-                <div class="mt-5">
-                    <p> Restrict the number of active tasks (i.e. with status "in progress" or "testing") one person can
+                <hr>
+                <div class="mt-2">
+                    <p> <strong>Restrict the number of active tasks </strong>(i.e. with status "in progress" or "testing") one person can
                         be assigned to</p>
                     <div class="d-flex justify-content-between">
                         <label for="numberOfTasks" class="form-label">Maximum number of active tasks per person</label>
@@ -55,7 +57,7 @@
                             <option>3</option>
                         </select>
                     </div>
-                    
+                    <p> Reducing the maximum number of active tasks per person will only be possible, if the new restriction is not exceeded by any person. </p>
                 </div>
                 
                 <div class="button-row d-flex align-items-center justify-content-end mt-4">
@@ -68,7 +70,7 @@
                         SAVE SETTINGS
                     </button>
                 </div>
-                <div id="settings-message" class="text-danger text-end">&nbsp;</div>
+                <div id="settings-message" class="text-success text-end">&nbsp;</div>
             </form>
 
         </div>
