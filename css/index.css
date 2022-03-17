@@ -38,14 +38,3 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
-/* .join-btn-color{
-    background-color: rgb(37, 110, 110);
-    border: 1px solid rgb(37, 110, 110);
-} */
-
-.join-btn-color:hover{
-    background-color: #0b587c;
-    border: 1px solid #0b587c;
-    color: white;
-}

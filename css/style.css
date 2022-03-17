@@ -24,6 +24,17 @@ select:focus,
     box-shadow: none;
 }
 
+.join-btn-color{
+    background-color: rgb(37, 110, 110);
+    border: 1px solid rgb(37, 110, 110);
+}
+
+.join-btn-color:hover{
+    background-color: #0b587c;
+    border: 1px solid #0b587c;
+    color: white;
+}
+
 .form-check-input:checked {
     background-color: var(--ci-dark);
 }
