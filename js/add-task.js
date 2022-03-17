@@ -238,13 +238,16 @@ function getTaskData() {
 function showSuccessMessage(status) {
     let successMessage = getId('success');
     successMessage.innerHTML = `The task was created in ${status}.`;
-    successMessage.classList.remove('d-none');
+    successMessage.classList.remove('invisible');
 }
 
 
+/**
+ * makes success message invisible
+ */
 function hideSuccessMessage() {
     let successMessage = getId('success');
-    successMessage.classList.add('d-none');
+    successMessage.classList.add('invisible');
 }
 
 /**

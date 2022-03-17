@@ -32,15 +32,7 @@ form label {
     background-color: var(--ci-light);
 }
 
-
-#success {
-    z-index: 10;
-    border-radius: 10px !important;
-    right: 1em;
-    bottom: 1em;
-    background-color: white;
-}
-
+/*************************************************************************/
 @media (max-width:575px) {
     .form-row {
         flex-direction: column;
