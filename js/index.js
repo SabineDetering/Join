@@ -22,11 +22,11 @@ function signIn(event) {
                 if (password == users[name].password) {
                     location.href = 'board.html';
                     userFound = true;
-                } else { alert('The password is not correct. Please try again or sign in as guest.'); }
+                } else { getId('password-false').style.display = 'block'; return }
             }
         }
         if (!userFound) {
-            alert('Your email address is not yet registered. Please sign in as a guest.');
+            getId('not-resgistred').style.display = 'block';
         }
     }
 }

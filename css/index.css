@@ -7,6 +7,11 @@ body {
     padding-bottom: 40px;
 }
 
+.login{
+    color: red;
+    font-weight: bold;
+}
+
 .form-signin {
     width: 100%;
     max-width: 330px;
