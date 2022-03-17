@@ -17,8 +17,8 @@ async function load() {
  * saves selected values
  * @param {*} event 
  */
-function saveSettings(event) {
-    event.preventDefault();
+function saveSettings() {
+    // event.preventDefault();
 
     let teamSize = getId('teamSize');
     let numberOfTasks = getId('numberOfTasks');
@@ -28,4 +28,18 @@ function saveSettings(event) {
 
     saveVar(maxActiveTasksPerUser, 'numberOfTasks');
     saveVar(maxTeamSizePerTask, 'teamSize');
+}
+
+
+/**
+ * show values before change, changes are not saved
+ */
+function cancelChange() {
+    let teamSize = getId('teamSize');
+    let numberOfTasks = getId('numberOfTasks');
+
+    teamSize.selectedIndex = maxTeamSizePerTask - 1;
+    numberOfTasks.selectedIndex = maxActiveTasksPerUser - 1;
+
+    getId('settings-message').innerHTML='Changes are reset.'
 }

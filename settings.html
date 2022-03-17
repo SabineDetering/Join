@@ -31,7 +31,7 @@
     <div class="wrapper  py-5">
         <div class="container-xxl px-4 ">
             <h1>Settings</h1>
-            <form id="settings-task-form" onsubmit="saveSettings(event)" class="container ms-0 shadow rounded bg-ci-light p-4">
+            <form id="settings-task-form" class="container ms-0 shadow rounded bg-ci-light p-4">
                 <div class="">
                     <p> Restrict the number of team members that can be assigned to a single task</p>
                     <div class="d-flex justify-content-between">
@@ -60,12 +60,15 @@
                 
                 <div class="button-row d-flex align-items-center justify-content-end mt-4">
 
-                    <button type="reset" class="btn ci-button-transparent">CANCEL</button>
+                    <button type="button" class="btn ci-button-transparent" onclick="cancelChange()">
+                        CANCEL
+                    </button>
 
-                    <button type="submit" class="btn ci-button-dark">
+                    <button type="button" class="btn ci-button-dark" onclick="saveSettings()">
                         SAVE SETTINGS
                     </button>
                 </div>
+                <div id="settings-message" class="text-danger text-end"></div>
             </form>
 
         </div>
