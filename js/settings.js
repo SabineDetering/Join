@@ -26,8 +26,10 @@ function saveSettings() {
     maxTeamSizePerTask = +teamSize[teamSize.selectedIndex].value;
     maxActiveTasksPerUser = +numberOfTasks[numberOfTasks.selectedIndex].value;
 
-    saveVar(maxActiveTasksPerUser, 'numberOfTasks');
-    saveVar(maxTeamSizePerTask, 'teamSize');
+    save(maxActiveTasksPerUser, 'numberOfTasks');
+    save(maxTeamSizePerTask, 'teamSize');
+
+    getId('settings-message').innerHTML = 'Settings have been saved.'
 }
 
 
