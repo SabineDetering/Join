@@ -56,6 +56,24 @@
     cursor: pointer;
 } */
 
+/* .noMoreTasks{
+    background-color: #7812128f;
+} */
+
+.movingNotPossible {
+    background-color: #faa7a7;
+    position: absolute;
+    right: calc(50% - 280px);
+    top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-size: 20px;
+    border-radius: 5px;
+    /* color: white; */
+}
+
 
 @media (max-width: 1440px) {
     .status-wrap{

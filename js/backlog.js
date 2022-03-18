@@ -1,5 +1,6 @@
 let backlogTasks = [];
 
+// function renders all Tasks in which are sposed to be in backlog by filtering the array allTasks
 async function renderTasksInBacklog(onload = false) {
     if (onload) {
         await init();
@@ -36,7 +37,6 @@ function renderCards() {
                 </div>`;
         }
     }
-
 }
 
 
@@ -138,31 +138,31 @@ function moveToBoard(i) {
 // }
 
 
-function showAssignedUsers() {
-    let assignedTo = getId('card-assigned-to');
-    assignedTo.innerHTML = '';
-    for (let i = 0; i < currentTask.assignedTo.length; i++) {
-        const name = currentTask.assignedTo[i];
-        assignedTo.innerHTML += userIconNameMail(name);;
-    }
-    if (moreStaffAllowed()) {
-        assignedTo.innerHTML += addUserHtml();
-        fillAssignedToList();
-    }
-}
+// function showAssignedUsers() {
+//     let assignedTo = getId('card-assigned-to');
+//     assignedTo.innerHTML = '';
+//     for (let i = 0; i < currentTask.assignedTo.length; i++) {
+//         const name = currentTask.assignedTo[i];
+//         assignedTo.innerHTML += userIconNameMail(name);;
+//     }
+//     if (moreStaffAllowed()) {
+//         assignedTo.innerHTML += addUserHtml();
+//         fillAssignedToList();
+//     }
+// }
 
 
-/**
- * creates html code to show the icon, name and email address of a user
- * @param {string} name - name of (assigned) user
- * @returns html code
- */
-function userIconNameMail(name, clickable = true) {
-    return `<div class="userContent">
-                ${staffIconHtml(name, clickable)}
-                <div class="userAndMail">
-                    <p>${users[name].name}</p>
-                    <p><a href="mailto:${users[name].email}"}>${users[name].email}</a></p>
-                </div>
-            </div>`;
-}
+// /**
+//  * creates html code to show the icon, name and email address of a user
+//  * @param {string} name - name of (assigned) user
+//  * @returns html code
+//  */
+// function userIconNameMail(name, clickable = true) {
+//     return `<div class="userContent">
+//                 ${staffIconHtml(name, clickable)}
+//                 <div class="userAndMail">
+//                     <p>${users[name].name}</p>
+//                     <p><a href="mailto:${users[name].email}"}>${users[name].email}</a></p>
+//                 </div>
+//             </div>`;
+// }

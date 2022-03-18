@@ -289,7 +289,7 @@ function footerButtons(i, page) {
     html = '';
     if (page != 'board') {
         html += `
-        <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">
+        <button onclick="previousCard(${i})" data-bs-dismiss="modal" class="btn btn-lg bg-ci-dark join-btn-color">
             previous task
         </button>`;
     }
@@ -299,7 +299,7 @@ function footerButtons(i, page) {
         </button>`;
     if (page != 'board') {
         html += `
-        <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-primary">
+        <button id="nextTask" onclick="nextCard(${i})" data-bs-dismiss="modal" class="btn btn-lg bg-ci-dark join-btn-color">
             next task
         </button>`;
     }
@@ -461,3 +461,36 @@ function trashButtons(i) {
             `;
 }
 
+function checkActiveTasks() {
+    for (const name in users) {
+        console.log(users[name].name + ': ' + users[name].activeTasks);        
+    }
+}
+
+function showAssignedUsers() {
+    let assignedTo = getId('card-assigned-to');
+    assignedTo.innerHTML = '';
+    for (let i = 0; i < currentTask.assignedTo.length; i++) {
+        const name = currentTask.assignedTo[i];
+        assignedTo.innerHTML += userIconNameMail(name);;
+    }
+    if (moreStaffAllowed()) {
+        assignedTo.innerHTML += addUserHtml();
+        fillAssignedToList();
+    }
+}
+
+/**
+ * creates html code to show the icon, name and email address of a user
+ * @param {string} name - name of (assigned) user
+ * @returns html code
+ */
+ function userIconNameMail(name, clickable = true) {
+    return `<div class="userContent">
+                ${staffIconHtml(name, clickable)}
+                <div class="userAndMail">
+                    <p>${users[name].name}</p>
+                    <p><a href="mailto:${users[name].email}"}>${users[name].email}</a></p>
+                </div>
+            </div>`;
+}
