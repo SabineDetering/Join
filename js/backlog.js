@@ -1,5 +1,6 @@
 let backlogTasks = [];
 
+// function renders all Tasks in which are sposed to be in backlog by filtering the array allTasks
 async function renderTasksInBacklog(onload = false) {
     if (onload) {
         await init();
