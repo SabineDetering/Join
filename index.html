@@ -38,11 +38,9 @@
     <main class="form-signin">
         <form onsubmit="signIn(event)" autocomplete="on">
             <img class="mb-4" style="filter: brightness(1.5)" src="./img/logo.png">
-            <h1 class="h3 mb-3 fw-normal">Please Log-In</h1>
-            <h6 class="login" id="not-resgistred" style="display: none;">Your email address is not yet registered.
-                Please sign in as a guest.</h6>
-            <h6 class="login" id="password-false" style="display: none;">The password is not correct. Please try
-                again or sign in as guest.
+            <h1 class="h3 mb-3 fw-normal">Please log in</h1>
+            <h6 class="login" id="not-registered" style="display: none;">Your email address is not yet registered. Please contact your administrator or log in as guest.</h6>
+            <h6 class="login" id="password-false" style="display: none;">The password is not correct. Please try again or log in as guest.
                 </h5>
 
                 <div class="form-floating">
@@ -58,16 +56,16 @@
 
                 <div class="checkbox mb-3">
                     <label>
-                        <input id="guest" type="checkbox" value="remember-me"> Log-In as Guest<br>
+                        <input id="guest" type="checkbox" value="remember-me"> Log-in as guest<br>
                     </label>
                 </div>
-                <button type="submit" id="sign-in" class="w-100 btn btn-lg bg-ci-dark join-btn-color" type="submit">Sign
+                <button type="submit" id="sign-in" class="w-100 btn btn-lg bg-ci-dark join-btn-color" type="submit">Log
                     in</button>
-                <span>Company internal program, public registration not intended.<br>
+                <!-- <span>Company internal program, public registration not intended.<br>
                     <b> Access data to test login.</b> <br>
                     <b>E-Mail:</b> muster@email.de <br>
                     <b>Password:</b> password
-                </span>
+                </span> -->
         </form>
     </main>
 
