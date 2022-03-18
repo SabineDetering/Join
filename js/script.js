@@ -7,6 +7,7 @@ let maxTeamSizePerTask;
 let maxActiveTasksPerUser;
 let highestTaskId = -1;
 let currentTask = {};
+let statusList = ['todo', 'progress', 'testing', 'done'];
 let now = new Date();
 let today = now.toISOString().slice(0, 10);
 

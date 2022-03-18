@@ -1,5 +1,13 @@
 let currentDraggedElement;
 
+/**
+ * logs activeTasks of all users
+ */
+function checkActiveTasks() {
+    for (const name in users) {
+        console.log(users[name].name + ': ' + users[name].activeTasks);
+    }
+}
 
 /**
  * loads data from server if function is called onload
@@ -9,7 +17,6 @@ async function renderBoardTasks(onload = false) {
     if (onload) {
         await init();
     }
-    let statusList = ['todo', 'progress', 'testing', 'done'];
     for (let j = 0; j < statusList.length; j++) {
         const status = statusList[j];
         let statusElement = getId(status);
@@ -25,7 +32,7 @@ async function renderBoardTasks(onload = false) {
 
 
 /**
- * creates html code for rendering the task card
+ * creates html code for rendering a single task card
  * @param {integer} i - index of the task
  * @returns html code 
  */
@@ -40,9 +47,9 @@ function taskCard(i) {
                 ${staffIcons(i)}
             </div>
             <div>
+                ${changeStatusButton(i)}
                 ${archiveButton(i)}
                 <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" title="delete this card" class="trashbin trashbin-board" src="./img/delete.png">
-                <img onclick="event.stopPropagation();changeStatus(${i})" title="move to next status" class="trashbin trashbin-board" src="./img/swipe.png">
             </div>
             
         </div>
@@ -50,35 +57,53 @@ function taskCard(i) {
     `;
 }
 
-function checkActiveTasks() {
-    for (const name in users) {
-        console.log(users[name].name + ': ' + users[name].activeTasks);        
-    }
+
+function changeStatusButton(i) {
+    return `<div class="btn-group dropstart">
+              <img id="swipe-icon" title="change status" type="button" data-bs-toggle="dropdown" aria-expanded="false" class="trashbin trashbin-board dropdown-toggle" src="./img/swipe.png" onclick = "event.stopPropagation();" onhover= "event.stopPropagation();"</img>
+              ${statusDropDownHtml(i)}
+            </div>`;
 }
 
-function changeStatus(i) {
-    currentDraggedElement = i;
-    if (allTasks[i]['status'] == 'todo') {
-        // allTasks[i]['status'] = 'progress'
-        moveTo('progress');
-    } else {
-        if (allTasks[i]['status'] == 'progress') {
-            // allTasks[i]['status'] = 'testing'
-            moveTo('testing');
-        } else {
-            if (allTasks[i]['status'] == 'testing') {
-                // allTasks[i]['status'] = 'done'
-                moveTo('done');
-            } else {
-                if (allTasks[i]['status'] == 'done') {
-                    // allTasks[i]['status'] = 'todo'
-                    moveTo('todo');
-                }
-            }
+
+function statusDropDownHtml(i) {
+    let html = '';
+    html += `<ul class="dropdown-menu" aria-labelledby="swipe-icon">
+                <li>
+                    <span class="dropdown-item dropdown-item-text">Choose a status</span>
+                 </li>`;
+    for (let j = 0; j < statusList.length; j++) {
+        const status = statusList[j];
+        if (allTasks[i].status != status) {
+            html += `<li>
+                        <a class="dropdown-item" onclick = "event.stopPropagation();changeStatus(${i},status)">${status}</a>
+                    </li>`
         }
     }
-    // save(allTasks, 'tasks');
-    // renderBoardTasks();
+    html += '</ul>';
+    return html;
+}
+
+
+
+function changeStatus(i, status) {
+    currentDraggedElement = i;
+    moveTo(status);
+    // if (allTasks[i]['status'] == 'todo') {
+    //     moveTo('progress');
+    // } else {
+    //     if (allTasks[i]['status'] == 'progress') {
+    //         moveTo('testing');
+    //     } else {
+    //         if (allTasks[i]['status'] == 'testing') {
+    //             moveTo('done');
+    //         } else {
+    //             if (allTasks[i]['status'] == 'done') {
+    //                 moveTo('todo');
+    //             }
+    //         }
+    //     }
+    // }
     checkActiveTasks();
 }
 
@@ -109,7 +134,7 @@ function staffIcons(i) {
  */
 function archiveButton(i) {
     if (allTasks[i].status == 'done') {
-        return ` <img onclick="event.stopPropagation();archiveTask(${i})" title="archive this card" class="trashbin trashbin-board" src="./img/archive.png"></img>`;
+        return ` < img onclick = "event.stopPropagation();archiveTask(${i})" title = "archive this card" class="trashbin trashbin-board" src = "./img/archive.png" ></img > `;
     } else {
         return '';
     }
@@ -131,7 +156,7 @@ function allowDrop(ev) {
 
 
 /**
- * moves the dragged task to status, it it is feasible
+ * moves the dragged task to status, if it is feasible
  * @param {string} status - status the task is moved to
  */
 async function moveTo(status/*, event*/) {
@@ -212,7 +237,7 @@ function updateActiveTasks(calculatedActiveTasks) {
 function deleteTaskFromBoard(i) {
     currentDraggedElement = i;
     updateActiveTasks(calculateActiveTasks('trash'));
-    
+
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;
