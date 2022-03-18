@@ -22,11 +22,11 @@ function signIn(event) {
                 if (password == users[name].password) {
                     location.href = 'board.html';
                     userFound = true;
-                } else { getId('password-false').style.display = 'block'; getId('not-resgistred').style.display = 'none';return }
+                } else { getId('password-false').style.display = 'block'; getId('not-registered').style.display = 'none';return }
             }
         }
         if (!userFound) {
-            getId('not-resgistred').style.display = 'block';
+            getId('not-registered').style.display = 'block';
             getId('password-false').style.display = 'none';
         }
     }
