@@ -50,35 +50,28 @@ function taskCard(i) {
     `;
 }
 
-function checkActiveTasks() {
-    for (const name in users) {
-        console.log(users[name].name + ': ' + users[name].activeTasks);        
-    }
-}
 
+/**
+ * moves a task to the next status, from status 'done' it is moved to 'todo'
+ * @param {integer }   i - index of the task in allTasks 
+ */
 function changeStatus(i) {
     currentDraggedElement = i;
     if (allTasks[i]['status'] == 'todo') {
-        // allTasks[i]['status'] = 'progress'
         moveTo('progress');
     } else {
         if (allTasks[i]['status'] == 'progress') {
-            // allTasks[i]['status'] = 'testing'
             moveTo('testing');
         } else {
             if (allTasks[i]['status'] == 'testing') {
-                // allTasks[i]['status'] = 'done'
                 moveTo('done');
             } else {
                 if (allTasks[i]['status'] == 'done') {
-                    // allTasks[i]['status'] = 'todo'
                     moveTo('todo');
                 }
             }
         }
     }
-    // save(allTasks, 'tasks');
-    // renderBoardTasks();
     checkActiveTasks();
 }
 

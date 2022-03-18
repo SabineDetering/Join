@@ -9,8 +9,10 @@ async function renderTrash(onload = false) {
     }
     let trash = getId('trash-content');
     trash.innerHTML = trashHtml();
-    getId('restore-btn').alt = "restore to backlog resp. todo";
-    getId('restore-btn').title = "restore to backlog resp. todo";
+    try {//avoid error if trash is empty
+        getId('restore-btn').alt = "restore to backlog resp. todo";
+        getId('restore-btn').title = "restore to backlog resp. todo";
+    } catch{}
 }
 
 
@@ -103,4 +105,5 @@ function restoreTask(i) {
     task.deleteDate = '';
     save(allTasks, 'tasks');
     renderTrash();
+    checkActiveTasks();
 }

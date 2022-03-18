@@ -9,8 +9,10 @@ async function renderArchive(onload = false) {
     }
     let archive = getId('archive-content');
     archive.innerHTML = archiveHtml();
-    getId('restore-btn').alt = "restore to board";
-    getId('restore-btn').title = "restore to board";
+    try {//avoid error if trash is empty
+        getId('restore-btn').alt = "restore to board";
+        getId('restore-btn').title = "restore to board";
+    } catch { }
 }
 
 

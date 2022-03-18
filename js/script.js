@@ -14,6 +14,13 @@ let today = now.toISOString().slice(0, 10);
 function getId(id) {
     return document.getElementById(id);
 }
+
+
+function checkActiveTasks() {
+    for (const name in users) {
+        console.log(users[name].name + ': ' + users[name].activeTasks);
+    }
+}
 ///////////////////////////////////////////////////////////////////
 //functions concerning menu
 
