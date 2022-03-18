@@ -152,13 +152,23 @@ function moveFeasible(status) {
     if (!task.assignedTo == []) {
         calculatedActiveTasks = calculateActiveTasks(status);
         if (Math.max(...calculatedActiveTasks) > maxActiveTasksPerUser) {
-            alert(`${task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!`);
+            // alert(`${task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!`);
+            noMoreTasks(task, maxActiveTasksPerUser, calculatedActiveTasks);
             return false;
         } else {
             updateActiveTasks(calculatedActiveTasks);
             return true;
         }
     }
+}
+
+function noMoreTasks(task, maxActiveTasksPerUser, calculatedActiveTasks) {
+    // getId('progress').classList.add('noMoreTasks');
+    getId('noMoreTasks').style.display = "block";
+    getId('noMoreTasks').innerHTML = `<div><b>${task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!</b><div>`;
+    setTimeout(() => {
+        getId('noMoreTasks').style.display = "none";
+    }, 1500); 
 }
 
 
