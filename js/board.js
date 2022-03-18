@@ -50,11 +50,6 @@ function taskCard(i) {
     `;
 }
 
-function checkActiveTasks() {
-    for (const name in users) {
-        console.log(users[name].name + ': ' + users[name].activeTasks);        
-    }
-}
 
 function changeStatus(i) {
     currentDraggedElement = i;
@@ -238,3 +233,5 @@ function archiveTask(i) {
 
     renderBoardTasks();
 }
+
+
