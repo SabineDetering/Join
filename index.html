@@ -39,29 +39,32 @@
         <form onsubmit="signIn(event)" autocomplete="on">
             <img class="mb-4" style="filter: brightness(1.5)" src="./img/logo.png">
             <h1 class="h3 mb-3 fw-normal">Please log in</h1>
-            <h6 class="login" id="not-registered" style="display: none;">Your email address is not yet registered. Please contact your administrator or log in as guest.</h6>
-            <h6 class="login" id="password-false" style="display: none;">The password is not correct. Please try again or log in as guest.
-                </h5>
+            <h6 class="login" id="not-registered" style="display: none;">
+                Your email address is not yet registered. Please contact your administrator or log in as guest.
+            </h6>
+            <h6 class="login" id="password-false" style="display: none;">
+                The password is not correct. Please try again or log in as guest.
+            </h6>
 
-                <div class="form-floating">
-                    <input id="login-email" type="email" class="form-control" id="floatingInput"
-                        placeholder="name@example.com">
-                    <label for="floatingInput">E-Mail</label>
-                </div>
-                <div class="form-floating">
-                    <input id="login-passwort" type="password" class="form-control" id="floatingPassword"
-                        placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
+            <div class="form-floating">
+                <input id="login-email" type="email" class="form-control" id="floatingInput"
+                    placeholder="name@example.com">
+                <label for="floatingInput">E-Mail</label>
+            </div>
+            <div class="form-floating">
+                <input id="login-passwort" type="password" class="form-control" id="floatingPassword"
+                    placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
 
-                <div class="checkbox mb-3">
-                    <label>
-                        <input id="guest" type="checkbox" value="remember-me"> Log-in as guest<br>
-                    </label>
-                </div>
-                <button type="submit" id="sign-in" class="w-100 btn btn-lg bg-ci-dark join-btn-color" type="submit">Log
-                    in</button>
-                <!-- <span>Company internal program, public registration not intended.<br>
+            <div class="checkbox mb-3">
+                <label>
+                    <input id="guest" type="checkbox" value="remember-me" onclick="toggleInputDisable()"> Log-in as guest<br>
+                </label>
+            </div>
+            <button type="submit" id="sign-in" class="w-100 btn btn-lg bg-ci-dark join-btn-color" type="submit">Log
+                in</button>
+            <!-- <span>Company internal program, public registration not intended.<br>
                     <b> Access data to test login.</b> <br>
                     <b>E-Mail:</b> muster@email.de <br>
                     <b>Password:</b> password

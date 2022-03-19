@@ -62,7 +62,7 @@
 
 .movingNotPossible {
     background-color: #faa7a7;
-    position: absolute;
+    position: fixed;
     right: calc(50% - 280px);
     top: 150px;
     display: flex;
