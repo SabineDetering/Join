@@ -257,16 +257,6 @@ function renderCardData(i, page) {
     showAssignedUsers();
 }
 
-// function renderImportance() {
-//     return `<label for="importance" class="form-label">IMPORTANCE*</label>
-//     <select class="form-select" id="importance" required>
-//         <option value="" selected>Choose...</option>
-//         <option value="high">High</option>
-//         <option value="medium">Medium</option>
-//         <option value="low">Low</option>
-//     </select>`
-// }
-
 /**
  * creates buttons in modal 
  * button for send to board is only shown in backlog
@@ -465,21 +455,21 @@ function renderImportance(i) {
     if (currentTask.importance == "high") {
         importance.innerHTML =
         `
-        <option selected>High</option>
+        <option selected>${currentTask.importance}</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
         `
     } else if (currentTask.importance == "medium") {
         importance.innerHTML =
         `
-        <option selected>Medium</option>
+        <option selected>${currentTask.importance}</option>
         <option value="high">High</option>
         <option value="low">Low</option>
         `
     } else if (currentTask.importance == "low") {
         importance.innerHTML =
         `
-        <option selected>Low</option>
+        <option selected>${currentTask.importance}</option>
         <option value="High">High</option>
         <option value="medium">Medium</option>
         `
