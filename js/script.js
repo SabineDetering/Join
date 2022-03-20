@@ -450,26 +450,27 @@ function renderCategories() {
 
 function renderImportance(i) {
     let importance = document.getElementById('importance');
+    let upperCaseImportance = currentTask.importance.charAt(0).toUpperCase() + currentTask.importance.slice(1);
     importance.innerHTML = "";
 
     if (currentTask.importance == "high") {
         importance.innerHTML =
         `
-        <option selected>${currentTask.importance}</option>
+        <option selected>${upperCaseImportance}</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
         `
     } else if (currentTask.importance == "medium") {
         importance.innerHTML =
         `
-        <option selected>${currentTask.importance}</option>
+        <option selected>${upperCaseImportance}</option>
         <option value="high">High</option>
         <option value="low">Low</option>
         `
     } else if (currentTask.importance == "low") {
         importance.innerHTML =
         `
-        <option selected>${currentTask.importance}</option>
+        <option selected>${upperCaseImportance}</option>
         <option value="High">High</option>
         <option value="medium">Medium</option>
         `
