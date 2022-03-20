@@ -7,6 +7,7 @@ let currentDraggedElement;
  */
 async function renderBoardTasks(onload = false) {
     if (onload) {
+    
         await init();
     }
     let statusList = ['todo', 'progress', 'testing', 'done'];

@@ -3,10 +3,14 @@ let backlogTasks = [];
 // function renders all Tasks in which are sposed to be in backlog by filtering the array allTasks
 async function renderTasksInBacklog(onload = false) {
     if (onload) {
+        
         await init();
+
     }
     backlogTasks = allTasks.filter(task => task.status == 'backlog');
-    renderCards();
+
+        renderCards();
+    
 }
 
 function renderCards() {
@@ -25,9 +29,13 @@ function renderCards() {
                 `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
                     <div class="card-body cardInBacklog mb-4">
                         <div class="staff-container">${getStaff(i)}</div>
-                        <div class="date">${task.dueDate}</div>
-                        <p class="category">${task.category}<p>
-                        <p class="title">${task.title}<p>
+
+                        <div class="date mb-2">${task.dueDate}</div>
+                        <div class="fw-bold d-lg-none">Delete date</div>
+                        <p class="category mb-2">${task.category}<p>
+                        <div class="fw-bold d-lg-none  mt-1">Category</div>
+                        <p class="title mb-2">${task.title}<p>
+                        <div class="fw-bold d-lg-none mt-1">Title</div>
                         <div class="importance" id="importance${i}"><div>
                     </div>
                     <div class="iconsInCards">
@@ -81,6 +89,8 @@ function deleteTask(i) {
     save(allTasks, 'tasks');
 
     renderTasksInBacklog();
+
+
 }
 
 
