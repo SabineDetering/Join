@@ -161,7 +161,7 @@ h6 {
         flex-direction: column-reverse;
         align-items: flex-start;
         justify-content: flex-end !important;
-        min-height: 400px;
+        /* min-height: 400px; */
         gap: 18px;
     }
 
@@ -230,7 +230,7 @@ h6 {
         flex-direction: column-reverse;
         align-items: flex-start;
         justify-content: flex-end !important;
-        min-height: 400px;
+        /* min-height: 400px; */
         gap: 18px;
     }
 
@@ -300,9 +300,9 @@ h6 {
 
 @media only screen and (min-width: 600px) {
 
-    .cardInBacklog {
+    /* .cardInBacklog {
         min-height: 200px;
-    }
+    } */
 
 }
 
@@ -332,7 +332,7 @@ h6 {
 
     .cardInBacklog {
         flex-direction: row-reverse;
-        min-height: 200px;
+        /* min-height: 200px; */
         gap: 15px;
         align-items: center;
     }
@@ -364,9 +364,9 @@ h6 {
         flex-direction: row;
     }
 
-    .cardInBacklog {
+    /* .cardInBacklog {
         min-height: 170px;
-    }
+    } */
 }
 
 @media (max-width: 340px) {

@@ -251,9 +251,21 @@ function renderCardData(i, page) {
     getId('card-description').innerHTML = currentTask.description;
     getId('card-date').value = currentTask.dueDate;
     renderCategories();
+    renderImportance(i);
+
     // getId('card-category').onchange = function () { changeCategory(i, page) };
     showAssignedUsers();
 }
+
+// function renderImportance() {
+//     return `<label for="importance" class="form-label">IMPORTANCE*</label>
+//     <select class="form-select" id="importance" required>
+//         <option value="" selected>Choose...</option>
+//         <option value="high">High</option>
+//         <option value="medium">Medium</option>
+//         <option value="low">Low</option>
+//     </select>`
+// }
 
 /**
  * creates buttons in modal 
@@ -441,6 +453,19 @@ function renderCategories() {
             category.innerHTML += `<option>${categories[j]}</option>`;
         }
     }
+}
+
+function renderImportance(i) {
+    let importance = document.getElementById('selectedImportance');
+    importance.innerHTML = currentTask.importance;
+
+    // for (j = 0; j < 3; j++) {
+    //     if (currentTask.importance == categories[j]) {
+    //         category.innerHTML += `<option selected>${categories[j]}</option>`;
+    //     } else {
+    //         category.innerHTML += `<option>${categories[j]}</option>`;
+    //     }
+    // }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
