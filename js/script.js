@@ -329,7 +329,9 @@ function saveChanges(i, page) {
     let description = getId('card-description').textContent;
     let date = getId('card-date').value;
     let categorySelector = getId('card-category');
+    let importanceSelector = getId('importance');
     let selectedCategory = categorySelector[categorySelector.selectedIndex].value;
+    let selectedImportance = importanceSelector[importanceSelector.selectedIndex].value;
     let indexToSave = findAllTaskIndex(i, page);
 
     if (assignedToIsFeasible(indexToSave, page)) {
@@ -338,6 +340,7 @@ function saveChanges(i, page) {
         allTasks[indexToSave].dueDate = date;
         allTasks[indexToSave].assignedTo = currentTask.assignedTo;
         allTasks[indexToSave].category = selectedCategory;
+        allTasks[indexToSave].importance = selectedImportance;
 
         save(allTasks, 'tasks');
 
@@ -456,16 +459,31 @@ function renderCategories() {
 }
 
 function renderImportance(i) {
-    let importance = document.getElementById('selectedImportance');
-    importance.innerHTML = currentTask.importance;
+    let importance = document.getElementById('importance');
+    importance.innerHTML = "";
 
-    // for (j = 0; j < 3; j++) {
-    //     if (currentTask.importance == categories[j]) {
-    //         category.innerHTML += `<option selected>${categories[j]}</option>`;
-    //     } else {
-    //         category.innerHTML += `<option>${categories[j]}</option>`;
-    //     }
-    // }
+    if (currentTask.importance == "high") {
+        importance.innerHTML =
+        `
+        <option selected>High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+        `
+    } else if (currentTask.importance == "medium") {
+        importance.innerHTML =
+        `
+        <option selected>Medium</option>
+        <option value="high">High</option>
+        <option value="low">Low</option>
+        `
+    } else if (currentTask.importance == "low") {
+        importance.innerHTML =
+        `
+        <option selected>Low</option>
+        <option value="High">High</option>
+        <option value="medium">Medium</option>
+        `
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -488,7 +506,7 @@ function trashButtons(i) {
 
 function checkActiveTasks() {
     for (const name in users) {
-        console.log(users[name].name + ': ' + users[name].activeTasks);        
+        console.log(users[name].name + ': ' + users[name].activeTasks);
     }
 }
 
@@ -510,7 +528,7 @@ function showAssignedUsers() {
  * @param {string} name - name of (assigned) user
  * @returns html code
  */
- function userIconNameMail(name, clickable = true) {
+function userIconNameMail(name, clickable = true) {
     return `<div class="userContent">
                 ${staffIconHtml(name, clickable)}
                 <div class="userAndMail">
