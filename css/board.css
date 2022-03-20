@@ -1,8 +1,3 @@
-/* .body {
-    display: flex;
-    justify-content: space-between;
-} */
-
 .main-content {
     display: flex;
 }
@@ -10,8 +5,8 @@
 
 .categories {
     margin-top: 22px;
-   overflow-y: auto; 
-} 
+    overflow-y: auto;
+}
 
 
 .status-wrap {
@@ -34,12 +29,12 @@
 
 .card-body {
     width: 290px;
-    min-height:400px;
+    min-height: 400px;
     max-height: 650px;
     overflow-y: auto;
 }
 
-.card-margin{
+.card-margin {
     margin: 5px;
 }
 
@@ -49,16 +44,6 @@
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
-/* 
-.trashbin {
-    filter: brightness(0.5);
-    height: 40px;
-    cursor: pointer;
-} */
-
-/* .noMoreTasks{
-    background-color: #7812128f;
-} */
 
 .movingNotPossible {
     background-color: #faa7a7;
@@ -71,34 +56,23 @@
     padding: 24px;
     font-size: 20px;
     border-radius: 5px;
-    /* color: white; */
 }
 
+.onlyOnTouchscreen {
+    display: none;
+}
 
 @media (max-width: 1440px) {
-    .status-wrap{
-    display: flex;
-    flex-wrap: wrap;
+    .status-wrap {
+        display: flex;
+        flex-wrap: wrap;
 
     }
-    /* .board-content {
-        flex-direction: column;
-    } */
-
 
     .card-body {
         max-height: 300px;
     }
 }
-
-
-@media(max-width:768px) {
-    /* .board-content {
-        height: 90vh;
-    } */
-
-}
-
 
 @media (max-width: 660px) {
     .status-wrap {
@@ -113,16 +87,6 @@
     .categories {
         margin-right: 0;
     }
-
-
-    /* .card-body {
-        min-height: 100px;
-    } */
-
-
-    /* .body {
-        height: 80vh;
-    } */
 }
 
 @media (max-width: 340px) {
@@ -131,7 +95,7 @@
 
     }
 
-    .card-margin{
+    .card-margin {
         margin: 0;
     }
 
@@ -142,8 +106,7 @@
 }
 
 @media (max-width: 200px) {
-    .icons-responsive{
+    .icons-responsive {
         flex-direction: column;
     }
 }
-
