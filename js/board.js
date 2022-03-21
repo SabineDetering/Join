@@ -159,7 +159,7 @@ function moveFeasible(status) {
         calculatedActiveTasks = calculateActiveTasks(status);
         if (Math.max(...calculatedActiveTasks) > maxActiveTasksPerUser) {
             let busyPerson =task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)];
-            noMoreTasks(maxActiveTasksPerUser, busyPerson);
+            noMoreTasks(busyPerson);
             return false;
         } else {
             updateActiveTasks(calculatedActiveTasks);
@@ -171,10 +171,9 @@ function moveFeasible(status) {
 
 /**
  * displays message that the intended change of status is not possible
- * @param {integer} maxActiveTasksPerUser - max number of active tasks allowed per user (setting)
  * @param {string} name - name of a person that would get too many active tasks with the intended change of status
  */
-function noMoreTasks(maxActiveTasksPerUser, name) {
+function noMoreTasks(name) {
     let message = getId('alert-box');
     message.style.display = "block";
     message.innerHTML = `<div><b>This change of status is not possible.<br> ${name} is already assigned to ${maxActiveTasksPerUser} active tasks!</b><div>`;

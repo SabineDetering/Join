@@ -440,12 +440,26 @@ function assignedToIsFeasible(index, page) {
     let [namesWithChangedActiveTasks, changedActiveTasks] = calcActiveTasksForAssignChanges(index);
     if (Math.max(...changedActiveTasks) > maxActiveTasksPerUser) {
         let busyPerson = namesWithChangedActiveTasks[changedActiveTasks.indexOf(maxActiveTasksPerUser + 1)];
-        alert(`This change of assigned users is not feasible. ${busyPerson} is already assigned to ${maxActiveTasksPerUser} active tasks. Your changes will not be saved.`);
+        infeasibleMessage(busyPerson);
         return false;
     } else {
         updateActiveTasksForAssignChanges(namesWithChangedActiveTasks, changedActiveTasks);
         return true;
     }
+}
+
+
+/**
+ * displays message that the intended change of assigned to people is not possible
+ * @param {string} name - name of a person that would get too many active tasks with the intended change of assignedTo
+ */
+function infeasibleMessage(name) {
+    let message = getId('alert-box');
+    message.style.display = "block";
+    message.innerHTML = `<div><b>This change of assigned users is not feasible. ${name} is already assigned to ${maxActiveTasksPerUser} active tasks. Your changes will not be saved.</b><div>`;
+    setTimeout(() => {
+        message.style.display = "none";
+    }, 2500);
 }
 
 
@@ -508,6 +522,10 @@ function renderCategories() {
     }
 }
 
+
+/**
+ * 
+ */
 function renderImportance() {
     let importance = document.getElementById('importance');
     let importanceList = ['low', 'medium', 'high'];
