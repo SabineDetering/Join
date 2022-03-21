@@ -15,17 +15,20 @@
                     <div class="dateAndCategory">
                         <div>
                             <h6><b>DUE DATE:</b></h6><input id="card-date" type="date"
-                                class="backlog-date form-control mb-3" required aria-describedby="due-date-button"
+                                class="backlog-date form-control mb-3"  aria-describedby="due-date-button"
                                 id="due-date">
                         </div>
                         <div class="mb-3" id="selectCategory">
                             <h6><b>CATEGORY:</b></h6>
-                            <select id="card-category" class="form-select" aria-label="Default select example">
+                            <select id="card-category" class="form-select" >
                             </select>
                         </div>
                         <div>
                             <h6><b>IMPORTANCE:</b></h6>
-                            <select class="form-select" id="importance" required>
+                            <select class="form-select" id="importance">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
                             </select>
                         </div>
                     </div>
@@ -39,8 +42,7 @@
                 <div id="changeStatusButtons" class="moveToBoardContainer">
                 </div>
 
-                <div id="footer-buttons" class="modal-footer "> <!--the modal footer gets created in script.js-->
-
+                <div id="footer-buttons" class="modal-footer "> <!--the modal footer is created in script.js-->
                 </div>
 
             </div>

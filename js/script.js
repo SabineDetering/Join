@@ -293,7 +293,7 @@ function showCard(i, page) {
         currentTask = JSON.parse(JSON.stringify(backlogTasks[i])); //copy json
     }
 
-    renderCardData(i, page);
+    renderCardData();
 
     getId('changeStatusButtons').innerHTML = changeStatusButtons(i, page);
     getId('footer-buttons').innerHTML = footerButtons(i, page);
@@ -305,14 +305,12 @@ function showCard(i, page) {
  * @param {integer} i - index of task
  * @param {string} page - 'board', if task is from board
  */
-function renderCardData(i, page) {
+function renderCardData() {
     getId('card-title').innerHTML = currentTask.title;
     getId('card-description').innerHTML = currentTask.description;
     getId('card-date').value = currentTask.dueDate;
     renderCategories();
-    renderImportance(i);
-
-    // getId('card-category').onchange = function () { changeCategory(i, page) };
+    selectImportance();
     showAssignedUsers();
 }
 
@@ -510,7 +508,7 @@ function calcActiveTasksForAssignChanges(index) {
  * renders the option fields of category-selector and displays the chosen one
  */
 function renderCategories() {
-    let category = document.getElementById('card-category');
+    let category = getId('card-category');
     category.innerHTML = '';
 
     for (j = 0; j < categories.length; j++) {
@@ -524,26 +522,11 @@ function renderCategories() {
 
 
 /**
- * 
+ * selects importance level of current task on modal
  */
-function renderImportance() {
-    let importance = document.getElementById('importance');
+function selectImportance() {
     let importanceList = ['low', 'medium', 'high'];
-
-    importance.innerHTML = "";
-    for (j = 0; j < importanceList.length; j++) {
-        if (currentTask.importance == importanceList[j]) {
-            importance.innerHTML += `
-            <option value="${importanceList[j]}" selected>
-                ${firstLetterUpper(importanceList[j])}
-            </option>`;
-        } else {
-            importance.innerHTML += `
-            <option value="${importanceList[j]}">
-                ${firstLetterUpper(importanceList[j])}
-            </option>`;
-        }
-    }
+    getId('importance').selectedIndex = importanceList.indexOf(currentTask.importance);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
