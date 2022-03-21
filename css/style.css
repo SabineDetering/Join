@@ -184,14 +184,7 @@ select:focus,
 
 /******************************************************** */
 
-@media screen and (max-width: 360px) {
-    .help-img {
-        width: calc(100% + 3rem);
-        margin-left: -1.5rem;
-    }
-}
-
-@media screen and (min-width: 360px) and (max-width:500px) {
+@media screen and (max-width: 500px) {
     .help-img {
         width: calc(100% + 3rem);
         margin-left: -1.5rem;
