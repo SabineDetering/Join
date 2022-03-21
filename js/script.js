@@ -9,7 +9,7 @@ let highestTaskId = -1;
 let currentTask = {};
 let now = new Date();
 let today = now.toISOString().slice(0, 10);
-let timeout = 1000;// timeout to prevent simultaneous saving and loading from server
+let timeout = 200;// timeout to prevent simultaneous saving and loading from server
 
 //backup
 // categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
