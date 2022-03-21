@@ -214,7 +214,7 @@ function getTeam(i) {
         for (let j = 0; j < team.length; j++) {
             const name = team[j];
             html += `
-                <div class="px-0 d-flex flex-column flex-sm-row">
+                <div class="mb-2 px-0 d-flex flex-column flex-sm-row">
                     ${staffIconHtml(name)} <p>${name}</p> 
                 </div>
                 `;

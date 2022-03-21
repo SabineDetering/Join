@@ -11,6 +11,10 @@ body {
     background-color: #bcd1db;
 }
 
+a{
+    color: #0d6e9b;
+}
+
 h1 {
     font-weight: bold;
 }
