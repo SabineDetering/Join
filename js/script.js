@@ -439,7 +439,8 @@ function assignedToIsFeasible(index, page) {
     }
     let [namesWithChangedActiveTasks, changedActiveTasks] = calcActiveTasksForAssignChanges(index);
     if (Math.max(...changedActiveTasks) > maxActiveTasksPerUser) {
-        alert(`This change of assigned users is not feasible. ${namesWithChangedActiveTasks[changedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks. Your changes will not be saved.`);
+        let busyPerson = namesWithChangedActiveTasks[changedActiveTasks.indexOf(maxActiveTasksPerUser + 1)];
+        alert(`This change of assigned users is not feasible. ${busyPerson} is already assigned to ${maxActiveTasksPerUser} active tasks. Your changes will not be saved.`);
         return false;
     } else {
         updateActiveTasksForAssignChanges(namesWithChangedActiveTasks, changedActiveTasks);

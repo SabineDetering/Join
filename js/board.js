@@ -171,7 +171,6 @@ function moveFeasible(status) {
 
 /**
  * displays message that the intended change of status is not possible
- * @param {json} task - to be moved
  * @param {integer} maxActiveTasksPerUser - max number of active tasks allowed per user (setting)
  * @param {string} name - name of a person that would get too many active tasks with the intended change of status
  */
