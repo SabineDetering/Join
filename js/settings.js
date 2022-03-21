@@ -11,6 +11,7 @@ async function renderSettings(onload=false) {
 
     teamSize.selectedIndex = maxTeamSizePerTask - 1;
     numberOfTasks.selectedIndex = maxActiveTasksPerUser - 1;
+    checkActiveTasks();
 }
 
 

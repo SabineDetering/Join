@@ -9,7 +9,7 @@ let highestTaskId = -1;
 let currentTask = {};
 let now = new Date();
 let today = now.toISOString().slice(0, 10);
-let timeout = 200;// timeout to prevent simultaneous saving and loading from server
+let timeout = 500;// timeout to prevent simultaneous saving and loading from server
 
 //backup
 // categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
@@ -31,6 +31,7 @@ function checkActiveTasks() {
         console.log(users[name].name + ': ' + users[name].activeTasks);
     }
 }
+
 ///////////////////////////////////////////////////////////////////
 //functions concerning menu
 
@@ -112,6 +113,40 @@ function dropDownHtml(user) {
                     <a class="dropdown-item" onclick = "removeUser('${user}')">Remove from task</a>
                 </li>
             </ul>`;
+}
+
+
+/**
+ * renders all users that are assigned to a task
+ * shows icon, name and email
+ * if more users are allowed for the task, a plus icon is shown
+ */
+function showAssignedUsers() {
+    let assignedTo = getId('card-assigned-to');
+    assignedTo.innerHTML = '';
+    for (let i = 0; i < currentTask.assignedTo.length; i++) {
+        const name = currentTask.assignedTo[i];
+        assignedTo.innerHTML += userIconNameMail(name);;
+    }
+    if (moreStaffAllowed()) {
+        assignedTo.innerHTML += addUserHtml();
+        fillAssignedToList();
+    }
+}
+
+/**
+ * creates html code to show the icon, name and email address of a user
+ * @param {string} name - name of (assigned) user
+ * @returns html code
+ */
+function userIconNameMail(name, clickable = true) {
+    return `<div class="userContent">
+                ${staffIconHtml(name, clickable)}
+                <div class="userAndMail">
+                    <p>${users[name].name}</p>
+                    <p><a href="mailto:${users[name].email}"}>${users[name].email}</a></p>
+                </div>
+            </div>`;
 }
 
 
@@ -225,14 +260,14 @@ function getTeam(i) {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// other function concerning modal in board and backlog
+// other functions concerning modal in board and backlog
 
 
 /**
  * shows task details on a modal
  * data is editable
  * @param {integer} i - index of task
- * @param {string} page - 'board', if task is shown on board
+ * @param {string} page - 'board', if task is from board
  */
 function showCard(i, page) {
     let cardModal = new bootstrap.Modal(getId('cardModal'), {});
@@ -254,7 +289,7 @@ function showCard(i, page) {
 /**
  * renders task details on modal
  * @param {integer} i - index of task
- * @param {string} page - 'board', if task is shown on board
+ * @param {string} page - 'board', if task is from board
  */
 function renderCardData(i, page) {
     getId('card-title').innerHTML = currentTask.title;
@@ -271,7 +306,7 @@ function renderCardData(i, page) {
  * creates buttons in modal 
  * button for send to board is only shown in backlog
  * @param {integer} i - index of task
- * @param {string} page - 'board', if task is shown on board
+ * @param {string} page - 'board', if task is from board
  * @returns html code
  */
 function changeStatusButtons(i, page) {
@@ -294,7 +329,7 @@ function changeStatusButtons(i, page) {
  * creates buttons in modal footer
  * buttons for previous/next task are only shown in backlog
  * @param {integer} i - index of task
- * @param {string} page - 'board', if task is shown on board
+ * @param {string} page - 'board', if task is from board
  * @returns html code
  */
 function footerButtons(i, page) {
@@ -322,9 +357,9 @@ function footerButtons(i, page) {
 /**
  * saves all details of the task in the modal
  * @param {integer} i - index of task
- * @param {string} page - 'board', if task is shown on board
+ * @param {string} page - 'board', if task is from board
  */
-function saveChanges(i, page) {
+async function saveChanges(i, page) {
     let title = getId('card-title').textContent;
     let description = getId('card-description').textContent;
     let date = getId('card-date').value;
@@ -342,6 +377,7 @@ function saveChanges(i, page) {
         allTasks[indexToSave].category = selectedCategory;
         allTasks[indexToSave].importance = selectedImportance;
 
+        await save(users, 'users');
         save(allTasks, 'tasks');
 
         if (page == 'board') {
@@ -360,7 +396,6 @@ function saveChanges(i, page) {
  * @param {string} page - 'board', if task is from board
  * @returns index of task in allTasks
  */
-
 function findAllTaskIndex(i, page) {
     if (page == 'board') {
         return i;
@@ -377,7 +412,7 @@ function findAllTaskIndex(i, page) {
  * shows an alert, if result is false
  * if the result is true, activeTasks are updated for all affected users
  * @param {integer} index - index of task on allTasks
- * @param {string} page - 'board' if task is shown on board
+ * @param {string} page - 'board' if task is from board
  * @returns boolean
  */
 function assignedToIsFeasible(index, page) {
@@ -503,38 +538,4 @@ function trashButtons(i) {
                 class="trashbin p-2" src="./img/delete.png" alt="delete irrevocably" title="delete irrevocably">
             </div>
             `;
-}
-
-function checkActiveTasks() {
-    for (const name in users) {
-        console.log(users[name].name + ': ' + users[name].activeTasks);
-    }
-}
-
-function showAssignedUsers() {
-    let assignedTo = getId('card-assigned-to');
-    assignedTo.innerHTML = '';
-    for (let i = 0; i < currentTask.assignedTo.length; i++) {
-        const name = currentTask.assignedTo[i];
-        assignedTo.innerHTML += userIconNameMail(name);;
-    }
-    if (moreStaffAllowed()) {
-        assignedTo.innerHTML += addUserHtml();
-        fillAssignedToList();
-    }
-}
-
-/**
- * creates html code to show the icon, name and email address of a user
- * @param {string} name - name of (assigned) user
- * @returns html code
- */
-function userIconNameMail(name, clickable = true) {
-    return `<div class="userContent">
-                ${staffIconHtml(name, clickable)}
-                <div class="userAndMail">
-                    <p>${users[name].name}</p>
-                    <p><a href="mailto:${users[name].email}"}>${users[name].email}</a></p>
-                </div>
-            </div>`;
 }

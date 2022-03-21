@@ -132,15 +132,15 @@ function allowDrop(ev) {
 
 
 /**
- * moves the dragged task to status, it it is feasible
+ * moves the dragged task to status, if it is feasible
  * @param {string} status - status the task is moved to
  */
 async function moveTo(status/*, event*/) {
     // event.preventDefault();
     if (moveFeasible(status)) {
         allTasks[currentDraggedElement].status = status;
-        await save(allTasks, 'tasks');
         await save(users, 'users');
+        save(allTasks, 'tasks');
         renderBoardTasks();
     }
     checkActiveTasks();
@@ -219,7 +219,7 @@ function updateActiveTasks(calculatedActiveTasks) {
  * updates board
  * @param {integer} i - index of task 
  */
-function deleteTaskFromBoard(i) {
+async function deleteTaskFromBoard(i) {
     currentDraggedElement = i;
     updateActiveTasks(calculateActiveTasks('trash'));
 
@@ -227,8 +227,8 @@ function deleteTaskFromBoard(i) {
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;
 
+    await save(users, 'users');
     save(allTasks, 'tasks');
-    save(users, 'users');
 
     renderBoardTasks();
     checkActiveTasks();
