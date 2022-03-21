@@ -11,7 +11,7 @@ body {
     background-color: #bcd1db;
 }
 
-a{
+a {
     color: #0d6e9b;
 }
 
@@ -28,12 +28,12 @@ select:focus,
     box-shadow: none;
 }
 
-.join-btn-color{
+.join-btn-color {
     background-color: rgb(37, 110, 110);
     border: 1px solid rgb(37, 110, 110);
 }
 
-.join-btn-color:hover{
+.join-btn-color:hover {
     background-color: #0b587c !important;
     border: 1px solid #0b587c;
     color: white;
@@ -166,14 +166,16 @@ select:focus,
 }
 
 
-.movingNotPossible {
+#alert-box {
+    display: none;
     background-color: #faa7a7;
     position: fixed;
-    right: calc(50% - 280px);
     top: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    left: 50%;
+    width:650px;
+    max-width:90%;
+    transform: translateX(-50%);
+    text-align: center;
     padding: 24px;
     font-size: 20px;
     border-radius: 5px;
@@ -183,30 +185,31 @@ select:focus,
 /******************************************************** */
 
 @media screen and (max-width: 360px) {
-
     .help-img {
         width: calc(100% + 3rem);
         margin-left: -1.5rem;
     }
-
 }
 
-@media screen and (min-width: 360px) {
-
+@media screen and (min-width: 360px) and (max-width:500px) {
     .help-img {
         width: calc(100% + 3rem);
         margin-left: -1.5rem;
     }
-
 }
 
-@media screen and (min-width: 500px) {
-
+@media screen and (min-width: 500px) and (max-width:1100px) {
     .help-img {
         width: 100%;
         margin: 0;
     }
+}
 
+@media(min-width: 1100px) {
+    .help-img {
+        width: 80%;
+        margin: 0;
+    }
 }
 
 @media(min-width:768px) {
@@ -218,13 +221,5 @@ select:focus,
 @media(max-width:768px) {
     .wrapper {
         margin-bottom: 10vh;
-    }
-}
-
-@media(min-width: 1100px) {
-    
-    .help-img {
-        width: 80%;
-
     }
 }

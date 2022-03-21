@@ -96,7 +96,7 @@ function deleteTask(i) {
  */
 function previousCard(i) {
     if (i == 0) {
-        document.getElementById('nextTask').classList.add('background-color-grey');
+        // document.getElementById('nextTask').classList.add('background-color-grey');
         noMoreTasksBacklog('first');
     } else {
         i--;
@@ -112,7 +112,7 @@ function previousCard(i) {
 function nextCard(i) {
     if (i == backlogTasks.length - 1) {
         noMoreTasksBacklog('last');
-        document.getElementById('nextTask').classList.add('background-color-grey');
+        // document.getElementById('nextTask').classList.add('background-color-grey');
     } else {
         i++;
     }
@@ -130,16 +130,20 @@ function moveToBoard(i) {
     renderTasksInBacklog();
 }
 
+/**
+ * shows a message that the first/last card is shown
+ * @param {string} card - indicates if the message is shown for the first or last task
+ */
 function noMoreTasksBacklog(card) {
+    let message = getId('alert-box');
+    message.style.display = "block";
     if(card == 'first') {
-        getId('noMoreTasksBacklog').style.display = "block";
-        getId('noMoreTasksBacklog').innerHTML = `<div><b>This is the first card!</b><div>`;
+        message.innerHTML = `<div><b>This is the first card!</b><div>`;
     } else {
-        getId('noMoreTasksBacklog').style.display = "block";
-        getId('noMoreTasksBacklog').innerHTML = `<div><b>This is the last card!</b><div>`;
+        message.innerHTML = `<div><b>This is the last card!</b><div>`;
     }
    
     setTimeout(() => {
-        getId('noMoreTasksBacklog').style.display = "none";
+        message.style.display = "none";
     }, 1500);
 }
