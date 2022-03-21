@@ -97,7 +97,7 @@ function deleteTask(i) {
 function previousCard(i) {
     if (i == 0) {
         document.getElementById('nextTask').classList.add('background-color-grey');
-        alert('This is the first task.');
+        noMoreTasksBacklog('first');
     } else {
         i--;
     }
@@ -111,7 +111,7 @@ function previousCard(i) {
  */
 function nextCard(i) {
     if (i == backlogTasks.length - 1) {
-        alert('No more tasks available.')
+        noMoreTasksBacklog('last');
         document.getElementById('nextTask').classList.add('background-color-grey');
     } else {
         i++;
@@ -128,4 +128,18 @@ function moveToBoard(i) {
     backlogTasks[i].status = 'todo';
     save(allTasks, 'tasks');
     renderTasksInBacklog();
+}
+
+function noMoreTasksBacklog(card) {
+    if(card == 'first') {
+        getId('noMoreTasksBacklog').style.display = "block";
+        getId('noMoreTasksBacklog').innerHTML = `<div><b>This is the first card!</b><div>`;
+    } else {
+        getId('noMoreTasksBacklog').style.display = "block";
+        getId('noMoreTasksBacklog').innerHTML = `<div><b>This is the last card!</b><div>`;
+    }
+   
+    setTimeout(() => {
+        getId('noMoreTasksBacklog').style.display = "none";
+    }, 1500);
 }

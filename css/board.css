@@ -45,19 +45,6 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
 
-.movingNotPossible {
-    background-color: #faa7a7;
-    position: fixed;
-    right: calc(50% - 280px);
-    top: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    font-size: 20px;
-    border-radius: 5px;
-}
-
 .onlyOnTouchscreen {
     display: none;
 }

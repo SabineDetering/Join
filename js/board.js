@@ -169,7 +169,6 @@ function moveFeasible(status) {
 }
 
 function noMoreTasks(task, maxActiveTasksPerUser, calculatedActiveTasks) {
-    // getId('progress').classList.add('noMoreTasks');
     getId('noMoreTasks').style.display = "block";
     getId('noMoreTasks').innerHTML = `<div><b>${task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!</b><div>`;
     setTimeout(() => {
