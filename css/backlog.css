@@ -6,12 +6,6 @@ h6 {
     font-size: 14px;
 }
 
-/* .modal-backdrop {
-    background-color: none;
-    opacity: 0.2 !important;
-} */
-
-
 .btn-group {
     align-items: center;
 }
@@ -36,7 +30,6 @@ h6 {
     margin-bottom: 12px;
     width: 80vw;
     cursor: pointer;
-    /* transition: all ease-in-out 125ms; */
 }
 
 .card:hover {
@@ -116,11 +109,6 @@ h6 {
     right: 12px;
     bottom: 5px;
 }
-/* 
-.modal-content {
-    min-height: 60vh;
-    max-height: 80vh;
-} */
 
 .form-control:focus {
     border-color: lightgray;
@@ -144,6 +132,7 @@ h6 {
     background-color: #294d83 !important;
 }
 
+/***********************************************************************************/
 @media only screen and (max-width: 360px) {
 
     .card-content {
@@ -199,16 +188,6 @@ h6 {
         width: 100%;
     }
 
-    /* 
-    .trashbin {
-        bottom: 5px;
-        right: 5px;
-    } */
-
-    .personContent {
-        display: flex;
-        align-items: center;
-    }
 }
 
 @media only screen and (min-width: 360px) {
@@ -284,11 +263,6 @@ h6 {
     .trashbin {
         bottom: 5px;
         right: 5px;
-    }
-
-    .personContent {
-        display: flex;
-        align-items: center;
     }
 }
 

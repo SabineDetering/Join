@@ -2,12 +2,10 @@
     display: flex;
 }
 
-
 .categories {
     margin-top: 22px;
     overflow-y: auto;
 }
-
 
 .status-wrap {
     display: flex;
@@ -49,11 +47,11 @@
     display: none;
 }
 
+/******************************************************************************************/
 @media (max-width: 1440px) {
     .status-wrap {
         display: flex;
         flex-wrap: wrap;
-
     }
 
     .card-body {
@@ -65,7 +63,6 @@
     .status-wrap {
         display: block;
     }
-
 
     .card-body {
         min-height: 0px;
@@ -89,7 +86,6 @@
     .trashbin {
         height: 30px;
     }
-
 }
 
 @media (max-width: 200px) {
