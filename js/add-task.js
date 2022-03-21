@@ -16,6 +16,11 @@ async function renderAddTaskForm(onload = false) {
     fillAssignedToList();
 }
 
+for (let i = 0; i < allTasks.length; i++) {
+    const task = allTasks[i];
+
+    
+}
 
 /////////////////////////////////////////////////////////////////
 // functions concerning categories
@@ -86,16 +91,6 @@ function addCategory() {
         resetCategory();
     }
     categoryInput.value = '';
-}
-
-
-/**
- * changes the first letter of a string to upper case
- * @param {string} word - the word to capitalize
- * @returns capitalized word
- */
-function firstLetterUpper(word) {
-    return word.slice(0, 1).toUpperCase() + word.slice(1);
 }
 
 

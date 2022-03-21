@@ -20,12 +20,26 @@ let timeout = 500;// timeout to prevent simultaneous saving and loading from ser
 //     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: './img/tuncay-icon.png', email: 'muster@email.de', password: 'password', activeTasks: 0 },
 // };
 
-/* helper function */
+/////////////////////////////////////////////////////////////////////////////////////////////// 
+/* helper functions */
 function getId(id) {
     return document.getElementById(id);
 }
 
 
+/**
+ * changes the first letter of a string to upper case
+ * @param {string} word - the word to capitalize
+ * @returns capitalized word
+ */
+function firstLetterUpper(word) {
+    return word.slice(0, 1).toUpperCase() + word.slice(1);
+}
+
+
+/**
+ * logs the number of active tasks for all users
+ */
 function checkActiveTasks() {
     for (const name in users) {
         console.log(users[name].name + ': ' + users[name].activeTasks);
@@ -493,32 +507,23 @@ function renderCategories() {
     }
 }
 
-function renderImportance(i) {
+function renderImportance() {
     let importance = document.getElementById('importance');
-    // let upperCaseImportance = currentTask.importance.charAt(0).toUpperCase() + currentTask.importance.slice(1);
-    importance.innerHTML = "";
+    let importanceList = ['low', 'medium', 'high'];
 
-    if (currentTask.importance == "high") {
-        importance.innerHTML =
-        `
-        <option selected>${currentTask.importance}</option>
-        <option value="medium">Medium</option>
-        <option value="low">Low</option>
-        `
-    } else if (currentTask.importance == "medium") {
-        importance.innerHTML =
-        `
-        <option selected>${currentTask.importance}</option>
-        <option value="high">High</option>
-        <option value="low">Low</option>
-        `
-    } else if (currentTask.importance == "low") {
-        importance.innerHTML =
-        `
-        <option selected>${currentTask.importance}</option>
-        <option value="high">High</option>
-        <option value="medium">Medium</option>
-        `
+    importance.innerHTML = "";
+    for (j = 0; j < importanceList.length; j++) {
+        if (currentTask.importance == importanceList[j]) {
+            importance.innerHTML += `
+            <option value="${importanceList[j]}" selected>
+                ${firstLetterUpper(importanceList[j])}
+            </option>`;
+        } else {
+            importance.innerHTML += `
+            <option value="${importanceList[j]}">
+                ${firstLetterUpper(importanceList[j])}
+            </option>`;
+        }
     }
 }
 
