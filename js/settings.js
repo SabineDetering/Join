@@ -1,6 +1,7 @@
 /**
  * loads data from server
  * initialises drop down menus
+ * @param {boolean} onload - is set to true only when function is called onload
  */
 async function renderSettings(onload=false) {
     if (onload) {
@@ -59,7 +60,7 @@ function personWithTooManyTasks(limit) {
 
 
 /**
- * resets to values before change, changes are not saved
+ * resets settings to values before change, changes are not saved
  */
 function cancelChange() {
     let teamSize = getId('teamSize');

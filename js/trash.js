@@ -39,7 +39,7 @@ function trashHtml() {
 
 
 /**
- * renders the information for one task in trash
+ * renders the information for a single task in trash
  * @param {integer} i - index of the task
  * @returns html code 
  */

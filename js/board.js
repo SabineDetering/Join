@@ -4,6 +4,7 @@ let currentDraggedElement;
 /**
  * loads data from server if function is called onload
  * renders all tasks that belong to the board according to their status
+ * @param {boolean} onload - is set to true only when function is called onload
  */
 async function renderBoardTasks(onload = false) {
     if (onload) {
@@ -52,6 +53,10 @@ function taskCard(i) {
     `;
 }
 
+
+/**
+ * icon "swipe-finger" is only shown on touch screens
+ */
 function showOnlyOnTouchcreens() {
     if (window.matchMedia("(pointer: coarse)").matches) {
         getId('onlyOnTouchscreen').style.display = "flex";
@@ -254,5 +259,3 @@ function archiveTask(i) {
 
     renderBoardTasks();
 }
-
-

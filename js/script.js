@@ -11,14 +11,19 @@ let now = new Date();
 let today = now.toISOString().slice(0, 10);
 let timeout = 500;// timeout to prevent simultaneous saving and loading from server
 
-//backup
-// categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
-//backup
-// users = {
-//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: './img/chris-icon.png', email: 'c.aidelsburger@web.de', password: '', activeTasks: 0 },
-//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png', email: 'testmail@web.de', password: '', activeTasks: 0 },
-//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: './img/tuncay-icon.png', email: 'muster@email.de', password: 'password', activeTasks: 0 },
-// };
+//backup for categories
+/*
+categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
+*/
+
+//backup for users
+/*
+users = {
+    'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: './img/chris-icon.png', email: 'c.aidelsburger@web.de', password: '', activeTasks: 0 },
+    'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png', email: 'testmail@web.de', password: '', activeTasks: 0 },
+    'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: './img/tuncay-icon.png', email: 'muster@email.de', password: 'password', activeTasks: 0 },
+};
+*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////// 
 /* helper functions */
@@ -108,6 +113,7 @@ function staffIconHtml(user, clickable = true) {
     }
 }
 
+
 /**
  * creates html code for drop down appended to a staff icon
  * content: name, email, possibility to remove user from assignedTo array
@@ -147,6 +153,7 @@ function showAssignedUsers() {
         fillAssignedToList();
     }
 }
+
 
 /**
  * creates html code to show the icon, name and email address of a user
@@ -276,7 +283,6 @@ function getTeam(i) {
 /////////////////////////////////////////////////////////////////////////////////////////
 // other functions concerning modal in board and backlog
 
-
 /**
  * shows task details on a modal
  * data is editable
@@ -313,6 +319,7 @@ function renderCardData() {
     selectImportance();
     showAssignedUsers();
 }
+
 
 /**
  * creates buttons in modal 

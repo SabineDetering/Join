@@ -1,16 +1,21 @@
 let backlogTasks = [];
 
-// function renders all Tasks in which are sposed to be in backlog by filtering the array allTasks
+/**
+ * function renders all tasks that belong to backlog by filtering the array allTasks
+ * @param {boolean} onload - is set to true only when function is called onload
+ */
 async function renderTasksInBacklog(onload = false) {
     if (onload) {
         await init();
     }
     backlogTasks = allTasks.filter(task => task.status == 'backlog');
     renderCards();
-
 }
 
-// renders the tasks in the Backlog
+
+/**
+ * renders all tasks in backlog
+ */
 function renderCards() {
     let backlogContent = document.getElementById('card-body');
     backlogContent.innerHTML = "";
@@ -26,7 +31,13 @@ function renderCards() {
     }
 }
 
-// this is the inner.HTML for renderCards() function
+
+/**
+ * creates html code for rendering a single card in backlog
+ * @param {integer} i - index of task in array backlogTasks
+ * @param {json} task 
+ * @returns html code
+ */
 function renderCardsHTML(i, task) {
     return `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
     <div class="card-body cardInBacklog mb-4">
@@ -80,8 +91,7 @@ function getStaff(i) {
  * @param {integer} i - index of task in backlogTasks
  */
 function deleteTask(i) {
-    let idToDelete = backlogTasks[i].id;
-    let indexToDelete = allTasks.findIndex(task => task.id == idToDelete);
+    let indexToDelete = findAllTaskIndex(i, 'backlog');
     allTasks[indexToDelete].deletedFrom = allTasks[indexToDelete].status;
     allTasks[indexToDelete].status = "trash";
     allTasks[indexToDelete].deleteDate = today;
@@ -129,6 +139,7 @@ function moveToBoard(i) {
     save(allTasks, 'tasks');
     renderTasksInBacklog();
 }
+
 
 /**
  * shows a message that the first/last card is shown

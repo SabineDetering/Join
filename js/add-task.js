@@ -1,6 +1,7 @@
 /**
  * loads data from server if function is called onload
  * calls functions to fill dropdown menus in add tasks form dynamically
+ * @param {boolean} onload - is set to true only when function is called onload
  */
 async function renderAddTaskForm(onload = false) {
     if (onload) {
@@ -16,15 +17,8 @@ async function renderAddTaskForm(onload = false) {
     fillAssignedToList();
 }
 
-for (let i = 0; i < allTasks.length; i++) {
-    const task = allTasks[i];
-
-    
-}
-
 /////////////////////////////////////////////////////////////////
 // functions concerning categories
-
 
 /**
  * fills the drop down list for categories with all category names from array categories
@@ -140,6 +134,7 @@ function selectCategory(cat) {
 }
 
 ///////////////////////////////////////////////////////////////////
+//functions concerning due date
 
 /**
  * only future dates are feasible as due date
@@ -218,7 +213,9 @@ function getTaskData() {
     return { title, description, category, dueDate, importance, status }
 }
 
+
 /**
+ * shows success message
  * @param {string} status - status of the created task (backlog or todo)
  */
 function showSuccessMessage(status) {
@@ -235,6 +232,7 @@ function hideSuccessMessage() {
     let successMessage = getId('success');
     successMessage.classList.add('invisible');
 }
+
 
 /**
  * resets addTask form completely
