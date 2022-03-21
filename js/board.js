@@ -22,6 +22,7 @@ async function renderBoardTasks(onload = false) {
         }
     }
     showOnlyOnTouchcreens();
+    checkActiveTasks();
 }
 
 

@@ -4,9 +4,8 @@
  */
 async function renderSettings(onload=false) {
     if (onload) {
-        await load();
+        await init();
     }
-
     let teamSize = getId('teamSize');
     let numberOfTasks = getId('numberOfTasks');
 

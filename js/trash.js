@@ -12,7 +12,8 @@ async function renderTrash(onload = false) {
     try {//avoid error if trash is empty
         getId('restore-btn').alt = "restore to backlog resp. todo";
         getId('restore-btn').title = "restore to backlog resp. todo";
-    } catch{}
+    } catch { }
+    checkActiveTasks();
 }
 
 
