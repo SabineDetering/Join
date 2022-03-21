@@ -9,15 +9,11 @@ function signIn(event) {
     let email = getId('login-email').value;
     let password = getId('login-passwort').value;
     let checkBox = getId('guest');
-
     if (checkBox.checked) {//sign-in as guest
         location.href = 'board.html';
-
     } else {
         for (const name in users) {
-
             if (email == users[name].email) {
-
                 if (password == users[name].password) {
                     location.href = 'board.html';
                 } else {
@@ -27,8 +23,8 @@ function signIn(event) {
                 return;
             }
         }
-             getId('not-registered').style.display = 'block';
-            getId('password-false').style.display = 'none';
+        getId('not-registered').style.display = 'block';
+        getId('password-false').style.display = 'none';
     }
 }
 
