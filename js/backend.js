@@ -4,6 +4,7 @@ setURL('http://gruppe-194.developerakademie.net/smallest_backend_ever');
  * loads data from server
  */
 async function init() {
+    await new Promise(resolve => setTimeout(resolve, timeout));
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
     categories = JSON.parse(backend.getItem('categories')) || [];
@@ -12,7 +13,9 @@ async function init() {
     // maxActiveTasksPerUser = backend.getItem('numberOfTasks') || 2;
     maxTeamSizePerTask = +JSON.parse(backend.getItem('teamSize') )|| 2;
     maxActiveTasksPerUser = +JSON.parse(backend.getItem('numberOfTasks') )|| 2;
-   }
+}
+
+function nothing() { };
 
 
 /**

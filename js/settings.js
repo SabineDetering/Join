@@ -2,8 +2,10 @@
  * loads data from server
  * initialises drop down menus
  */
-async function load() {
-    await init();
+async function renderSettings(onload=false) {
+    if (onload) {
+        await load();
+    }
 
     let teamSize = getId('teamSize');
     let numberOfTasks = getId('numberOfTasks');
@@ -57,7 +59,7 @@ function personWithTooManyTasks(limit) {
 
 
 /**
- * show values before change, changes are not saved
+ * resets to values before change, changes are not saved
  */
 function cancelChange() {
     let teamSize = getId('teamSize');

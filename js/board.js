@@ -7,7 +7,6 @@ let currentDraggedElement;
  */
 async function renderBoardTasks(onload = false) {
     if (onload) {
-    
         await init();
     }
     let statusList = ['todo', 'progress', 'testing', 'done'];
@@ -53,7 +52,7 @@ function taskCard(i) {
 }
 
 function showOnlyOnTouchcreens() {
-    if(window.matchMedia("(pointer: coarse)").matches) {
+    if (window.matchMedia("(pointer: coarse)").matches) {
         getId('onlyOnTouchscreen').style.display = "flex";
     }
 }
@@ -174,7 +173,7 @@ function noMoreTasks(task, maxActiveTasksPerUser, calculatedActiveTasks) {
     getId('noMoreTasks').innerHTML = `<div><b>${task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)]} is already assigned to ${maxActiveTasksPerUser} active tasks!</b><div>`;
     setTimeout(() => {
         getId('noMoreTasks').style.display = "none";
-    }, 1500); 
+    }, 1500);
 }
 
 
@@ -223,7 +222,7 @@ function updateActiveTasks(calculatedActiveTasks) {
 function deleteTaskFromBoard(i) {
     currentDraggedElement = i;
     updateActiveTasks(calculateActiveTasks('trash'));
-    
+
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;

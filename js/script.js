@@ -9,6 +9,16 @@ let highestTaskId = -1;
 let currentTask = {};
 let now = new Date();
 let today = now.toISOString().slice(0, 10);
+let timeout = 1000;// timeout to prevent simultaneous saving and loading from server
+
+//backup
+// categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
+//backup
+// users = {
+//     'Christian Aidelsburger': { name: 'Christian Aidelsburger', initials: 'CA', img: './img/chris-icon.png', email: 'c.aidelsburger@web.de', password: '', activeTasks: 0 },
+//     'Sabine Detering': { name: 'Sabine Detering', initials: 'SD', img: './img/bee.png', email: 'testmail@web.de', password: '', activeTasks: 0 },
+//     'Tuncay Dağdelen': { name: 'Tuncay Dağdelen', initials: 'TD', img: './img/tuncay-icon.png', email: 'muster@email.de', password: 'password', activeTasks: 0 },
+// };
 
 /* helper function */
 function getId(id) {
