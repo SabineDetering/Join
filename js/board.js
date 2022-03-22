@@ -45,24 +45,13 @@ function taskCard(i) {
             <div>
                 ${archiveButton(i)}
                 <img onclick="event.stopPropagation();deleteTaskFromBoard(${i})" title="delete this card" class="trashbin trashbin-board" src="./img/delete.png">
-                <img onclick="event.stopPropagation();changeStatus(${i})" title="move to next status" id="onlyOnTouchscreen" class="onlyOnTouchscreen trashbin trashbin-board" src="./img/swipe.png">
+                <img onclick="event.stopPropagation();changeStatus(${i})" title="move to next status" style="display: none" class="onlyOnTouchscreen trashbin trashbin-board" src="./img/swipe.png">
             </div>
             
         </div>
     </div>
     `;
 }
-
-
-/**
- * icon "swipe-finger" is only shown on touch screens
- */
-function showOnlyOnTouchcreens() {
-    if (window.matchMedia("(pointer: coarse)").matches) {
-        getId('onlyOnTouchscreen').style.display = "flex";
-    }
-}
-
 
 /**
  * moves a task to the next status, from status 'done' it is moved to 'todo'
