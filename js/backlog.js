@@ -106,7 +106,6 @@ function deleteTask(i) {
  */
 function previousCard(i) {
     if (i == 0) {
-        // document.getElementById('nextTask').classList.add('background-color-grey');
         noMoreTasksBacklog('first');
     } else {
         i--;
@@ -122,7 +121,6 @@ function previousCard(i) {
 function nextCard(i) {
     if (i == backlogTasks.length - 1) {
         noMoreTasksBacklog('last');
-        // document.getElementById('nextTask').classList.add('background-color-grey');
     } else {
         i++;
     }
