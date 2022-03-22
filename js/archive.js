@@ -13,7 +13,6 @@ async function renderArchive(onload = false) {
         getId('restore-btn').alt = "restore to board";
         getId('restore-btn').title = "restore to board";
     } catch { }
-    checkActiveTasks();
 }
 
 

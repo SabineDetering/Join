@@ -12,6 +12,7 @@
 
     <script src="./js/include_html.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/general-functions.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backend.js"></script>
     <script src="./js/settings.js"></script>
@@ -33,7 +34,7 @@
             <h1>Settings</h1>
             <form id="settings-task-form" class="container ms-0 shadow rounded bg-ci-light p-4">
                 <div class="">
-                    <p> <strong>Restrict the number of team members </strong>that can be assigned to a single task</p>
+                    <p> <strong>Restrict the number of team members that can be assigned to a single task</strong></p>
                     <div class="d-flex justify-content-between">
                         <label for="teamSize" class="form-label">Maximum team size per task</label>
                         <select class="form-select form-select-sm ms-2" id="teamSize">
@@ -45,21 +46,7 @@
                     <p> Reducing the maximum team size per task will only affect new tasks and changed assignments.</p>
                     <strong>Note:</strong> Consider splitting tasks that seem to need more than 2 assigned team members.
                 </div>
-                <hr>
-                <div class="mt-2">
-                    <p> <strong>Restrict the number of active tasks </strong>(i.e. with status "in progress" or "testing") one person can
-                        be assigned to</p>
-                    <div class="d-flex justify-content-between">
-                        <label for="numberOfTasks" class="form-label">Maximum number of active tasks per person</label>
-                        <select class="form-select form-select-sm ms-2" id="numberOfTasks">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
-                    <p> Reducing the maximum number of active tasks per person will only be possible, if the new restriction is not exceeded by any person. </p>
-                </div>
-                
+                                               
                 <div class="button-row d-flex align-items-center justify-content-end mt-4">
 
                     <button type="button" class="btn ci-button-transparent" onclick="cancelChange()">

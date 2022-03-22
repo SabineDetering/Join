@@ -13,7 +13,6 @@ async function renderTrash(onload = false) {
         getId('restore-btn').alt = "restore to backlog resp. todo";
         getId('restore-btn').title = "restore to backlog resp. todo";
     } catch { }
-    checkActiveTasks();
 }
 
 
@@ -106,5 +105,4 @@ function restoreTask(i) {
     task.deleteDate = '';
     save(allTasks, 'tasks');
     renderTrash();
-    checkActiveTasks();
 }
