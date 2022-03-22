@@ -23,6 +23,8 @@ h6 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 80px;
+    margin-bottom: 96px;
 }
 
 .card {
@@ -39,7 +41,7 @@ h6 {
 }
 
 .headerOfCard {
-    display: flex;
+    display: none;
     padding: 1rem 1rem;
     width: 80vw;
     margin-top: 64px;
@@ -110,37 +112,7 @@ h6 {
 }
 
 /***********************************************************************************/
-@media (max-width: 340px) {
-    .userContent {
-        flex-direction: column;
-    }
-
-    .container {
-        padding-right: 0;
-        padding-left: 0;
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    .card {
-        overflow: auto;
-    }
-
-    .card-body {
-        padding: 0 !important;
-    }
-}
-
-@media only screen and (max-width: 360px) {
-
-    .card-content {
-        padding-top: 80px;
-        margin-bottom: 96px;
-    }
-
-    .headerOfCard {
-        display: none;
-    }
+@media only screen and (max-width: 340px) {
 
     .cardInBacklog {
         flex-direction: column-reverse;
@@ -185,18 +157,17 @@ h6 {
     .category {
         width: 100%;
     }
+
+    .userContent {
+        flex-direction: column;
+    }
+
+    .card-body {
+        padding: 0 !important;
+    }
 }
 
-@media only screen and (min-width: 360px) {
-
-    .card-content {
-        padding-top: 80px;
-        margin-bottom: 96px;
-    }
-
-    .headerOfCard {
-        display: none;
-    }
+@media only screen and (min-width: 340px) {
 
     .cardInBacklog {
         flex-direction: column-reverse;
@@ -257,10 +228,6 @@ h6 {
         width: 100%;
     }
 
-    .trashbin {
-        bottom: 5px;
-        right: 5px;
-    }
 }
 
 
