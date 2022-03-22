@@ -3,8 +3,6 @@ let users = {};
 let categories = [];
 //maximum number of people that can be assigned to one task
 let maxTeamSizePerTask;
-//maximum number of active tasks (in progress, testing) that one person can be assigned to
-let maxActiveTasksPerUser;
 let highestTaskId = -1;
 let currentTask = {};
 let now = new Date();
@@ -39,16 +37,6 @@ function getId(id) {
  */
 function firstLetterUpper(word) {
     return word.slice(0, 1).toUpperCase() + word.slice(1);
-}
-
-
-/**
- * logs the number of active tasks for all users
- */
-function checkActiveTasks() {
-    for (const name in users) {
-        console.log(users[name].name + ': ' + users[name].activeTasks);
-    }
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -211,7 +199,7 @@ function itemMaker(name) {
 
 
 /**
- * fills the drop down menu in the "assigned-to" section with all users (json)
+ * fills the drop down menu in the "assigned-to" section with users 
  * already assigned users are excluded
  */
 function fillAssignedToList() {
@@ -236,7 +224,7 @@ function userAlreadyAssigned(name) {
 
 
 /**
- * removes a user form being assigned to a task
+ * removes a user from being assigned to a task
  * updates the presentation of assigned to users
  * @param {string} name - name of user in array assignedTo 
  */
@@ -388,24 +376,20 @@ async function saveChanges(i, page) {
     let selectedImportance = importanceSelector[importanceSelector.selectedIndex].value;
     let indexToSave = findAllTaskIndex(i, page);
 
-    if (assignedToIsFeasible(indexToSave, page)) {
-        allTasks[indexToSave].title = title;
-        allTasks[indexToSave].description = description;
-        allTasks[indexToSave].dueDate = date;
-        allTasks[indexToSave].assignedTo = currentTask.assignedTo;
-        allTasks[indexToSave].category = selectedCategory;
-        allTasks[indexToSave].importance = selectedImportance;
+    allTasks[indexToSave].title = title;
+    allTasks[indexToSave].description = description;
+    allTasks[indexToSave].dueDate = date;
+    allTasks[indexToSave].assignedTo = currentTask.assignedTo;
+    allTasks[indexToSave].category = selectedCategory;
+    allTasks[indexToSave].importance = selectedImportance;
 
-        await save(users, 'users');
-        save(allTasks, 'tasks');
+    await save(allTasks, 'tasks');
 
-        if (page == 'board') {
-            renderBoardTasks();
-        } else {
-            renderTasksInBacklog();
-        }
+    if (page == 'board') {
+        renderBoardTasks();
+    } else {
+        renderTasksInBacklog();
     }
-    checkActiveTasks();
 }
 
 
@@ -422,92 +406,6 @@ function findAllTaskIndex(i, page) {
         let idToSave = backlogTasks[i].id;
         return allTasks.findIndex(task => task.id == idToSave);
     }
-}
-
-
-/**
- * true if the (changed) assignment in the modal doesn't increase the number of active tasks per person to a value above maxActiveTasksPerUser
- * only changes of tasks in status 'progress' or 'testing' are relevant (otherwise the number of active tasks is not affected)
- * shows an alert, if result is false
- * if the result is true, activeTasks are updated for all affected users
- * @param {integer} index - index of task on allTasks
- * @param {string} page - 'board' if task is from board
- * @returns boolean
- */
-function assignedToIsFeasible(index, page) {
-    let task = allTasks[index];
-    if (page != 'board'
-        || task.status == 'todo'
-        || task.status == 'done'
-        || task.assignedTo == currentTask.assignedTo) {//no changes or irrelevant changes
-        return true;
-    }
-    let [namesWithChangedActiveTasks, changedActiveTasks] = calcActiveTasksForAssignChanges(index);
-    if (Math.max(...changedActiveTasks) > maxActiveTasksPerUser) {
-        let busyPerson = namesWithChangedActiveTasks[changedActiveTasks.indexOf(maxActiveTasksPerUser + 1)];
-        infeasibleMessage(busyPerson);
-        return false;
-    } else {
-        updateActiveTasksForAssignChanges(namesWithChangedActiveTasks, changedActiveTasks);
-        return true;
-    }
-}
-
-
-/**
- * displays message that the intended change of assigned to people is not possible
- * @param {string} name - name of a person that would get too many active tasks with the intended change of assignedTo
- */
-function infeasibleMessage(name) {
-    let message = getId('alert-box');
-    message.style.display = "block";
-    message.innerHTML = `<div><b>This change of assigned users is not feasible. ${name} is already assigned to ${maxActiveTasksPerUser} active tasks. Your changes will not be saved.</b><div>`;
-    setTimeout(() => {
-        message.style.display = "none";
-    }, 2500);
-}
-
-
-/**
- * is called by function assignedToIsFeasible(index, page) only if the changes of assignedTo are feasible
- * updates the values of activeTasks for all affected users
- * @param {array} names 
- * @param {array} changedActiveTasks 
- */
-function updateActiveTasksForAssignChanges(names, changedActiveTasks) {
-    for (let i = 0; i < names.length; i++) {
-        users[names[i]].activeTasks = changedActiveTasks[i];
-    }
-}
-
-
-/**
- * calculates the changes in number of active Tasks for changed assigned users
- * @param {integer} index - index of task in allTasks
- * @returns changedActiveTasks - array of jsons {'name':name, activeTasks: active Tasks after change}
- */
-function calcActiveTasksForAssignChanges(index) {
-    let task = allTasks[index];
-    let namesWithChangedActiveTasks = [];
-    let changedActiveTasks = [];
-
-    for (let i = 0; i < task.assignedTo.length; i++) {
-        const name = task.assignedTo[i];
-        if (!currentTask.assignedTo.includes(name)) {
-            //name is not assigned any more => decrease activeTasks
-            namesWithChangedActiveTasks.push(name);
-            changedActiveTasks.push(users[name].activeTasks - 1);
-        }
-    }
-    for (let j = 0; j < currentTask.assignedTo.length; j++) {
-        const name = currentTask.assignedTo[j];
-        if (!task.assignedTo.includes(name)) {
-            //name is a new assignee => increase activeTasks
-            namesWithChangedActiveTasks.push(name);
-            changedActiveTasks.push(users[name].activeTasks + 1);
-        }
-    }
-    return [namesWithChangedActiveTasks, changedActiveTasks];
 }
 
 

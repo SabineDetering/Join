@@ -11,7 +11,6 @@ async function init() {
     categories = JSON.parse(backend.getItem('categories')) || [];
     allTasks = JSON.parse(backend.getItem('tasks')) || [];
     maxTeamSizePerTask = +JSON.parse(backend.getItem('teamSize') )|| 2;
-    maxActiveTasksPerUser = +JSON.parse(backend.getItem('numberOfTasks') )|| 2;
 }
 
 

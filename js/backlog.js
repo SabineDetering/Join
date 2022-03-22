@@ -106,7 +106,6 @@ function deleteTask(i) {
  */
 function previousCard(i) {
     if (i == 0) {
-        // document.getElementById('nextTask').classList.add('background-color-grey');
         noMoreTasksBacklog('first');
     } else {
         i--;
@@ -122,8 +121,6 @@ function previousCard(i) {
 function nextCard(i) {
     if (i == backlogTasks.length - 1) {
         noMoreTasksBacklog('last');
-        // document.getElementById('nextTask').classList.add('background-color-grey');
-    } else {
         i++;
     }
     showCard(i, 'backlog');
@@ -148,12 +145,12 @@ function moveToBoard(i) {
 function noMoreTasksBacklog(card) {
     let message = getId('alert-box');
     message.style.display = "block";
-    if(card == 'first') {
+    if (card == 'first') {
         message.innerHTML = `<div><b>This is the first card!</b><div>`;
     } else {
         message.innerHTML = `<div><b>This is the last card!</b><div>`;
     }
-   
+
     setTimeout(() => {
         message.style.display = "none";
     }, 1500);

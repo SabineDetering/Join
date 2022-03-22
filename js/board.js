@@ -22,7 +22,6 @@ async function renderBoardTasks(onload = false) {
             }
         }
     }
-    checkActiveTasks();
 }
 
 
@@ -73,7 +72,6 @@ function changeStatus(i) {
             }
         }
     }
-    checkActiveTasks();
 }
 
 
@@ -128,87 +126,10 @@ function allowDrop(ev) {
  * moves the dragged task to status, if it is feasible
  * @param {string} status - status the task is moved to
  */
-async function moveTo(status/*, event*/) {
-    // event.preventDefault();
-    if (moveFeasible(status)) {
-        allTasks[currentDraggedElement].status = status;
-        await save(users, 'users');
-        save(allTasks, 'tasks');
-        renderBoardTasks();
-    }
-    checkActiveTasks();
-}
-
-
-/**
- * true, if moving the task doesn't exceed the allowed number of active tasks for any assigned person
- * @param {string} status - status the task is moved to
- * @returns boolean
- */
-function moveFeasible(status) {
-    let task = allTasks[currentDraggedElement];
-    let calculatedActiveTasks = [];
-    if (!task.assignedTo == []) {
-        calculatedActiveTasks = calculateActiveTasks(status);
-        if (Math.max(...calculatedActiveTasks) > maxActiveTasksPerUser) {
-            let busyPerson =task.assignedTo[calculatedActiveTasks.indexOf(maxActiveTasksPerUser + 1)];
-            noMoreTasks(busyPerson);
-            return false;
-        } else {
-            updateActiveTasks(calculatedActiveTasks);
-            return true;
-        }
-    }
-}
-
-
-/**
- * displays message that the intended change of status is not possible
- * @param {string} name - name of a person that would get too many active tasks with the intended change of status
- */
-function noMoreTasks(name) {
-    let message = getId('alert-box');
-    message.style.display = "block";
-    message.innerHTML = `<div><b>This change of status is not possible.<br> ${name} is already assigned to ${maxActiveTasksPerUser} active tasks!</b><div>`;
-    setTimeout(() => {
-        message.style.display = "none";
-    }, 2000);
-}
-
-
-/**
- * calculates the resulting number of active tasks for assigned people in case the intended move of taks is done 
- * @param {string} status - status the task is moved to
- * @returns array with resulting number of active tasks for assigned persons
- */
-function calculateActiveTasks(status) {
-    let task = allTasks[currentDraggedElement];
-    let statusBefore = task.status;
-    let calculatedActiveTasks = [];
-    for (let i = 0; i < task.assignedTo.length; i++) {
-        const name = task.assignedTo[i];
-        calculatedActiveTasks[i] = users[name].activeTasks;
-        if (statusBefore == 'progress' || statusBefore == 'testing') {
-            calculatedActiveTasks[i]--;
-        }
-        if (status == 'progress' || status == 'testing') {
-            calculatedActiveTasks[i]++;
-        }
-    }
-    return calculatedActiveTasks;
-}
-
-
-/**
- * updates users json with calculatedActiveTasks 
- * @param {array} calculatedActiveTasks 
- */
-function updateActiveTasks(calculatedActiveTasks) {
-    let task = allTasks[currentDraggedElement];
-    for (let i = 0; i < task.assignedTo.length; i++) {
-        const name = task.assignedTo[i];
-        users[name].activeTasks = calculatedActiveTasks[i];
-    }
+async function moveTo(status) {
+    allTasks[currentDraggedElement].status = status;
+    await save(allTasks, 'tasks');
+    renderBoardTasks();
 }
 
 
@@ -219,18 +140,13 @@ function updateActiveTasks(calculatedActiveTasks) {
  * @param {integer} i - index of task 
  */
 async function deleteTaskFromBoard(i) {
-    currentDraggedElement = i;
-    updateActiveTasks(calculateActiveTasks('trash'));
-
     allTasks[i].deletedFrom = allTasks[i].status;
     allTasks[i].status = "trash";
     allTasks[i].deleteDate = today;
 
-    await save(users, 'users');
-    save(allTasks, 'tasks');
+    await save(allTasks, 'tasks');
 
     renderBoardTasks();
-    checkActiveTasks();
 }
 
 
