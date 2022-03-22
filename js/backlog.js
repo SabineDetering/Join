@@ -121,6 +121,7 @@ function previousCard(i) {
 function nextCard(i) {
     if (i == backlogTasks.length - 1) {
         noMoreTasksBacklog('last');
+    } else {
         i++;
     }
     showCard(i, 'backlog');
