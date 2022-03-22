@@ -43,14 +43,14 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
 
-/* .onlyOnTouchscreen {
-    display: none;
-} */
+.onlyOnTouchscreen {
+    display: flex;
+}
 
 /******************************************************************************************/
-@media (hover: none) and (pointer: coarse) {
+@media (hover: hover) {
     .onlyOnTouchscreen {
-        display: flex;
+        display: none;
     }
 }
 
