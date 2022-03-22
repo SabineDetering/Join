@@ -297,7 +297,7 @@ function footerButtons(i, page) {
 
 
 /**
- * saves all details of the task in the modal
+ * saves all details of the task in the modal to the server
  * @param {integer} i - index of task
  * @param {string} page - 'board', if task is from board
  */
