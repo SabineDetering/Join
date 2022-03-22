@@ -182,7 +182,7 @@ function assignUser(name) {
 
 /**
  * creates html code for icon and name for each person assigned to a task
- * @param {integer} i -index of the task 
+ * @param {integer} i -index of the task in allTasks
  * @returns html code
  */
 function getTeam(i) {
@@ -209,7 +209,7 @@ function getTeam(i) {
 /**
  * shows task details on a modal
  * data is editable
- * @param {integer} i - index of task
+ * @param {integer} i - index of task on allTasks, if page='board', on backlogTasks otherwise
  * @param {string} page - 'board', if task is from board
  */
 function showCard(i, page) {
@@ -231,7 +231,7 @@ function showCard(i, page) {
 
 /**
  * renders task details on modal
- * @param {integer} i - index of task
+ * @param {integer} i - index of task on allTasks, if page='board', on backlogTasks otherwise
  * @param {string} page - 'board', if task is from board
  */
 function renderCardData() {
@@ -247,7 +247,7 @@ function renderCardData() {
 /**
  * creates buttons in modal 
  * button for send to board is only shown in backlog
- * @param {integer} i - index of task
+ * @param {integer} i - index of task on allTasks, if page='board', on backlogTasks otherwise
  * @param {string} page - 'board', if task is from board
  * @returns html code
  */
@@ -270,7 +270,7 @@ function changeStatusButtons(i, page) {
 /**
  * creates buttons in modal footer
  * buttons for previous/next task are only shown in backlog
- * @param {integer} i - index of task
+ * @param {integer} i - index of task on allTasks, if page='board', on backlogTasks otherwise
  * @param {string} page - 'board', if task is from board
  * @returns html code
  */
@@ -298,7 +298,7 @@ function footerButtons(i, page) {
 
 /**
  * saves all details of the task in the modal to the server
- * @param {integer} i - index of task
+ * @param {integer} i - index of task on allTasks, if page='board', on backlogTasks otherwise
  * @param {string} page - 'board', if task is from board
  */
 async function saveChanges(i, page) {
@@ -330,7 +330,7 @@ async function saveChanges(i, page) {
 
 /**
  * 'translates' index of task in backlogTasks to index in allTasks
- * @param {integer} i - index of task
+ * @param {integer} i - index of task on allTasks, if page='board', on backlogTasks otherwise
  * @param {string} page - 'board', if task is from board
  * @returns index of task in allTasks
  */
@@ -373,7 +373,7 @@ function selectImportance() {
 
 /**
  * renders html code for restore and delete buttons in trash and archive
- * @param {integer} i - index of the task 
+ * @param {integer} i - index of the task on allTasks
  * @returns html code 
  */
 function trashButtons(i) {
