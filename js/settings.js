@@ -24,3 +24,17 @@ function saveSettings() {
     save(maxTeamSizePerTask, 'teamSize');
     settingsMessage.innerHTML = 'Settings have been saved.'
 }
+
+
+/**
+ * resets settings to values before change, changes are not saved
+ */
+function cancelChange() {
+    let teamSize = getId('teamSize');
+    let settingsMessage = getId('settings-message');
+
+    teamSize.selectedIndex = maxTeamSizePerTask - 1;
+
+    settingsMessage.innerHTML = 'Changes are reset.'
+    save(maxTeamSizePerTask, 'teamSize');
+} 
