@@ -41,6 +41,10 @@ function renderCards() {
 function renderCardsHTML(i, task) {
     return `<div id="card${i}" onclick="showCard(${i})" class="card shadow bd-imp-${task.importance}">
     <div class="card-body cardInBacklog mb-4">
+    <div class="iconsInCards">
+            <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
+            <img onclick="event.stopPropagation();deleteTask(${i})" title="delete this card" class="trashbin" src="./img/delete.png">
+        </div>
         <div class="staff-container">${getStaff(i)}</div>
 
         <div class="date mb-2">${task.dueDate}</div>
@@ -51,10 +55,7 @@ function renderCardsHTML(i, task) {
         <div class="fw-bold d-lg-none mt-1">Title</div>
         <div class="importance" id="importance${i}"><div>
     </div>
-    <div class="iconsInCards">
-            <img src="./img/paperplane.png" onclick="event.stopPropagation();moveToBoard(${i})" class="plane-icon" title="move to board">
-            <img onclick="event.stopPropagation();deleteTask(${i})" title="delete this card" class="trashbin" src="./img/delete.png">
-        </div>
+
 </div>`
 }
 
