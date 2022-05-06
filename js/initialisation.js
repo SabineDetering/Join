@@ -1,5 +1,5 @@
 // data to initialise categories and users
-// only needed, if data on the server is lost
+// only needed, if data on the server is lost or server is changed
 // in this case: execute the following code in the console
 
 categories = ['Backend', 'Frontend', 'Product Owner', 'UI/UX', 'Webdesign'];
