@@ -1,4 +1,4 @@
-setURL('http://gruppe-194.developerakademie.net/smallest_backend_ever');
+setURL('https://sabine-detering.de/join/smallest_backend_ever');
 
 /**
  * loads data from server
